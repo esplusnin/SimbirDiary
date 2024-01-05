@@ -94,6 +94,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA203A32B47FE3300A9F2A3 /* Build configuration list for PBXNativeTarget "SimbirDiary" */;
 			buildPhases = (
+				7EA203B32B480B3C00A9F2A3 /* Swiftlint */,
 				7EA203B22B48099900A9F2A3 /* SwiftGen */,
 				7EA2038B2B47FE3200A9F2A3 /* Sources */,
 				7EA2038C2B47FE3200A9F2A3 /* Frameworks */,
@@ -173,6 +174,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftgen; then\n    swiftgen\nelse\n  echo \"warning: swiftgen not installed\"\nfi\n";
+		};
+		7EA203B32B480B3C00A9F2A3 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
