@@ -9,6 +9,11 @@ final class CustomNavigationBarView: UIView {
         static let pickerHeigth: CGFloat = 40
         static let pickerWidth: CGFloat = 100
         static let separatorWidth: CGFloat = 2
+        
+        static let plusButtonFont:CGFloat = 40
+        
+        static let navBarShadowOpacity: Float = 1
+        static let navBarShadowRadius: CGFloat = 10
     }
     
     // MARK: - UI:
@@ -20,8 +25,8 @@ final class CustomNavigationBarView: UIView {
     
     private var plusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("+", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 40)
+        button.setTitle(Resources.Symbols.plus, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: UIConstants.plusButtonFont)
         return button
     }()
     
@@ -29,8 +34,8 @@ final class CustomNavigationBarView: UIView {
     func setup() {
         setupViews()
         setupConstraints()
-        layer.shadowOpacity = 1
-        layer.shadowRadius = 10
+        layer.shadowOpacity = UIConstants.navBarShadowOpacity
+        layer.shadowRadius = UIConstants.navBarShadowRadius
         layer.shadowColor = UIColor.lightGray.cgColor
     }
 }
@@ -39,7 +44,7 @@ final class CustomNavigationBarView: UIView {
 extension CustomNavigationBarView {
     private func setupViews() {
         backgroundColor = .white
-        [datePicker, plusButton].forEach(add)
+        [datePicker, plusButton].forEach(addNewSubview)
     }
 }
 

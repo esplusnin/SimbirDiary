@@ -1,7 +1,12 @@
 import UIKit
 
 enum Resources {
-    enum Images {
-        static let plus = UIImage(named: "plus")
+    enum Symbols {
+        static let plus = "+"
+        static let active = "✅"
+    }
+    
+    enum Identifiers {
+        static let toDoTableViewCell = "ToDoTableViewCell"
     }
 }
