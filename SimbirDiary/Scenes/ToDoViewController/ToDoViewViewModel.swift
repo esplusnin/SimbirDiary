@@ -2,6 +2,9 @@ import Foundation
 
 final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
+    // MARK: - Dependencies:
+    private let dataProvider: DataProviderProtocol
+    
     // MARK: - Constants and Variables:
     private var currentDate: Date? {
         didSet {
@@ -30,8 +33,24 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         TimeBlock(name: Resources.TimeBlocks.twentyThree, tasks: [])
     ]
     
+    // MARK: - Lifecycle
+    init(dataProvider: DataProviderProtocol) {
+        self.dataProvider = dataProvider
+    }
+    
     // MARK: - Public Methods:
     func setupDate(from date: Date) {
         currentDate = date
+    }
+    // TODO: закончить слой даты
+    func fetchData() {
+        dataProvider.fetchData { result in
+            switch result {
+            case .success(let tasks):
+                print(tasks)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
