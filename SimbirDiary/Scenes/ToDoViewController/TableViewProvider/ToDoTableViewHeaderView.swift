@@ -5,6 +5,8 @@ final class ToDoTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
         static let headerLabelFontSize: CGFloat = 20
+        static let cornerRadius: CGFloat = 15
+        static let backgroundColorAlphaComponent: CGFloat = 0.2
     }
     // MARK: - UI
     private lazy var headerNameLabel: UILabel = {
@@ -39,8 +41,8 @@ final class ToDoTableViewHeaderView: UITableViewHeaderFooterView {
 // MARK: - Setup Views:
 extension ToDoTableViewHeaderView {
     private func setupViews() {
-        contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        contentView.layer.cornerRadius = LocalUIConstants.cornerRadius
+        contentView.backgroundColor = .lightGray.withAlphaComponent(LocalUIConstants.backgroundColorAlphaComponent)
         
         [headerNameLabel, tasksAmountLabel].forEach(addNewSubview)
     }

@@ -52,7 +52,7 @@ private extension ToDoTableViewCell {
     func setupNameLabelConstraints() {
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
             nameLabel.trailingAnchor.constraint(equalTo: toggleButton.leadingAnchor, constant: -UIConstants.baseInset)
         ])
     }
@@ -62,7 +62,7 @@ private extension ToDoTableViewCell {
             toggleButton.heightAnchor.constraint(equalToConstant: UILocalConstants.toggleButtonSide),
             toggleButton.widthAnchor.constraint(equalToConstant: UILocalConstants.toggleButtonSide),
             toggleButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            toggleButton.trailingAnchor.constraint(equalTo: trailingAnchor)
+            toggleButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
 }

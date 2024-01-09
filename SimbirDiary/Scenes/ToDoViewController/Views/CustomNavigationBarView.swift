@@ -10,7 +10,7 @@ final class CustomNavigationBarView: UIView {
         static let pickerWidth: CGFloat = 100
         static let separatorWidth: CGFloat = 2
         
-        static let plusButtonFont:CGFloat = 40
+        static let plusButtonFont: CGFloat = 40
         
         static let navBarShadowOpacity: Float = 1
         static let navBarShadowRadius: CGFloat = 10
