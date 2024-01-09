@@ -4,9 +4,9 @@ final class ToDoTableViewCell: UITableViewCell {
     
     // MARK: - Constants and Variables:
     private enum UILocalConstants {
-        static let toggleButtonSide: CGFloat = 40
+        static let toggleButtonSide: CGFloat = 20
         static let toggleButtonBorderWidth: CGFloat = 1
-        static let toggleButtonCornerRadius: CGFloat = 20
+        static let toggleButtonCornerRadius: CGFloat = 10
     }
     
     // MARK: - UI:

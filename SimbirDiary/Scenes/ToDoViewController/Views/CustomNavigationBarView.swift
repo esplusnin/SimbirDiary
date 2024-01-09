@@ -30,13 +30,24 @@ final class CustomNavigationBarView: UIView {
         return button
     }()
     
+    // MARK: - Lifecycle:
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupShadow()
+    }
+    
     // MARK: - Public Methods:
     func setup() {
         setupViews()
         setupConstraints()
+    }
+    
+    // MARK: - Private Methods:
+    private func setupShadow() {
         layer.shadowOpacity = UIConstants.navBarShadowOpacity
         layer.shadowRadius = UIConstants.navBarShadowRadius
         layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
 }
 

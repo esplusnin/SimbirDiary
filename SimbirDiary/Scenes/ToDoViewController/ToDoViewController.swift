@@ -2,6 +2,9 @@ import UIKit
 
 class ToDoViewController: UIViewController {
 
+    // MARK: - Classes:
+    private let tableViewProvider = ToDoViewControllerTableViewProvider()
+    
     // MARK: - Constants and Variables:
     private enum UILocalConstants {
         static let navigationBarHeight: CGFloat = 120
@@ -10,7 +13,12 @@ class ToDoViewController: UIViewController {
     // MARK: - UI:
     private lazy var toDoTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Resources.Identifiers.toDoTableViewCell)
+        tableView.register(ToDoTableViewCell.self, forCellReuseIdentifier: Resources.Identifiers.toDoTableViewCell)
+        tableView.register(ToDoTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: Resources.Identifiers.toDoTableViewHeaderView)
+        tableView.dataSource = tableViewProvider
+        tableView.delegate = tableViewProvider
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         return tableView
     }()
     
@@ -36,6 +44,7 @@ extension ToDoViewController {
 private extension ToDoViewController {
     func setupConstraints() {
         setupCustomNavigationBarViewConstraints()
+        setupToDoTableViewConstraints()
     }
     
     func setupCustomNavigationBarViewConstraints() {
@@ -51,7 +60,10 @@ private extension ToDoViewController {
     
     func setupToDoTableViewConstraints() {
         NSLayoutConstraint.activate([
-            toDoTableView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor, constant: UIConstants.baseInset)
+            toDoTableView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor, constant: UIConstants.baseInset),
+            toDoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.baseInset),
+            toDoTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            toDoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
 }
