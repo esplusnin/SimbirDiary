@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		285AE6515D6A1416720F3FC7 /* Pods_SimbirDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */; };
 		7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */; };
 		7E37CEBC2B484C5500700075 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEBB2B484C5500700075 /* Resources.swift */; };
 		7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEBF2B484D7400700075 /* UIView + Extension.swift */; };
@@ -20,6 +21,8 @@
 		7E8335342B4D291D008E4C44 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335332B4D291D008E4C44 /* Observable.swift */; };
 		7E8335362B4D2C88008E4C44 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335352B4D2C88008E4C44 /* TimeBlock.swift */; };
 		7E83353B2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83353A2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift */; };
+		7E83353E2B4D4015008E4C44 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83353D2B4D4015008E4C44 /* DataProvider.swift */; };
+		7E8335422B4D4045008E4C44 /* DataProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335412B4D4045008E4C44 /* DataProviderProtocol.swift */; };
 		7EA203932B47FE3200A9F2A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */; };
 		7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */; };
 		7EA2039C2B47FE3300A9F2A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA2039B2B47FE3300A9F2A3 /* Assets.xcassets */; };
@@ -29,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimbirDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.release.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.release.xcconfig"; sourceTree = "<group>"; };
 		7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		7E37CEBB2B484C5500700075 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		7E37CEBF2B484D7400700075 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
@@ -42,6 +47,8 @@
 		7E8335332B4D291D008E4C44 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		7E8335352B4D2C88008E4C44 /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
 		7E83353A2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarViewDelegate.swift; sourceTree = "<group>"; };
+		7E83353D2B4D4015008E4C44 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		7E8335412B4D4045008E4C44 /* DataProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderProtocol.swift; sourceTree = "<group>"; };
 		7EA2038F2B47FE3200A9F2A3 /* SimbirDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimbirDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +58,7 @@
 		7EA203AE2B48083F00A9F2A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA203AF2B48085600A9F2A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EA203B02B48098400A9F2A3 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.debug.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285AE6515D6A1416720F3FC7 /* Pods_SimbirDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,11 +153,46 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		7E83353C2B4D4008008E4C44 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7E83353F2B4D4036008E4C44 /* Data */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7E83353F2B4D4036008E4C44 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7E8335432B4D4062008E4C44 /* DataProvider */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7E8335402B4D403E008E4C44 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7E8335412B4D4045008E4C44 /* DataProviderProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7E8335432B4D4062008E4C44 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				7E8335402B4D403E008E4C44 /* Protocols */,
+				7E83353D2B4D4015008E4C44 /* DataProvider.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
 		7EA203862B47FE3200A9F2A3 = {
 			isa = PBXGroup;
 			children = (
 				7EA203912B47FE3200A9F2A3 /* SimbirDiary */,
 				7EA203902B47FE3200A9F2A3 /* Products */,
+				D706192B8098D65B89029043 /* Pods */,
+				839FA001163B0C916AFE875D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +209,7 @@
 			children = (
 				7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */,
 				7E8335292B4D1F40008E4C44 /* Models */,
+				7E83353C2B4D4008008E4C44 /* Services */,
 				7E37CEB42B4847A600700075 /* Scenes */,
 				7E8335372B4D333E008E4C44 /* Components */,
 				7EA203A62B4807DC00A9F2A3 /* Resources */,
@@ -195,6 +240,24 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
+		839FA001163B0C916AFE875D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D706192B8098D65B89029043 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */,
+				46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,11 +265,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA203A32B47FE3300A9F2A3 /* Build configuration list for PBXNativeTarget "SimbirDiary" */;
 			buildPhases = (
+				4FDBC7D627DC92D2BCE089B6 /* [CP] Check Pods Manifest.lock */,
 				7EA203B32B480B3C00A9F2A3 /* Swiftlint */,
 				7EA203B22B48099900A9F2A3 /* SwiftGen */,
 				7EA2038B2B47FE3200A9F2A3 /* Sources */,
 				7EA2038C2B47FE3200A9F2A3 /* Frameworks */,
 				7EA2038D2B47FE3200A9F2A3 /* Resources */,
+				0092D2D732074E7B5735404C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,6 +329,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0092D2D732074E7B5735404C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FDBC7D627DC92D2BCE089B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimbirDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7EA203B22B48099900A9F2A3 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -313,6 +417,7 @@
 				7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */,
 				7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */,
 				7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */,
+				7E8335422B4D4045008E4C44 /* DataProviderProtocol.swift in Sources */,
 				7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */,
 				7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */,
 				7E83353B2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift in Sources */,
@@ -322,6 +427,7 @@
 				7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */,
 				7E37CECE2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift in Sources */,
 				7E8335342B4D291D008E4C44 /* Observable.swift in Sources */,
+				7E83353E2B4D4015008E4C44 /* DataProvider.swift in Sources */,
 				7E37CEBC2B484C5500700075 /* Resources.swift in Sources */,
 				7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */,
 				7EA203B12B48098400A9F2A3 /* Strings+Generated.swift in Sources */,
@@ -474,6 +580,7 @@
 		};
 		7EA203A42B47FE3300A9F2A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -505,6 +612,7 @@
 		};
 		7EA203A52B47FE3300A9F2A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
