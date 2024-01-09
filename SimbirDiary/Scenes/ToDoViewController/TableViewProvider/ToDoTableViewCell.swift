@@ -12,7 +12,6 @@ final class ToDoTableViewCell: UITableViewCell {
     // MARK: - UI:
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "проверка"
         return label
     }()
     

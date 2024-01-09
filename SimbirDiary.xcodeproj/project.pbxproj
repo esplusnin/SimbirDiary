@@ -18,6 +18,8 @@
 		7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */; };
 		7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */; };
 		7E8335342B4D291D008E4C44 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335332B4D291D008E4C44 /* Observable.swift */; };
+		7E8335362B4D2C88008E4C44 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335352B4D2C88008E4C44 /* TimeBlock.swift */; };
+		7E83353B2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83353A2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift */; };
 		7EA203932B47FE3200A9F2A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */; };
 		7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */; };
 		7EA2039C2B47FE3300A9F2A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA2039B2B47FE3300A9F2A3 /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModel.swift; sourceTree = "<group>"; };
 		7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModelProtocol.swift; sourceTree = "<group>"; };
 		7E8335332B4D291D008E4C44 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		7E8335352B4D2C88008E4C44 /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
+		7E83353A2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarViewDelegate.swift; sourceTree = "<group>"; };
 		7EA2038F2B47FE3200A9F2A3 /* SimbirDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimbirDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -72,20 +76,11 @@
 			isa = PBXGroup;
 			children = (
 				7E8335302B4D2090008E4C44 /* Protocols */,
-				7E37CEB82B48483900700075 /* Views */,
 				7E37CECC2B4C3C9A00700075 /* TableViewProvider */,
 				7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */,
 				7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */,
 			);
 			path = ToDoViewController;
-			sourceTree = "<group>";
-		};
-		7E37CEB82B48483900700075 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		7E37CEBE2B484D6400700075 /* Extensions */ = {
@@ -111,6 +106,7 @@
 			children = (
 				7E8335332B4D291D008E4C44 /* Observable.swift */,
 				7E83352A2B4D1F4B008E4C44 /* Task.swift */,
+				7E8335352B4D2C88008E4C44 /* TimeBlock.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +117,31 @@
 				7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7E8335372B4D333E008E4C44 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7E8335382B4D3357008E4C44 /* CustomNavigationBarView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7E8335382B4D3357008E4C44 /* CustomNavigationBarView */ = {
+			isa = PBXGroup;
+			children = (
+				7E8335392B4D3364008E4C44 /* Protocol */,
+				7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */,
+			);
+			path = CustomNavigationBarView;
+			sourceTree = "<group>";
+		};
+		7E8335392B4D3364008E4C44 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7E83353A2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		7EA203862B47FE3200A9F2A3 = {
@@ -145,6 +166,7 @@
 				7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */,
 				7E8335292B4D1F40008E4C44 /* Models */,
 				7E37CEB42B4847A600700075 /* Scenes */,
+				7E8335372B4D333E008E4C44 /* Components */,
 				7EA203A62B4807DC00A9F2A3 /* Resources */,
 				7E37CEBE2B484D6400700075 /* Extensions */,
 				7EA2039B2B47FE3300A9F2A3 /* Assets.xcassets */,
@@ -287,11 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8335362B4D2C88008E4C44 /* TimeBlock.swift in Sources */,
 				7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */,
 				7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */,
 				7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */,
 				7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */,
 				7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */,
+				7E83353B2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift in Sources */,
 				7E83352B2B4D1F4B008E4C44 /* Task.swift in Sources */,
 				7EA203932B47FE3200A9F2A3 /* AppDelegate.swift in Sources */,
 				7E37CED02B4C3E1B00700075 /* ToDoTableViewCell.swift in Sources */,

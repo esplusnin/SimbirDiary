@@ -32,9 +32,9 @@ final class ToDoTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Public Methods:
-    func setupHeaderLabel(text: String) {
+    func setupHeaderLabel(text: String, tasksAmount: Int) {
         headerNameLabel.text = text
-        tasksAmountLabel.text = "0"
+        tasksAmountLabel.text = String(tasksAmount)
     }
 }
 

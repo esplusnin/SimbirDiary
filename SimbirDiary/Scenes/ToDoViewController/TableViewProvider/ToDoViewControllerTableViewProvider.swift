@@ -21,7 +21,7 @@ final class ToDoViewControllerTableViewProvider: NSObject {
 // MARK: - UITableViewDataSource:
 extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.timeBlocks.count
+        viewModel.tasksObservable.wrappedValue.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,18 +32,26 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Resources.Identifiers.toDoTableViewCell,
             for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
-
+        
+        let tasks = viewModel.tasksObservable.wrappedValue[indexPath.section].tasks
+        
+        if tasks.isEmpty {
+            cell.isHidden = true
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: Resources.Identifiers.toDoTableViewHeaderView) as? ToDoTableViewHeaderView else { return UIView() }
-        // TODO:
-        let times = viewModel.timeBlocks
-        let secondPartText = section == times.count - 1 ? times[0] : times[section + 1]
-        let headerText = times[section] + " - " + secondPartText
-        headerView.setupHeaderLabel(text: headerText)
+       
+        let timeBlocks = viewModel.tasksObservable.wrappedValue
+        let tasksAmount = timeBlocks[section].tasks.count
+        let firstPartText = timeBlocks[section].name
+        let secondPartText = section == timeBlocks.count - 1 ? timeBlocks[0].name : timeBlocks[section + 1].name
+        let headerText = firstPartText + " - " + secondPartText
+        headerView.setupHeaderLabel(text: headerText, tasksAmount: tasksAmount)
         
         return headerView
     }
@@ -53,7 +61,8 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        LocalUIConstants.cellHeight
+        let tasks = viewModel.tasksObservable.wrappedValue[indexPath.section].tasks
+        return tasks.isEmpty ? LocalUIConstants.emptyCellHeight : LocalUIConstants.cellHeight
     }
 }
 

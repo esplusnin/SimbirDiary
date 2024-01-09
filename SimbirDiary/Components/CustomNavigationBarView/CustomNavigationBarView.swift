@@ -2,6 +2,9 @@ import UIKit
 
 final class CustomNavigationBarView: UIView {
     
+    // MARK: - Dependencies:
+    weak var delegate: CustomNavigationBarViewDelegate?
+    
     // MARK: - Constants and Variables:
     private enum UIConstants {
         static let sideInset: CGFloat = 20
@@ -20,6 +23,8 @@ final class CustomNavigationBarView: UIView {
     private var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.locale = .current
+        datePicker.layer.cornerRadius = 10
         return datePicker
     }()
     
@@ -40,6 +45,7 @@ final class CustomNavigationBarView: UIView {
     func setup() {
         setupViews()
         setupConstraints()
+        setupTargets()
     }
     
     // MARK: - Private Methods:
@@ -49,11 +55,17 @@ final class CustomNavigationBarView: UIView {
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
+    
+    // MARK: - Objc Methods:
+    @objc private func setupDate() {
+        let date = datePicker.date
+        delegate?.setupDate(from: date)
+    }
 }
 
 // MARK: - Setup Views:
-extension CustomNavigationBarView {
-    private func setupViews() {
+private extension CustomNavigationBarView {
+     func setupViews() {
         backgroundColor = .white
         [datePicker, plusButton].forEach(addNewSubview)
     }
@@ -80,5 +92,12 @@ private extension CustomNavigationBarView {
             plusButton.centerYAnchor.constraint(equalTo: datePicker.centerYAnchor),
             plusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.sideInset)
         ])
+    }
+}
+
+// MARK: - Setup Targets:
+private extension CustomNavigationBarView {
+    func setupTargets() {
+        datePicker.addTarget(self, action: #selector(setupDate), for: .valueChanged)
     }
 }
