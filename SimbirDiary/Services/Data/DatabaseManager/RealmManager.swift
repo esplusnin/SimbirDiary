@@ -38,10 +38,12 @@ final class RealmManager: DatabaseManagerProtocol {
                     let task = try decoder.decode(Task.self, from: $0.data)
                     tasks.append(task)
                 } catch {
-                    print("Parsing error")
+                    completion(.failure(error))
                 }
             }
-        }        
+            
+            completion(.success(tasks))
+        }
     }
     
     // MARK: - Private Methods:

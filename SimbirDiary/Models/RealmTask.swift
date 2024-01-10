@@ -2,12 +2,12 @@ import Foundation
 import RealmSwift
 
 class RealmTask: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var ownID: Int
+    @Persisted(primaryKey: true) var id = UUID()
     @Persisted var data: Data
     
-    init(ownID: Int, data: Data) {
-        self.ownID = ownID
+    convenience init(ownID: UUID, data: Data) {
+        self.init()
+        self.id = ownID
         self.data = data
     }
 }

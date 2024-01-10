@@ -39,6 +39,7 @@ final class CustomNavigationBarView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupShadow()
+        setupDate()
     }
     
     // MARK: - Public Methods:

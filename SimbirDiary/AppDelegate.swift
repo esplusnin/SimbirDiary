@@ -7,8 +7,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewModel = ToDoViewViewModel()
+        
+        let databaseManager = RealmManager()
+        let dataProvider = DataProvider(databaseManager: databaseManager)
+        let viewModel = ToDoViewViewModel(dataProvider: dataProvider)
         let rootViewController = ToDoViewController(viewModel: viewModel)
+        
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         

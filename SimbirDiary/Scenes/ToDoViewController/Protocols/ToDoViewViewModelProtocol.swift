@@ -1,6 +1,6 @@
 import Foundation
 
 protocol ToDoViewViewModelProtocol: AnyObject {
-    var tasksObservable: Observable<[TimeBlock]> { get }
+    var tasksListObservable: Observable<[TimeBlock]> { get }
     func setupDate(from date: Date)
 }

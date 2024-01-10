@@ -1,7 +1,7 @@
 import Foundation
 
 struct Task: Codable {
-    let id: Int
+    let id: UUID
     let dateStart, dateFinish, name, description: String
 
     enum CodingKeys: String, CodingKey {
@@ -9,5 +9,12 @@ struct Task: Codable {
         case dateStart = "date_start"
         case dateFinish = "date_finish"
         case name, description
+    }
+}
+
+// MARK: - Comparable extension:
+extension Task: Comparable {
+    static func < (lhs: Task, rhs: Task) -> Bool {
+        lhs.dateStart < rhs.dateStart
     }
 }

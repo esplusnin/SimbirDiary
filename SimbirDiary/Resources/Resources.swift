@@ -36,5 +36,6 @@ enum Resources {
         static let twentyOne = "21.00"
         static let twentyTwo = "22.00"
         static let twentyThree = "23.00"
+        static let hourCode = ".00"
     }
 }

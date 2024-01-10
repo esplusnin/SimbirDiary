@@ -29,6 +29,8 @@
 		7EA2039F2B47FE3300A9F2A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA2039D2B47FE3300A9F2A3 /* LaunchScreen.storyboard */; };
 		7EA203AA2B4807FE00A9F2A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA203AC2B4807FE00A9F2A3 /* Localizable.strings */; };
 		7EA203B12B48098400A9F2A3 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203B02B48098400A9F2A3 /* Strings+Generated.swift */; };
+		7EBC02192B4E5DD7004DCBE1 /* DateFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */; };
+		7EBC021D2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */; };
 		7ED9A6F82B4D5B93009D47CD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */; };
 		7ED9A6FB2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */; };
 		7ED9A6FD2B4D5DED009D47CD /* RealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */; };
@@ -61,6 +63,8 @@
 		7EA203AE2B48083F00A9F2A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA203AF2B48085600A9F2A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EA203B02B48098400A9F2A3 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterService.swift; sourceTree = "<group>"; };
+		7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerProtocol.swift; sourceTree = "<group>"; };
 		7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTask.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7E83353F2B4D4036008E4C44 /* Data */,
+				7EBC02172B4E5DB3004DCBE1 /* Formatters */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -171,7 +176,7 @@
 		7E83353F2B4D4036008E4C44 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				7ED9A6F62B4D5B7B009D47CD /* RealmManager */,
+				7ED9A6F62B4D5B7B009D47CD /* DatabaseManager */,
 				7E8335432B4D4062008E4C44 /* DataProvider */,
 			);
 			path = Data;
@@ -248,13 +253,38 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
-		7ED9A6F62B4D5B7B009D47CD /* RealmManager */ = {
+		7EBC02172B4E5DB3004DCBE1 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC021A2B4E5DDE004DCBE1 /* DateFormatter */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		7EBC021A2B4E5DDE004DCBE1 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC021B2B4E5DE5004DCBE1 /* Protocols */,
+				7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
+		7EBC021B2B4E5DE5004DCBE1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7ED9A6F62B4D5B7B009D47CD /* DatabaseManager */ = {
 			isa = PBXGroup;
 			children = (
 				7ED9A6F92B4D5BF0009D47CD /* Protocols */,
 				7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */,
 			);
-			path = RealmManager;
+			path = DatabaseManager;
 			sourceTree = "<group>";
 		};
 		7ED9A6F92B4D5BF0009D47CD /* Protocols */ = {
@@ -443,12 +473,14 @@
 				7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */,
 				7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */,
 				7E8335422B4D4045008E4C44 /* DataProviderProtocol.swift in Sources */,
+				7EBC02192B4E5DD7004DCBE1 /* DateFormatterService.swift in Sources */,
 				7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */,
 				7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */,
 				7E83353B2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift in Sources */,
 				7E83352B2B4D1F4B008E4C44 /* Task.swift in Sources */,
 				7EA203932B47FE3200A9F2A3 /* AppDelegate.swift in Sources */,
 				7E37CED02B4C3E1B00700075 /* ToDoTableViewCell.swift in Sources */,
+				7EBC021D2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift in Sources */,
 				7ED9A6F82B4D5B93009D47CD /* RealmManager.swift in Sources */,
 				7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */,
 				7E37CECE2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift in Sources */,

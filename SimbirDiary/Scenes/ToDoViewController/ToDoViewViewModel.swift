@@ -4,22 +4,23 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Dependencies:
     private let dataProvider: DataProviderProtocol
+    private var dateFormatterService: DateFormatterProtocol?
     
     // MARK: - Constants and Variables:
     private var currentDate: Date? {
         didSet {
-            
+            fetchData()
         }
     }
     
     // MARK: - Observable Values:
-    var tasksObservable: Observable<[TimeBlock]> {
-        $tasks
+    var tasksListObservable: Observable<[TimeBlock]> {
+        $tasksList
     }
     
     @Observable
-    private var tasks = [
-        TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []), 
+    private var tasksList = [
+        TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.two, tasks: []), TimeBlock(name: Resources.TimeBlocks.three, tasks: []), TimeBlock(name: Resources.TimeBlocks.four, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.five, tasks: []), TimeBlock(name: Resources.TimeBlocks.six, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.seven, tasks: []), TimeBlock(name: Resources.TimeBlocks.eight, tasks: []),
@@ -42,15 +43,36 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     func setupDate(from date: Date) {
         currentDate = date
     }
-    // TODO: закончить слой даты
+    
     func fetchData() {
-        dataProvider.fetchData { result in
+        dataProvider.fetchData { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success(let tasks):
-                print(tasks)
+                self.distribute(tasks)
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    // MARK: - Private Methods:
+    private func distribute(_ tasks: [Task]) {
+        dateFormatterService = DateFormatterService()
+        var newTaskList = tasksList
+        
+        tasks.forEach { task in
+            let hourValue = dateFormatterService?.getHourValue(from: task.dateStart) ?? ""
+            let hourFullCode = hourValue + Resources.TimeBlocks.hourCode
+            
+            for (index, timezone) in newTaskList.enumerated() where timezone.name == hourFullCode {
+                var newTasks = timezone.tasks
+                newTasks.append(task)
+                newTasks.sort()
+                newTaskList[index].tasks = newTasks
+            }
+        }
+        
+        tasksList = newTaskList
     }
 }

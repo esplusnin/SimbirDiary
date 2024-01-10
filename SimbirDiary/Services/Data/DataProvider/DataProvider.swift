@@ -5,13 +5,6 @@ final class DataProvider: DataProviderProtocol {
     // MARK: - Dependencies:
     private let databaseManager: DatabaseManagerProtocol
     
-    // MARK: - Constants and Variables:
-    private var tasks = [Task]() {
-        didSet {
-            
-        }
-    }
-    
     // MARK: - Lifecycle:
     init(databaseManager: DatabaseManagerProtocol) {
         self.databaseManager = databaseManager
