@@ -28,6 +28,8 @@ extension NewTaskViewController: CustomNewTaskNavigationViewDelegate {
 // MARK: - Setup Views:
 private extension NewTaskViewController {
     func setupViews() {
+        customNewTaskNavigationView.delegate = self
+        
         view.backgroundColor = .white
         [customNewTaskNavigationView].forEach(view.addNewSubview)
     }

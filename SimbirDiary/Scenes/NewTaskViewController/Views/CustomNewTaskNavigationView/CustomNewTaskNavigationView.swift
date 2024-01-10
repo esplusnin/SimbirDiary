@@ -32,6 +32,7 @@ final class CustomNewTaskNavigationView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        setupTargets()
         controlDoneButtonState(isAvailable: false)
     }
     
@@ -61,5 +62,13 @@ private extension CustomNewTaskNavigationView {
         axis = .horizontal
         distribution = .fillProportionally
         [cancelButton, title, doneButton].forEach(addArrangedSubview)
+    }
+}
+
+// MARK: - Setup Targets:
+private extension CustomNewTaskNavigationView {
+    func setupTargets() {
+        cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(addNewTask), for: .touchUpInside)
     }
 }
