@@ -6,8 +6,7 @@ final class CustomNavigationBarView: UIView {
     weak var delegate: CustomNavigationBarViewDelegate?
     
     // MARK: - Constants and Variables:
-    private enum UIConstants {
-        static let sideInset: CGFloat = 20
+    private enum LocalUIConstants {
         static let buttonSide: CGFloat = 40
         static let pickerHeigth: CGFloat = 40
         static let pickerWidth: CGFloat = 100
@@ -24,14 +23,14 @@ final class CustomNavigationBarView: UIView {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.locale = .current
-        datePicker.layer.cornerRadius = 10
+        datePicker.layer.cornerRadius = UIConstants.baseCornerRadius
         return datePicker
     }()
     
     private var plusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Resources.Symbols.plus, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: UIConstants.plusButtonFont)
+        button.titleLabel?.font = .systemFont(ofSize: LocalUIConstants.plusButtonFont)
         return button
     }()
     
@@ -51,8 +50,8 @@ final class CustomNavigationBarView: UIView {
     
     // MARK: - Private Methods:
     private func setupShadow() {
-        layer.shadowOpacity = UIConstants.navBarShadowOpacity
-        layer.shadowRadius = UIConstants.navBarShadowRadius
+        layer.shadowOpacity = LocalUIConstants.navBarShadowOpacity
+        layer.shadowRadius = LocalUIConstants.navBarShadowRadius
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
@@ -85,17 +84,17 @@ private extension CustomNavigationBarView {
     
     func setupDatePickerConstraints() {
         NSLayoutConstraint.activate([
-            datePicker.heightAnchor.constraint(equalToConstant: UIConstants.pickerHeigth),
-            datePicker.widthAnchor.constraint(equalToConstant: UIConstants.pickerWidth),
+            datePicker.heightAnchor.constraint(equalToConstant: LocalUIConstants.pickerHeigth),
+            datePicker.widthAnchor.constraint(equalToConstant: LocalUIConstants.pickerWidth),
             datePicker.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.sideInset)
+            datePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset)
         ])
     }
     
     func setupPlusButtonConstraints() {
         NSLayoutConstraint.activate([
             plusButton.centerYAnchor.constraint(equalTo: datePicker.centerYAnchor),
-            plusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.sideInset)
+            plusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
 }

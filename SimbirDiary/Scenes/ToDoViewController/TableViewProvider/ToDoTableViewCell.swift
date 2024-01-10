@@ -6,7 +6,6 @@ final class ToDoTableViewCell: UITableViewCell {
     private enum UILocalConstants {
         static let toggleButtonSide: CGFloat = 20
         static let toggleButtonBorderWidth: CGFloat = 1
-        static let toggleButtonCornerRadius: CGFloat = 10
     }
     
     // MARK: - UI:
@@ -17,7 +16,7 @@ final class ToDoTableViewCell: UITableViewCell {
     
     private lazy var toggleButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.cornerRadius = UILocalConstants.toggleButtonCornerRadius
+        button.layer.cornerRadius = UIConstants.baseCornerRadius
         button.layer.borderWidth = UILocalConstants.toggleButtonBorderWidth
         button.layer.borderColor = UIColor.gray.cgColor
         return button

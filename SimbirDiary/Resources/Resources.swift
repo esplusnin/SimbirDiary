@@ -9,6 +9,7 @@ enum Resources {
     enum Identifiers {
         static let toDoTableViewCell = "ToDoTableViewCell"
         static let toDoTableViewHeaderView = "ToDoTableViewHeaderView"
+        static let newTaskTableViewDateCell = "NewTaskTableViewDateCell"
     }
     
     enum TimeBlocks {

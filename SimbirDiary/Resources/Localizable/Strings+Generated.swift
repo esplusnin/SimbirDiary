@@ -21,10 +21,16 @@ internal enum L10n {
     internal static let time = L10n.tr("Localizable", "general.time", fallback: "Time")
   }
   internal enum NewTask {
+    /// Description
+    internal static let description = L10n.tr("Localizable", "newTask.description", fallback: "Description")
     /// Name
     internal static let name = L10n.tr("Localizable", "newTask.name", fallback: "Name")
-    /// Description
-    internal static let title = L10n.tr("Localizable", "newTask.title", fallback: "Description")
+    /// Select date
+    internal static let selectDate = L10n.tr("Localizable", "newTask.selectDate", fallback: "Select date")
+    /// Select time
+    internal static let selectTime = L10n.tr("Localizable", "newTask.selectTime", fallback: "Select time")
+    /// New Task
+    internal static let title = L10n.tr("Localizable", "newTask.title", fallback: "New Task")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

@@ -8,3 +8,5 @@
 "newTask.title" = "Новая задача";
 "newTask.name" = "Название";
 "newTask.description" = "Описание";
+"newTask.selectDate" = "Выберите дату";
+"newTask.selectTime" = "Выберите время";

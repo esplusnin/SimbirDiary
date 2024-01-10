@@ -1,12 +1,41 @@
 import UIKit
-import SwiftUI
 
 final class NewTaskViewController: UIViewController {
     
+    // MARK: - Classes:
+    private let tableViewDataProvider: NewTaskTableViewDataProvider
+    
+    // MARK: - Constants and Variables:
+    private enum LocalUIConstants {
+        static let navigationViewHeight: CGFloat = 60
+        static let inputInfoViewHeight: CGFloat = 120
+        static let separatorInset: CGFloat = 20
+    }
+    
     // MARK: - UI:
+    private lazy var newTaskTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(NewTaskTableViewDateCell.self, forCellReuseIdentifier: Resources.Identifiers.newTaskTableViewDateCell)
+        tableView.dataSource = tableViewDataProvider
+        tableView.delegate = tableViewDataProvider
+        tableView.layer.cornerRadius = UIConstants.baseCornerRadius
+        tableView.separatorInset = .init(top: 0, left: LocalUIConstants.separatorInset, bottom: 0, right: LocalUIConstants.separatorInset)
+        return tableView
+    }()
+    
     private lazy var customNewTaskNavigationView = CustomNewTaskNavigationView()
+    private lazy var customNewTaskInputInfoView = CustomNewTaskInputInfoView()
     
     // MARK: - Lifecycle:
+    init() {
+        self.tableViewDataProvider = NewTaskTableViewDataProvider()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -28,10 +57,11 @@ extension NewTaskViewController: CustomNewTaskNavigationViewDelegate {
 // MARK: - Setup Views:
 private extension NewTaskViewController {
     func setupViews() {
+        addEndEditingGesture()
         customNewTaskNavigationView.delegate = self
         
         view.backgroundColor = .white
-        [customNewTaskNavigationView].forEach(view.addNewSubview)
+        [customNewTaskNavigationView, customNewTaskInputInfoView, newTaskTableView].forEach(view.addNewSubview)
     }
 }
 
@@ -39,14 +69,34 @@ private extension NewTaskViewController {
 private extension NewTaskViewController {
     func setupConstraints() {
         setupCustomNewTaskNavigationViewConstraints()
+        setupCustomNewTaskInputInfoViewConstraints()
+        setupNewTaskTableViewConstraints()
     }
     
     func setupCustomNewTaskNavigationViewConstraints() {
         NSLayoutConstraint.activate([
-            customNewTaskNavigationView.heightAnchor.constraint(equalToConstant: 100),
+            customNewTaskNavigationView.heightAnchor.constraint(equalToConstant: LocalUIConstants.navigationViewHeight),
             customNewTaskNavigationView.topAnchor.constraint(equalTo: view.topAnchor),
             customNewTaskNavigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNewTaskNavigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    func setupCustomNewTaskInputInfoViewConstraints() {
+        NSLayoutConstraint.activate([
+            customNewTaskInputInfoView.heightAnchor.constraint(equalToConstant: LocalUIConstants.inputInfoViewHeight),
+            customNewTaskInputInfoView.topAnchor.constraint(equalTo: customNewTaskNavigationView.bottomAnchor, constant: UIConstants.baseInset),
+            customNewTaskInputInfoView.leadingAnchor.constraint(equalTo: customNewTaskNavigationView.leadingAnchor, constant: UIConstants.baseInset),
+            customNewTaskInputInfoView.trailingAnchor.constraint(equalTo: customNewTaskNavigationView.trailingAnchor, constant: -UIConstants.baseInset)
+        ])
+    }
+    
+    func setupNewTaskTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            newTaskTableView.heightAnchor.constraint(equalToConstant: 120),
+            newTaskTableView.topAnchor.constraint(equalTo: customNewTaskInputInfoView.bottomAnchor, constant: UIConstants.baseInset),
+            newTaskTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.baseInset),
+            newTaskTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
 }

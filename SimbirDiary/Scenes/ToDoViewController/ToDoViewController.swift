@@ -63,7 +63,9 @@ extension ToDoViewController: CustomNavigationBarViewDelegate {
 // MARK: - Setup Views:
 private extension ToDoViewController {
     func setupViews() {
+        addEndEditingGesture()
         customNavigationBarView.delegate = self
+        
         [customNavigationBarView, toDoTableView].forEach(view.addNewSubview)
     }
 }

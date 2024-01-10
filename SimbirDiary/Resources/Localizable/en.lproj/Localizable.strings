@@ -7,4 +7,6 @@
 // MARK: - New Task Screen:
 "newTask.title" = "New Task";
 "newTask.name" = "Name";
-"newTask.title" = "Description";
+"newTask.description" = "Description";
+"newTask.selectDate" = "Select date";
+"newTask.selectTime" = "Select time";
