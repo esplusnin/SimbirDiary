@@ -10,6 +10,22 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  internal enum General {
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "general.cancel", fallback: "Cancel")
+    /// Date
+    internal static let date = L10n.tr("Localizable", "general.date", fallback: "Date")
+    /// Done
+    internal static let done = L10n.tr("Localizable", "general.done", fallback: "Done")
+    /// Time
+    internal static let time = L10n.tr("Localizable", "general.time", fallback: "Time")
+  }
+  internal enum NewTask {
+    /// Name
+    internal static let name = L10n.tr("Localizable", "newTask.name", fallback: "Name")
+    /// Description
+    internal static let title = L10n.tr("Localizable", "newTask.title", fallback: "Description")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

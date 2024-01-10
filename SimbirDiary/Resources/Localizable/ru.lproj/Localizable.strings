@@ -1,7 +1,10 @@
-/* 
-  Localizable.strings
-  SimbirDiary
+// MARK: - General:
+"general.cancel" = "Назад";
+"general.done" = "Готово";
+"general.date" = "Дата";
+"general.time" = "Время";
 
-  Created by Евгений on 05.01.2024.
-  
-*/
+// MARK: - New Task Screen:
+"newTask.title" = "Новая задача";
+"newTask.name" = "Название";
+"newTask.description" = "Описание";

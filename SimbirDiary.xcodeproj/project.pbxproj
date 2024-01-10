@@ -31,6 +31,9 @@
 		7EA203B12B48098400A9F2A3 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203B02B48098400A9F2A3 /* Strings+Generated.swift */; };
 		7EBC02192B4E5DD7004DCBE1 /* DateFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */; };
 		7EBC021D2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */; };
+		7EBC02202B4E81E7004DCBE1 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC021F2B4E81E7004DCBE1 /* NewTaskViewController.swift */; };
+		7EBC02232B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02222B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift */; };
+		7EBC02272B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02262B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift */; };
 		7ED9A6F82B4D5B93009D47CD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */; };
 		7ED9A6FB2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */; };
 		7ED9A6FD2B4D5DED009D47CD /* RealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */; };
@@ -65,6 +68,9 @@
 		7EA203B02B48098400A9F2A3 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterService.swift; sourceTree = "<group>"; };
 		7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
+		7EBC021F2B4E81E7004DCBE1 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		7EBC02222B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewTaskNavigationView.swift; sourceTree = "<group>"; };
+		7EBC02262B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewTaskNavigationViewDelegate.swift; sourceTree = "<group>"; };
 		7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerProtocol.swift; sourceTree = "<group>"; };
 		7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTask.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				7E37CEB52B4847AF00700075 /* ToDoViewController */,
+				7EBC021E2B4E81CF004DCBE1 /* NewTaskViewController */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -274,6 +281,40 @@
 			isa = PBXGroup;
 			children = (
 				7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7EBC021E2B4E81CF004DCBE1 /* NewTaskViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC02212B4E8296004DCBE1 /* Views */,
+				7EBC021F2B4E81E7004DCBE1 /* NewTaskViewController.swift */,
+			);
+			path = NewTaskViewController;
+			sourceTree = "<group>";
+		};
+		7EBC02212B4E8296004DCBE1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC02242B4E861E004DCBE1 /* CustomNewTaskNavigationView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7EBC02242B4E861E004DCBE1 /* CustomNewTaskNavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC02252B4E862C004DCBE1 /* Protocols */,
+				7EBC02222B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift */,
+			);
+			path = CustomNewTaskNavigationView;
+			sourceTree = "<group>";
+		};
+		7EBC02252B4E862C004DCBE1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC02262B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -469,6 +510,7 @@
 			files = (
 				7E8335362B4D2C88008E4C44 /* TimeBlock.swift in Sources */,
 				7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */,
+				7EBC02272B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift in Sources */,
 				7ED9A6FB2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift in Sources */,
 				7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */,
 				7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */,
@@ -477,6 +519,7 @@
 				7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */,
 				7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */,
 				7E83353B2B4D336E008E4C44 /* CustomNavigationBarViewDelegate.swift in Sources */,
+				7EBC02202B4E81E7004DCBE1 /* NewTaskViewController.swift in Sources */,
 				7E83352B2B4D1F4B008E4C44 /* Task.swift in Sources */,
 				7EA203932B47FE3200A9F2A3 /* AppDelegate.swift in Sources */,
 				7E37CED02B4C3E1B00700075 /* ToDoTableViewCell.swift in Sources */,
@@ -489,6 +532,7 @@
 				7ED9A6FD2B4D5DED009D47CD /* RealmTask.swift in Sources */,
 				7E37CEBC2B484C5500700075 /* Resources.swift in Sources */,
 				7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */,
+				7EBC02232B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift in Sources */,
 				7EA203B12B48098400A9F2A3 /* Strings+Generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

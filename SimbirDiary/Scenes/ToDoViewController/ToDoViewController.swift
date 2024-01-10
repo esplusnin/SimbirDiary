@@ -21,7 +21,7 @@ class ToDoViewController: UIViewController {
         tableView.dataSource = tableViewProvider
         tableView.delegate = tableViewProvider
         tableView.showsVerticalScrollIndicator = false
-        tableView.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorInset = .init(top: .zero, left: .zero, bottom: .zero, right: .zero)
         tableView.backgroundColor = .clear
         return tableView
     }()
@@ -47,19 +47,24 @@ class ToDoViewController: UIViewController {
     }
 }
 
-// MARK: - Setup Views:
-extension ToDoViewController {
-    private func setupViews() {
-        customNavigationBarView.delegate = self
-        [customNavigationBarView, toDoTableView].forEach(view.addNewSubview)
-    }
-}
-
 // MARK: - CustomNavigationBarViewDelegate:
 extension ToDoViewController: CustomNavigationBarViewDelegate {
+    func goToNewTaskViewController() {
+        let viewController = NewTaskViewController()
+        present(viewController, animated: true)
+    }
+    
     func setupDate(from date: Date) {
         viewModel.setupDate(from: date)
         dismiss(animated: true)
+    }
+}
+
+// MARK: - Setup Views:
+private extension ToDoViewController {
+    func setupViews() {
+        customNavigationBarView.delegate = self
+        [customNavigationBarView, toDoTableView].forEach(view.addNewSubview)
     }
 }
 
