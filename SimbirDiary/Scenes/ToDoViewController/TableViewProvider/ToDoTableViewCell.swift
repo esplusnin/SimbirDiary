@@ -32,6 +32,11 @@ final class ToDoTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Methods:
+    func setupCellTitle(_ title: String) {
+        nameLabel.text = title
+    }
 }
 
 // MARK: - Setup Views:

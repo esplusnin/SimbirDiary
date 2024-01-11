@@ -2,6 +2,9 @@ import UIKit
 
 final class NewTaskViewController: UIViewController {
     
+    // MARK: - Dependencies:
+    private let viewModel: NewTaskViewViewModelProtocol
+    
     // MARK: - Classes:
     private let tableViewDataProvider: NewTaskTableViewDataProvider
     
@@ -9,6 +12,7 @@ final class NewTaskViewController: UIViewController {
     private enum LocalUIConstants {
         static let navigationViewHeight: CGFloat = 60
         static let inputInfoViewHeight: CGFloat = 120
+        static let tableViewHeight: CGFloat = 120
         static let separatorInset: CGFloat = 20
     }
     
@@ -27,7 +31,8 @@ final class NewTaskViewController: UIViewController {
     private lazy var customNewTaskInputInfoView = CustomNewTaskInputInfoView()
     
     // MARK: - Lifecycle:
-    init() {
+    init(viewModel: NewTaskViewViewModelProtocol) {
+        self.viewModel = viewModel
         self.tableViewDataProvider = NewTaskTableViewDataProvider()
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,6 +45,19 @@ final class NewTaskViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        bind()
+    }
+    
+    // MARK: - Public Methods:
+    func bind() {
+        viewModel.isReadyToAddNewTaskObservable.bind { [weak self] result in
+            guard let self else { return }
+            if result == true {
+                DispatchQueue.main.async {
+                    self.customNewTaskNavigationView.controlDoneButtonState(isAvailable: true)
+                }
+            }
+        }
     }
 }
 
@@ -50,7 +68,25 @@ extension NewTaskViewController: CustomNewTaskNavigationViewDelegate {
     }
     
     func addNewTask() {
-        
+        viewModel.addNewTask()
+        dismiss()
+    }
+}
+
+// MARK: - CustomNewTaskInputInfoViewDelegate:
+extension NewTaskViewController: CustomNewTaskInputInfoViewDelegate {
+    func setupTaskInfo(isName: Bool, value: String) {
+        viewModel.setupTaskInfo(isName: isName, value: value)
+    }
+}
+
+// MARK: - NewTaskTableViewDateCellDelegate:
+extension NewTaskViewController: NewTaskTableViewDateCellDelegate {
+    func setupDate(from type: NewTaskCellType, with value: Date) {
+        viewModel.setupTaskDate(from: type, with: value)
+        if type == .date {
+            dismiss()
+        }
     }
 }
 
@@ -59,6 +95,8 @@ private extension NewTaskViewController {
     func setupViews() {
         addEndEditingGesture()
         customNewTaskNavigationView.delegate = self
+        customNewTaskInputInfoView.delegate = self
+        tableViewDataProvider.cellDelegate = self
         
         view.backgroundColor = .white
         [customNewTaskNavigationView, customNewTaskInputInfoView, newTaskTableView].forEach(view.addNewSubview)
@@ -93,7 +131,7 @@ private extension NewTaskViewController {
     
     func setupNewTaskTableViewConstraints() {
         NSLayoutConstraint.activate([
-            newTaskTableView.heightAnchor.constraint(equalToConstant: 120),
+            newTaskTableView.heightAnchor.constraint(equalToConstant: LocalUIConstants.tableViewHeight),
             newTaskTableView.topAnchor.constraint(equalTo: customNewTaskInputInfoView.bottomAnchor, constant: UIConstants.baseInset),
             newTaskTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.baseInset),
             newTaskTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset)

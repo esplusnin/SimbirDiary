@@ -25,7 +25,7 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        viewModel.tasksListObservable.wrappedValue[section].tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,10 +34,9 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
             for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         
         let tasks = viewModel.tasksListObservable.wrappedValue[indexPath.section].tasks
-        
-        if tasks.isEmpty {
-            cell.isHidden = true
-        }
+        let task = tasks[indexPath.row]
+    
+        cell.setupCellTitle(task.name)
         
         return cell
     }

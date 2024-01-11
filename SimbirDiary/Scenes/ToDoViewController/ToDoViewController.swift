@@ -44,13 +44,24 @@ class ToDoViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         setupConstraints()
+        bind()
+    }
+    
+    // MARK: - Private Methods:
+    private func bind() {
+        viewModel.tasksListObservable.bind { [weak self] _ in
+            guard let self else { return }
+            toDoTableView.reloadData()
+        }
     }
 }
 
 // MARK: - CustomNavigationBarViewDelegate:
 extension ToDoViewController: CustomNavigationBarViewDelegate {
     func goToNewTaskViewController() {
-        let viewController = NewTaskViewController()
+        let dataProvider = viewModel.dataProvider
+        let newTaskViewModel = NewTaskViewViewModel(dataProvider: dataProvider)
+        let viewController = NewTaskViewController(viewModel: newTaskViewModel)
         present(viewController, animated: true)
     }
     

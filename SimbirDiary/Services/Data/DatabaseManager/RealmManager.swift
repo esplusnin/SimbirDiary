@@ -4,7 +4,13 @@ import RealmSwift
 final class RealmManager: DatabaseManagerProtocol {
     
     // MARK: - Dependencies:
+    weak var dataProvider: DataProviderProtocol?
+    
     private var realmManager: Realm?
+    
+    // MARK: - Constants and Variables:
+    private var notificationToken: NotificationToken?
+    private var tasks: Results<RealmTask>?
     
     // MARK: - Lifecycle:
     init() {
@@ -21,9 +27,10 @@ final class RealmManager: DatabaseManagerProtocol {
                 let data = try encoder.encode(task)
                 let realmTask = RealmTask(ownID: task.id, data: data)
                 realmManager.add(realmTask)
+                print(realmTask.id)
             }
-        } catch {
-            print("Database didn't save the object")
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
@@ -46,9 +53,42 @@ final class RealmManager: DatabaseManagerProtocol {
         }
     }
     
+    func setupDataProvider(_ provider: DataProviderProtocol) {
+        dataProvider = provider
+    }
+    
     // MARK: - Private Methods:
+    private func addObserver() {
+        notificationToken = tasks?.observe { [weak self] changes in
+            guard let self else { return }
+            switch changes {
+            case .update(let tasks, _, _, _):
+                if let newTask = tasks.last {
+                    sentUpdation(from: newTask)
+                }
+            case .error(let error):
+                print(error.localizedDescription)
+            default:
+                print("Database was modified")
+            }
+        }
+    }
+    
     private func fetchRealmData() -> Results<RealmTask>? {
         guard let realmManager else { return nil }
+        tasks = realmManager.objects(RealmTask.self)
+        addObserver()
         return realmManager.objects(RealmTask.self)
+    }
+    
+    private func sentUpdation(from object: RealmTask) {
+        let decoder = JSONDecoder()
+        
+        do {
+            let task = try decoder.decode(Task.self, from: object.data)
+            dataProvider?.setupUpdated(task)
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }

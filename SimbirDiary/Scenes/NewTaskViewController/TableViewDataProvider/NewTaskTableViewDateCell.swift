@@ -7,6 +7,9 @@ enum NewTaskCellType {
 
 final class NewTaskTableViewDateCell: UITableViewCell {
     
+    // MARK: - Dependencies:
+    weak var delegate: NewTaskTableViewDateCellDelegate?
+    
     // MARK: - Constants and Variables:
     private var cellType: NewTaskCellType?
     
@@ -42,6 +45,12 @@ final class NewTaskTableViewDateCell: UITableViewCell {
             titleLabeL.text = L10n.NewTask.selectTime
             datePicker.datePickerMode = .time
         }
+    }
+    
+    // MARK: - Objc Methods:
+    @objc private func setupTaskDate() {
+        guard let cellType else { return }
+        delegate?.setupDate(from: cellType, with: datePicker.date)
     }
 }
 
@@ -80,6 +89,6 @@ private extension NewTaskTableViewDateCell {
 // MARK: - Setup Targets:
 private extension NewTaskTableViewDateCell {
     func setupTargets() {
-        
+        datePicker.addTarget(self, action: #selector(setupTaskDate), for: .valueChanged)
     }
 }

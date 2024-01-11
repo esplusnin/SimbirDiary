@@ -2,6 +2,9 @@ import UIKit
 
 final class CustomNewTaskInputInfoView: UIView {
     
+    // MARK: - Dependencies:
+    weak var delegate: CustomNewTaskInputInfoViewDelegate?
+    
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
         static let textFieldLeftViewWidth: CGFloat = 20
@@ -63,6 +66,12 @@ extension CustomNewTaskInputInfoView: UITextFieldDelegate {
         guard let superview else { return true}
         superview.endEditing(true)
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let isName = textField == enterNameTextField
+        let text = isName ? enterNameTextField.text : enterDescriptionTextField.text
+        delegate?.setupTaskInfo(isName: isName, value: text ?? "")
     }
 }
 
