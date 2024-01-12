@@ -1,6 +1,6 @@
 import Foundation
 
-final class ToDoViewViewModel: ToDoViewViewModelProtocol {
+final class ToDoViewViewModel: ToDoViewViewModelProtocol {    
     
     // MARK: - Dependencies:
     private(set) var dataProvider: DataProviderProtocol
@@ -22,10 +22,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         $isUpdateEntireTableView
     }
     
-    var numberOfCellToUpdateObservable: Observable<Int?> {
-        $numberOfCellToUpdate
-    }
-    
     @Observable
     private(set) var tasksList = [
         TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []),
@@ -43,7 +39,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     ]
     
     @Observable private var isUpdateEntireTableView = true
-    @Observable private var numberOfCellToUpdate: Int?
     
     // MARK: - Lifecycle
     init(dataProvider: DataProviderProtocol) {
@@ -90,7 +85,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
                 newTaskList[index].tasks = newTasks
             }
         }
-
+        
         tasksList = newTaskList
     }
     

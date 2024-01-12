@@ -33,7 +33,8 @@ final class NewTaskViewController: UIViewController {
     private lazy var customNewTaskInputInfoView = CustomNewTaskInputInfoView()
     
     // MARK: - Lifecycle:
-    init(viewModel: NewTaskViewViewModelProtocol) {
+    init(coordinator: AppCoordinator, viewModel: NewTaskViewViewModelProtocol) {
+        self.coordinator = coordinator
         self.viewModel = viewModel
         self.tableViewDataProvider = NewTaskTableViewDataProvider()
         super.init(nibName: nil, bundle: nil)

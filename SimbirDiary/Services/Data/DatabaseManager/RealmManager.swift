@@ -74,9 +74,11 @@ final class RealmManager: DatabaseManagerProtocol {
         notificationToken = tasks?.observe { [weak self] changes in
             guard let self else { return }
             switch changes {
-            case .update(let tasks, _, _, _):
-                if let newTask = tasks.last {
-                    sentUpdation(from: newTask)
+            case .update(let tasks, _, let insertion, let modification):
+                if !insertion.isEmpty {
+                    if let newTask = tasks.last {
+                        sentUpdation(from: newTask)
+                    }
                 }
             case .error(let error):
                 print(error.localizedDescription)

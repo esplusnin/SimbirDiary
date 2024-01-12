@@ -31,10 +31,12 @@ class ToDoViewController: UIViewController {
     private lazy var customNavigationBarView = CustomNavigationBarView()
     
     // MARK: - Lifecycle:
-    init(viewModel: ToDoViewViewModelProtocol) {
+    init(coordinator: AppCoordinator, viewModel: ToDoViewViewModelProtocol) {
+        self.coordinator = coordinator
         self.viewModel = viewModel
-        self.tableViewProvider = ToDoViewControllerTableViewProvider(viewModel: viewModel)
+        self.tableViewProvider = ToDoViewControllerTableViewProvider(coordinator: coordinator, viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
+        tableViewProvider.cellDelegate = self
     }
     
     required init?(coder: NSCoder) {

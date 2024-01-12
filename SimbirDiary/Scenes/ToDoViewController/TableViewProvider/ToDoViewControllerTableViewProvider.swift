@@ -3,6 +3,9 @@ import UIKit
 final class ToDoViewControllerTableViewProvider: NSObject {
     
     // MARK: - Dependencies:
+    weak var coordinator: AppCoordinator?
+    weak var cellDelegate: ToDoViewController?
+    
     private let viewModel: ToDoViewViewModelProtocol
     
     // MARK: - Constants and Variables:
@@ -13,7 +16,8 @@ final class ToDoViewControllerTableViewProvider: NSObject {
     }
     
     // MARK: - Lifecycle:
-    init(viewModel: ToDoViewViewModelProtocol) {
+    init(coordinator: AppCoordinator, viewModel: ToDoViewViewModelProtocol) {
+        self.coordinator = coordinator
         self.viewModel = viewModel
     }
 }
@@ -36,7 +40,7 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
         let tasks = viewModel.tasksListObservable.wrappedValue[indexPath.section].tasks
         let task = tasks[indexPath.row]
     
-        cell.setupCellTitle(task.name)
+        cell.setupCell(task)
         
         return cell
     }
@@ -66,5 +70,4 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate:
-extension ToDoViewControllerTableViewProvider: UITableViewDelegate {
-}
+extension ToDoViewControllerTableViewProvider: UITableViewDelegate {}

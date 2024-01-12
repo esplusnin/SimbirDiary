@@ -19,22 +19,23 @@ final class AppCoordinator: CoordinatorProtocol {
     // MARK: - Public Methods:
     func start() {
         let toDoViewModel = ToDoViewViewModel(dataProvider: dataProvider)
-        let toDoViewController = ToDoViewController(viewModel: toDoViewModel)
-        toDoViewController.coordinator = self
-        
+        let toDoViewController = ToDoViewController(coordinator: self, viewModel: toDoViewModel)
         navigator.pushViewController(toDoViewController, animated: true)
     }
     
     func presentNewTaskController(from controller: UIViewController) {
         let newTaskViewModel = NewTaskViewViewModel(dataProvider: dataProvider)
-        let newTaskViewController = NewTaskViewController(viewModel: newTaskViewModel)
-        newTaskViewController.coordinator = self
-
+        let newTaskViewController = NewTaskViewController(coordinator: self, viewModel: newTaskViewModel)
         controller.present(newTaskViewController, animated: true)
     }
     
-    func seeTaskDetail() {
-        
+    func seeDetailOf(task: Task) {
+        let taskDetailViewController = TaskDetailViewController(coordinator: self)
+        navigator.pushViewController(taskDetailViewController, animated: true)
+    }
+    
+    func pop() {
+        navigator.popViewController(animated: true)
     }
     
     func pop(from controller: UIViewController) {

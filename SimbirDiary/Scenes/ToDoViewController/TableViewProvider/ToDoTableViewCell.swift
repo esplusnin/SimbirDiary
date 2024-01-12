@@ -1,25 +1,24 @@
 import UIKit
 
 final class ToDoTableViewCell: UITableViewCell {
-    
+
     // MARK: - Constants and Variables:
     private enum UILocalConstants {
         static let toggleButtonSide: CGFloat = 20
         static let toggleButtonBorderWidth: CGFloat = 1
     }
     
+    private var task: Task? {
+        didSet {
+            guard let task else { return }
+            nameLabel.text = task.name
+        }
+    }
+    
     // MARK: - UI:
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         return label
-    }()
-    
-    private lazy var toggleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = UIConstants.baseCornerRadius
-        button.layer.borderWidth = UILocalConstants.toggleButtonBorderWidth
-        button.layer.borderColor = UIColor.gray.cgColor
-        return button
     }()
     
     // MARK: - Lifecycle:
@@ -34,38 +33,28 @@ final class ToDoTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public Methods:
-    func setupCellTitle(_ title: String) {
-        nameLabel.text = title
+    func setupCell(_ task: Task) {
+        self.task = task
     }
 }
 
 // MARK: - Setup Views:
 extension ToDoTableViewCell {
     private func setupViews() {
-        [nameLabel, toggleButton].forEach(addNewSubview)
+        [nameLabel].forEach(contentView.addNewSubview)
     }
 }
 // MARK: - Setup Constraints:
 private extension ToDoTableViewCell {
     func setupConstraints() {
         setupNameLabelConstraints()
-        setupToggleButtonConstraints()
     }
     
     func setupNameLabelConstraints() {
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
-            nameLabel.trailingAnchor.constraint(equalTo: toggleButton.leadingAnchor, constant: -UIConstants.baseInset)
-        ])
-    }
-    
-    func setupToggleButtonConstraints() {
-        NSLayoutConstraint.activate([
-            toggleButton.heightAnchor.constraint(equalToConstant: UILocalConstants.toggleButtonSide),
-            toggleButton.widthAnchor.constraint(equalToConstant: UILocalConstants.toggleButtonSide),
-            toggleButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            toggleButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
 }
