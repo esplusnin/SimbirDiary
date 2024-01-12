@@ -3,6 +3,8 @@ import UIKit
 class ToDoViewController: UIViewController {
 
     // MARK: - Dependencies:
+    weak var coordinator: AppCoordinator?
+    
     private let viewModel: ToDoViewViewModelProtocol
     
     // MARK: - Classes:
@@ -41,7 +43,6 @@ class ToDoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupViews()
         setupConstraints()
         bind()
@@ -58,11 +59,8 @@ class ToDoViewController: UIViewController {
 
 // MARK: - CustomNavigationBarViewDelegate:
 extension ToDoViewController: CustomNavigationBarViewDelegate {
-    func goToNewTaskViewController() {
-        let dataProvider = viewModel.dataProvider
-        let newTaskViewModel = NewTaskViewViewModel(dataProvider: dataProvider)
-        let viewController = NewTaskViewController(viewModel: newTaskViewModel)
-        present(viewController, animated: true)
+    func presentNewTaskController() {
+        coordinator?.presentNewTaskController(from: self)
     }
     
     func setupDate(from date: Date) {
@@ -74,6 +72,9 @@ extension ToDoViewController: CustomNavigationBarViewDelegate {
 // MARK: - Setup Views:
 private extension ToDoViewController {
     func setupViews() {
+        view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         addEndEditingGesture()
         customNavigationBarView.delegate = self
         

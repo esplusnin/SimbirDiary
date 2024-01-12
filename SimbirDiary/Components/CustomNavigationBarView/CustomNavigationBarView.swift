@@ -62,8 +62,8 @@ final class CustomNavigationBarView: UIView {
         delegate?.setupDate(from: date)
     }
     
-    @objc private func goToNewTaskViewController() {
-        delegate?.goToNewTaskViewController()
+    @objc private func presentNewTaskController() {
+        delegate?.presentNewTaskController()
     }
 }
 
@@ -103,6 +103,6 @@ private extension CustomNavigationBarView {
 private extension CustomNavigationBarView {
     func setupTargets() {
         datePicker.addTarget(self, action: #selector(setupDate), for: .valueChanged)
-        plusButton.addTarget(self, action: #selector(goToNewTaskViewController), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(presentNewTaskController), for: .touchUpInside)
     }
 }

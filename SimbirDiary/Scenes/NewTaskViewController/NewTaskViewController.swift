@@ -3,6 +3,8 @@ import UIKit
 final class NewTaskViewController: UIViewController {
     
     // MARK: - Dependencies:
+    weak var coordinator: AppCoordinator?
+
     private let viewModel: NewTaskViewViewModelProtocol
     
     // MARK: - Classes:
@@ -64,7 +66,7 @@ final class NewTaskViewController: UIViewController {
 // MARK: - CustomNewTaskNavigationViewDelegate:
 extension NewTaskViewController: CustomNewTaskNavigationViewDelegate {
     func dismiss() {
-        dismiss(animated: true)
+        coordinator?.pop(from: self)
     }
     
     func addNewTask() {
