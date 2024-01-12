@@ -19,13 +19,15 @@ final class DateFormatterService: DateFormatterProtocol {
         let datesUnixValue = convertDateToUnixValue(from: date)
         let timesUnixValue = convertTimeToUnixValue(from: hours)
         let totalUnixValue = datesUnixValue + timesUnixValue
-        let datesUnixString = String(totalUnixValue)
-        return datesUnixString
+        let dateUnixString = String(totalUnixValue)
+        return dateUnixString
     }
     
     // MARK: - Private Methods:
     private func convertDateToUnixValue(from date: Date) -> Double {
-        date.timeIntervalSince1970
+        let hoursValue = convertTimeToUnixValue(from: date)
+        let dateUnixValue = date.timeIntervalSince1970 - hoursValue
+        return dateUnixValue
     }
     
     private func convertTimeToUnixValue(from date: Date) -> Double {

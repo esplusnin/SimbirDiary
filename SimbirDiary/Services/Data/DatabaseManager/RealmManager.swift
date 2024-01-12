@@ -14,6 +14,7 @@ final class RealmManager: DatabaseManagerProtocol {
         didSet {
             if isInitiated == false {
                 addObserver()
+                isInitiated.toggle()
             }
         }
     }
@@ -83,8 +84,6 @@ final class RealmManager: DatabaseManagerProtocol {
                 print("Database was modified")
             }
         }
-        
-        isInitiated = true
     }
     
     private func fetchRealmData() -> Results<RealmTask>? {

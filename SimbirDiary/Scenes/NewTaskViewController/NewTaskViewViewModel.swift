@@ -19,18 +19,9 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
         }
     }
     
-    private var date: Date? {
-        didSet {
-            // TODO: баг с датой
-            checkIsReadyToAddNewTask()
-        }
-    }
-    
-    private var time: Date? {
-        didSet {
-            checkIsReadyToAddNewTask()
-        }
-    }
+    private var date: Date?
+    private var time: Date?
+
     // MARK: - Observable Values:
     var isReadyToAddNewTaskObservable: Observable<Bool> {
         $isReadyToAddNewTask
