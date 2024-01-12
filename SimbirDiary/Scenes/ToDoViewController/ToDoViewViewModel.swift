@@ -48,9 +48,18 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     // MARK: - Lifecycle
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider
+        self.bind()
     }
     
     // MARK: - Public Methods:
+    func bind() {
+        dataProvider.updatedTaskObservable.bind { [weak self] task in
+            guard let self,
+                  let task else { return }
+            self.distribute([task])
+        }
+    }
+    
     func setupDate(from date: Date) {
         currentDate = date
     }
@@ -70,14 +79,11 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Private Methods:
     private func distribute(_ tasks: [Task]) {
-        dateFormatterService = DateFormatterService()
         var newTaskList = tasksList
         
         tasks.forEach { task in
-            let hourValue = dateFormatterService?.getHourValue(from: task.dateStart) ?? ""
-            let hourFullCode = hourValue + Resources.TimeBlocks.hourCode
-            
-            for (index, timezone) in newTaskList.enumerated() where timezone.name == hourFullCode {
+            let fullHourCode = getFullHourCode(from: task)
+            for (index, timezone) in newTaskList.enumerated() where timezone.name == fullHourCode {
                 var newTasks = timezone.tasks
                 newTasks.append(task)
                 newTasks.sort()
@@ -86,5 +92,12 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         }
 
         tasksList = newTaskList
+    }
+    
+    private func getFullHourCode(from task: Task) -> String {
+        dateFormatterService = DateFormatterService()
+        let hourValue = dateFormatterService?.getHourValue(from: task.dateStart) ?? ""
+        let hourFullCode = hourValue + Resources.TimeBlocks.hourCode
+        return hourFullCode
     }
 }

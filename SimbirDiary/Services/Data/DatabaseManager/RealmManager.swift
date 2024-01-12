@@ -10,11 +10,23 @@ final class RealmManager: DatabaseManagerProtocol {
     
     // MARK: - Constants and Variables:
     private var notificationToken: NotificationToken?
-    private var tasks: Results<RealmTask>?
+    private var tasks: Results<RealmTask>? {
+        didSet {
+            if isInitiated == false {
+                addObserver()
+            }
+        }
+    }
+    
+    private var isInitiated = false
     
     // MARK: - Lifecycle:
     init() {
         realmManager = try? Realm()
+    }
+    
+    deinit {
+        notificationToken?.invalidate()
     }
     
     // MARK: - Public Methods:
@@ -27,7 +39,6 @@ final class RealmManager: DatabaseManagerProtocol {
                 let data = try encoder.encode(task)
                 let realmTask = RealmTask(ownID: task.id, data: data)
                 realmManager.add(realmTask)
-                print(realmTask.id)
             }
         } catch let error {
             print(error.localizedDescription)
@@ -72,12 +83,13 @@ final class RealmManager: DatabaseManagerProtocol {
                 print("Database was modified")
             }
         }
+        
+        isInitiated = true
     }
     
     private func fetchRealmData() -> Results<RealmTask>? {
         guard let realmManager else { return nil }
         tasks = realmManager.objects(RealmTask.self)
-        addObserver()
         return realmManager.objects(RealmTask.self)
     }
     
