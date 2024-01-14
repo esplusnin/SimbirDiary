@@ -44,7 +44,7 @@ final class TaskDetailView: UIView {
     // MARK: - Public Methods:
     func setupDetailOf(_ task: Task) {
         nameLabel.text = task.name
-        timeLabel.text = "14.32"
+        timeLabel.text = DateFormatterService().getTimeValue(from: task.dateStart, isOnlyHours: false)
         descriptionLabel.text = task.description
     }
 }

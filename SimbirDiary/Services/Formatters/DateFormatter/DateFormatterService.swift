@@ -4,13 +4,16 @@ final class DateFormatterService: DateFormatterProtocol {
     
     // MARK: - Classes:
     private let dateFormatter = DateFormatter()
-    private let hoursDateFormat = "H"
+    
+    deinit {
+        print("DEINIT")
+    }
     
     // MARK: - Public Methods:
-    func getHourValue(from unixValue: String) -> String {
+    func getTimeValue(from unixValue: String, isOnlyHours: Bool) -> String {
         guard let unixValue = Double(unixValue) else { return "" }
         let date = Date(timeIntervalSince1970: Double(Int(unixValue)))
-        dateFormatter.dateFormat = hoursDateFormat
+        dateFormatter.dateFormat = isOnlyHours ? Resources.DateFormatter.hoursDateFormat : Resources.DateFormatter.fullTimeFormat
         let hourValue = dateFormatter.string(from: date)
         
         return hourValue
@@ -32,9 +35,12 @@ final class DateFormatterService: DateFormatterProtocol {
     }
     
     private func convertTimeToUnixValue(from date: Date) -> Double {
+        let minutesPerHour = 60
+        let secondsPerMinute = 60
+        
         let hours = Calendar.current.component(.hour, from: date)
         let minutes = Calendar.current.component(.minute, from: date)
-        let totalUnixValue = Double(((hours * 60) * 60) + (minutes * 60))
+        let totalUnixValue = Double(((hours * minutesPerHour) * secondsPerMinute) + (minutes * secondsPerMinute))
         return totalUnixValue
     }
 }

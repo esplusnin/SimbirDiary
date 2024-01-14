@@ -75,6 +75,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     // MARK: - Private Methods:
     private func distribute(_ tasks: [Task]) {
         var newTaskList = tasksList
+        dateFormatterService = DateFormatterService()
 
         tasks.forEach { task in
             let fullHourCode = getFullHourCode(from: task)
@@ -86,12 +87,12 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
             }
         }
         
+        dateFormatterService = nil
         tasksList = newTaskList
     }
     
     private func getFullHourCode(from task: Task) -> String {
-        dateFormatterService = DateFormatterService()
-        let hourValue = dateFormatterService?.getHourValue(from: task.dateStart) ?? ""
+        let hourValue = dateFormatterService?.getTimeValue(from: task.dateStart, isOnlyHours: true) ?? ""
         let hourFullCode = hourValue + Resources.TimeBlocks.hourCode
         return hourFullCode
     }
