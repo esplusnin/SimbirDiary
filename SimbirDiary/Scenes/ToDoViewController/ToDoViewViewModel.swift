@@ -1,12 +1,15 @@
 import Foundation
 
-final class ToDoViewViewModel: ToDoViewViewModelProtocol {    
+final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Dependencies:
     private(set) var dataProvider: DataProviderProtocol
     private var dateFormatterService: DateFormatterProtocol?
     
     // MARK: - Constants and Variables:
+    private(set) var isUpdateEntireTableView = true
+    private(set) var indexPathToUpdate: IndexPath?
+    
     private var currentDate: Date? {
         didSet {
             fetchData()
@@ -18,14 +21,10 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         $tasksList
     }
     
-    var isUpdateEntireTableViewObservable: Observable<Bool> {
-        $isUpdateEntireTableView
-    }
-    
     @Observable
     private(set) var tasksList = [
         TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []),
-        TimeBlock(name: Resources.TimeBlocks.two, tasks: []), TimeBlock(name: Resources.TimeBlocks.three, tasks: []), 
+        TimeBlock(name: Resources.TimeBlocks.two, tasks: []), TimeBlock(name: Resources.TimeBlocks.three, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.four, tasks: []), TimeBlock(name: Resources.TimeBlocks.five, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.six, tasks: []), TimeBlock(name: Resources.TimeBlocks.seven, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.eight, tasks: []), TimeBlock(name: Resources.TimeBlocks.nine, tasks: []),
@@ -38,8 +37,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         TimeBlock(name: Resources.TimeBlocks.twentyTwo, tasks: []),TimeBlock(name: Resources.TimeBlocks.twentyThree, tasks: [])
     ]
     
-    @Observable private var isUpdateEntireTableView = true
-    
     // MARK: - Lifecycle
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider
@@ -51,9 +48,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         dataProvider.updatedTaskObservable.bind { [weak self] task in
             guard let self,
                   let task else { return }
-            if self.dataProvider.isTaskDeleted == false {
-                self.distribute([task])
-            }
+            self.distribute([task])
         }
     }
     
@@ -79,13 +74,12 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         var newTaskList = tasksList
         dateFormatterService = DateFormatterService()
 
-        tasks.forEach { task in
-            let fullHourCode = getFullHourCode(from: task)
-            for (index, timezone) in newTaskList.enumerated() where timezone.name == fullHourCode {
-                var newTasks = timezone.tasks
-                newTasks.append(task)
-                newTasks.sort()
-                newTaskList[index].tasks = newTasks
+        if dataProvider.isTaskDeleted {
+            guard let task = tasks.first else { return }
+            deleteRows(with: task , from: &newTaskList)
+        } else {
+            tasks.forEach { task in
+                insertNew(task, to: &newTaskList)
             }
         }
         
@@ -93,6 +87,36 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         tasksList = newTaskList
     }
     
+    private func insertNew(_ task: Task, to list: inout [TimeBlock]) {
+        let fullHourCode = getFullHourCode(from: task)
+        
+        for (index, timezone) in list.enumerated() where timezone.name == fullHourCode {
+            var newTasks = timezone.tasks
+            newTasks.append(task)
+            newTasks.sort()
+            list[index].tasks = newTasks
+        }
+        
+        if isUpdateEntireTableView == false {
+            guard let indexPath = defineIndexPath(for: task, with: fullHourCode, from: list) else { return }
+            indexPathToUpdate = indexPath
+        }
+    }
+    
+    private func deleteRows(with task: Task, from list: inout [TimeBlock]) {
+        let fullHourCode = getFullHourCode(from: task)
+        if let indexPath = defineIndexPath(for: task, with: fullHourCode, from: tasksList) {
+            indexPathToUpdate = indexPath
+            list[indexPath.section].tasks.remove(at: indexPath.row)
+        }
+    }
+    
+    private func defineIndexPath(for task: Task, with code: String, from list: [TimeBlock]) -> IndexPath? {
+        guard let section = list.firstIndex(where: { $0.name == code }),
+              let row = list[section].tasks.firstIndex(where: { $0.id == task.id })  else { return nil }
+        return IndexPath(row: row, section: section)
+    }
+
     private func getFullHourCode(from task: Task) -> String {
         let hourValue = dateFormatterService?.getTimeValue(from: task.dateStart, isOnlyHours: true) ?? ""
         let hourFullCode = hourValue + Resources.TimeBlocks.hourCode

@@ -22,7 +22,6 @@ final class RealmManager: DatabaseManagerProtocol {
         }
     }
     
-    
     // MARK: - Lifecycle:
     init() {
         realmManager = try? Realm()

@@ -10,9 +10,6 @@ class ToDoViewController: UIViewController {
     // MARK: - Classes:
     private let tableViewProvider: ToDoViewControllerTableViewProvider
     
-    // MARK: - Constants and Variables:
-    private let navigationBarHeight: CGFloat = 120
-    
     // MARK: - UI:
     private lazy var toDoTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -52,7 +49,7 @@ class ToDoViewController: UIViewController {
     private func bind() {
         viewModel.tasksListObservable.bind { [weak self] _ in
             guard let self else { return }
-            toDoTableView.reloadData()
+            self.toDoTableView.reloadData()
         }
     }
 }
@@ -89,7 +86,7 @@ private extension ToDoViewController {
     
     func setupCustomNavigationBarViewConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBarView.heightAnchor.constraint(equalToConstant: navigationBarHeight),
+            customNavigationBarView.heightAnchor.constraint(equalToConstant: UIConstants.navigationBarHeight),
             customNavigationBarView.topAnchor.constraint(equalTo: view.topAnchor),
             customNavigationBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNavigationBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)

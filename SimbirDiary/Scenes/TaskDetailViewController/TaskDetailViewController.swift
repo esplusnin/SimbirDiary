@@ -92,7 +92,7 @@ private extension TaskDetailViewController {
     
     func setupTaskDetailViewConstraints() {
         NSLayoutConstraint.activate([
-            taskDetailView.heightAnchor.constraint(equalToConstant: 120),
+            taskDetailView.heightAnchor.constraint(equalToConstant: UIConstants.navigationBarHeight),
             taskDetailView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor, constant: UIConstants.baseInset),
             taskDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.baseInset),
             taskDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset),
