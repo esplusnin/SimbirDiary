@@ -3,11 +3,6 @@ import UIKit
 final class ToDoTableViewCell: UITableViewCell {
 
     // MARK: - Constants and Variables:
-    private enum UILocalConstants {
-        static let toggleButtonSide: CGFloat = 20
-        static let toggleButtonBorderWidth: CGFloat = 1
-    }
-    
     private var task: Task? {
         didSet {
             guard let task else { return }
@@ -44,6 +39,7 @@ extension ToDoTableViewCell {
         [nameLabel].forEach(contentView.addNewSubview)
     }
 }
+
 // MARK: - Setup Constraints:
 private extension ToDoTableViewCell {
     func setupConstraints() {

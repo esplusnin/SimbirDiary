@@ -75,7 +75,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     // MARK: - Private Methods:
     private func distribute(_ tasks: [Task]) {
         var newTaskList = tasksList
-        
+
         tasks.forEach { task in
             let fullHourCode = getFullHourCode(from: task)
             for (index, timezone) in newTaskList.enumerated() where timezone.name == fullHourCode {

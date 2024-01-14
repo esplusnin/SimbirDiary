@@ -12,7 +12,6 @@ final class NewTaskViewController: UIViewController {
     
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
-        static let navigationViewHeight: CGFloat = 60
         static let inputInfoViewHeight: CGFloat = 120
         static let tableViewHeight: CGFloat = 120
         static let separatorInset: CGFloat = 20
@@ -29,7 +28,7 @@ final class NewTaskViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var customNewTaskNavigationView = CustomNewTaskNavigationView()
+    private lazy var customNewTaskNavigationView = CustomTaskNavigationView(isDetail: false)
     private lazy var customNewTaskInputInfoView = CustomNewTaskInputInfoView()
     
     // MARK: - Lifecycle:
@@ -65,14 +64,16 @@ final class NewTaskViewController: UIViewController {
 }
 
 // MARK: - CustomNewTaskNavigationViewDelegate:
-extension NewTaskViewController: CustomNewTaskNavigationViewDelegate {
+extension NewTaskViewController: CustomTaskNavigationViewDelegate {
     func dismiss() {
         coordinator?.pop(from: self)
     }
     
-    func addNewTask() {
-        viewModel.addNewTask()
-        dismiss()
+    func performTask(isDelete: Bool) {
+        if isDelete == false {
+            viewModel.addNewTask()
+            dismiss()
+        }
     }
 }
 
@@ -116,7 +117,7 @@ private extension NewTaskViewController {
     
     func setupCustomNewTaskNavigationViewConstraints() {
         NSLayoutConstraint.activate([
-            customNewTaskNavigationView.heightAnchor.constraint(equalToConstant: LocalUIConstants.navigationViewHeight),
+            customNewTaskNavigationView.heightAnchor.constraint(equalToConstant: UIConstants.navigationViewHeight),
             customNewTaskNavigationView.topAnchor.constraint(equalTo: view.topAnchor),
             customNewTaskNavigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNewTaskNavigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)

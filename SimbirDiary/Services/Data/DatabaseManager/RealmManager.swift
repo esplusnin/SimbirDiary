@@ -76,10 +76,12 @@ final class RealmManager: DatabaseManagerProtocol {
             switch changes {
             case .update(let tasks, _, let insertion, let modification):
                 if !insertion.isEmpty {
-                    if let newTask = tasks.last {
-                        sentUpdation(from: newTask)
-                    }
+                    let index = insertion.first ?? 0
+                    print(index)
+                    let newTask = tasks[index]
+                    sentUpdation(from: newTask)
                 }
+                
             case .error(let error):
                 print(error.localizedDescription)
             default:

@@ -29,8 +29,8 @@ final class AppCoordinator: CoordinatorProtocol {
         controller.present(newTaskViewController, animated: true)
     }
     
-    func seeDetailOf(task: Task) {
-        let taskDetailViewController = TaskDetailViewController(coordinator: self)
+    func seeDetailOf(_ task: Task) {
+        let taskDetailViewController = TaskDetailViewController(coordinator: self, task: task)
         navigator.pushViewController(taskDetailViewController, animated: true)
     }
     

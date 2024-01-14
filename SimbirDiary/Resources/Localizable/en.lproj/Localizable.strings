@@ -1,6 +1,7 @@
 // MARK: - General:
 "general.cancel" = "Cancel";
 "general.done" = "Done";
+"general.delete" = "Delete";
 "general.date" = "Date";
 "general.time" = "Time";
 
@@ -10,3 +11,6 @@
 "newTask.description" = "Description";
 "newTask.selectDate" = "Select date";
 "newTask.selectTime" = "Select time";
+
+// MARK: - Task Detail Screen:
+"taskDetail.title" = "About the task";

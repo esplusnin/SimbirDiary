@@ -1,6 +1,7 @@
 // MARK: - General:
 "general.cancel" = "Назад";
 "general.done" = "Готово";
+"general.delete" = "Удалить";
 "general.date" = "Дата";
 "general.time" = "Время";
 
@@ -10,3 +11,6 @@
 "newTask.description" = "Описание";
 "newTask.selectDate" = "Выберите дату";
 "newTask.selectTime" = "Выберите время";
+
+// MARK: - Task Detail Screen:
+"taskDetail.title" = "О задаче";

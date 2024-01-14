@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		285AE6515D6A1416720F3FC7 /* Pods_SimbirDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */; };
-		7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */; };
+		7E37CEBA2B48484200700075 /* CustomToDoListNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEB92B48484200700075 /* CustomToDoListNavigationBarView.swift */; };
 		7E37CEBC2B484C5500700075 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEBB2B484C5500700075 /* Resources.swift */; };
 		7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEBF2B484D7400700075 /* UIView + Extension.swift */; };
 		7E37CECE2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CECD2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift */; };
@@ -24,6 +24,7 @@
 		7E83353E2B4D4015008E4C44 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83353D2B4D4015008E4C44 /* DataProvider.swift */; };
 		7E8335422B4D4045008E4C44 /* DataProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335412B4D4045008E4C44 /* DataProviderProtocol.swift */; };
 		7E8E69D32B51503B00135F46 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8E69D22B51503B00135F46 /* TaskDetailViewController.swift */; };
+		7E8E69D92B52D0C100135F46 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8E69D82B52D0C100135F46 /* TaskDetailView.swift */; };
 		7EA203932B47FE3200A9F2A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */; };
 		7EA203972B47FE3200A9F2A3 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */; };
 		7EA2039C2B47FE3300A9F2A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA2039B2B47FE3300A9F2A3 /* Assets.xcassets */; };
@@ -35,8 +36,8 @@
 		7EBC02192B4E5DD7004DCBE1 /* DateFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */; };
 		7EBC021D2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */; };
 		7EBC02202B4E81E7004DCBE1 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC021F2B4E81E7004DCBE1 /* NewTaskViewController.swift */; };
-		7EBC02232B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02222B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift */; };
-		7EBC02272B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02262B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift */; };
+		7EBC02232B4E82B9004DCBE1 /* CustomTaskNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02222B4E82B9004DCBE1 /* CustomTaskNavigationView.swift */; };
+		7EBC02272B4E8634004DCBE1 /* CustomTaskNavigationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02262B4E8634004DCBE1 /* CustomTaskNavigationViewDelegate.swift */; };
 		7EBC022A2B4E8F2A004DCBE1 /* CustomNewTaskInputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC02292B4E8F2A004DCBE1 /* CustomNewTaskInputInfoView.swift */; };
 		7EBC022D2B4EBDD1004DCBE1 /* NewTaskTableViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC022C2B4EBDD1004DCBE1 /* NewTaskTableViewDataProvider.swift */; };
 		7EBC022F2B4EBE59004DCBE1 /* NewTaskTableViewDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC022E2B4EBE59004DCBE1 /* NewTaskTableViewDateCell.swift */; };
@@ -53,7 +54,7 @@
 /* Begin PBXFileReference section */
 		08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimbirDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.release.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.release.xcconfig"; sourceTree = "<group>"; };
-		7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
+		7E37CEB92B48484200700075 /* CustomToDoListNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToDoListNavigationBarView.swift; sourceTree = "<group>"; };
 		7E37CEBB2B484C5500700075 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		7E37CEBF2B484D7400700075 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		7E37CECD2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewControllerTableViewProvider.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		7E8335412B4D4045008E4C44 /* DataProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderProtocol.swift; sourceTree = "<group>"; };
 		7E8E69D02B514E5400135F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E8E69D22B51503B00135F46 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		7E8E69D82B52D0C100135F46 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		7EA2038F2B47FE3200A9F2A3 /* SimbirDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimbirDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA203922B47FE3200A9F2A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
@@ -83,8 +85,8 @@
 		7EBC02182B4E5DD7004DCBE1 /* DateFormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterService.swift; sourceTree = "<group>"; };
 		7EBC021C2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		7EBC021F2B4E81E7004DCBE1 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
-		7EBC02222B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewTaskNavigationView.swift; sourceTree = "<group>"; };
-		7EBC02262B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewTaskNavigationViewDelegate.swift; sourceTree = "<group>"; };
+		7EBC02222B4E82B9004DCBE1 /* CustomTaskNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskNavigationView.swift; sourceTree = "<group>"; };
+		7EBC02262B4E8634004DCBE1 /* CustomTaskNavigationViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskNavigationViewDelegate.swift; sourceTree = "<group>"; };
 		7EBC02292B4E8F2A004DCBE1 /* CustomNewTaskInputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewTaskInputInfoView.swift; sourceTree = "<group>"; };
 		7EBC022C2B4EBDD1004DCBE1 /* NewTaskTableViewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewDataProvider.swift; sourceTree = "<group>"; };
 		7EBC022E2B4EBE59004DCBE1 /* NewTaskTableViewDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewDateCell.swift; sourceTree = "<group>"; };
@@ -173,18 +175,18 @@
 		7E8335372B4D333E008E4C44 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				7E8335382B4D3357008E4C44 /* CustomNavigationBarView */,
+				7E8E69D62B52C26400135F46 /* NavigationViews */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		7E8335382B4D3357008E4C44 /* CustomNavigationBarView */ = {
+		7E8335382B4D3357008E4C44 /* CustomToDoListNavigationBarView */ = {
 			isa = PBXGroup;
 			children = (
 				7E8335392B4D3364008E4C44 /* Protocol */,
-				7E37CEB92B48484200700075 /* CustomNavigationBarView.swift */,
+				7E37CEB92B48484200700075 /* CustomToDoListNavigationBarView.swift */,
 			);
-			path = CustomNavigationBarView;
+			path = CustomToDoListNavigationBarView;
 			sourceTree = "<group>";
 		};
 		7E8335392B4D3364008E4C44 /* Protocol */ = {
@@ -233,9 +235,27 @@
 		7E8E69D12B51501800135F46 /* TaskDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7E8E69D72B52D0A600135F46 /* Views */,
 				7E8E69D22B51503B00135F46 /* TaskDetailViewController.swift */,
 			);
 			path = TaskDetailViewController;
+			sourceTree = "<group>";
+		};
+		7E8E69D62B52C26400135F46 /* NavigationViews */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC02242B4E861E004DCBE1 /* CustomTaskNavigationView */,
+				7E8335382B4D3357008E4C44 /* CustomToDoListNavigationBarView */,
+			);
+			path = NavigationViews;
+			sourceTree = "<group>";
+		};
+		7E8E69D72B52D0A600135F46 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E8E69D82B52D0C100135F46 /* TaskDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7EA203862B47FE3200A9F2A3 = {
@@ -366,25 +386,24 @@
 		7EBC02212B4E8296004DCBE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7EBC02242B4E861E004DCBE1 /* CustomNewTaskNavigationView */,
 				7EBC02282B4E8F05004DCBE1 /* CustomNewTaskInputInfoView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7EBC02242B4E861E004DCBE1 /* CustomNewTaskNavigationView */ = {
+		7EBC02242B4E861E004DCBE1 /* CustomTaskNavigationView */ = {
 			isa = PBXGroup;
 			children = (
 				7EBC02252B4E862C004DCBE1 /* Protocols */,
-				7EBC02222B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift */,
+				7EBC02222B4E82B9004DCBE1 /* CustomTaskNavigationView.swift */,
 			);
-			path = CustomNewTaskNavigationView;
+			path = CustomTaskNavigationView;
 			sourceTree = "<group>";
 		};
 		7EBC02252B4E862C004DCBE1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7EBC02262B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift */,
+				7EBC02262B4E8634004DCBE1 /* CustomTaskNavigationViewDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -628,9 +647,9 @@
 				7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */,
 				7EBC02332B4EC9F0004DCBE1 /* NewTaskViewViewModel.swift in Sources */,
 				7E8E69D32B51503B00135F46 /* TaskDetailViewController.swift in Sources */,
-				7EBC02272B4E8634004DCBE1 /* CustomNewTaskNavigationViewDelegate.swift in Sources */,
+				7EBC02272B4E8634004DCBE1 /* CustomTaskNavigationViewDelegate.swift in Sources */,
 				7ED9A6FB2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift in Sources */,
-				7E37CEBA2B48484200700075 /* CustomNavigationBarView.swift in Sources */,
+				7E37CEBA2B48484200700075 /* CustomToDoListNavigationBarView.swift in Sources */,
 				7EB77D602B512C4F001B0F2D /* CoordinatorProtocol.swift in Sources */,
 				7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */,
 				7E8335422B4D4045008E4C44 /* DataProviderProtocol.swift in Sources */,
@@ -649,6 +668,7 @@
 				7EBC021D2B4E5DEB004DCBE1 /* DateFormatterProtocol.swift in Sources */,
 				7ED9A6F82B4D5B93009D47CD /* RealmManager.swift in Sources */,
 				7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */,
+				7E8E69D92B52D0C100135F46 /* TaskDetailView.swift in Sources */,
 				7E37CECE2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift in Sources */,
 				7E8335342B4D291D008E4C44 /* Observable.swift in Sources */,
 				7E83353E2B4D4015008E4C44 /* DataProvider.swift in Sources */,
@@ -656,7 +676,7 @@
 				7E37CEBC2B484C5500700075 /* Resources.swift in Sources */,
 				7EBC023E2B4EDFA1004DCBE1 /* CustomNewTaskInputInfoViewDelegate.swift in Sources */,
 				7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */,
-				7EBC02232B4E82B9004DCBE1 /* CustomNewTaskNavigationView.swift in Sources */,
+				7EBC02232B4E82B9004DCBE1 /* CustomTaskNavigationView.swift in Sources */,
 				7EBC023B2B4ED628004DCBE1 /* NewTaskTableViewDateCellDelegate.swift in Sources */,
 				7EA203B12B48098400A9F2A3 /* Strings+Generated.swift in Sources */,
 			);

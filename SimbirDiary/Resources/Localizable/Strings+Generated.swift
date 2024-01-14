@@ -15,6 +15,8 @@ internal enum L10n {
     internal static let cancel = L10n.tr("Localizable", "general.cancel", fallback: "Cancel")
     /// Date
     internal static let date = L10n.tr("Localizable", "general.date", fallback: "Date")
+    /// Delete
+    internal static let delete = L10n.tr("Localizable", "general.delete", fallback: "Delete")
     /// Done
     internal static let done = L10n.tr("Localizable", "general.done", fallback: "Done")
     /// Time
@@ -31,6 +33,10 @@ internal enum L10n {
     internal static let selectTime = L10n.tr("Localizable", "newTask.selectTime", fallback: "Select time")
     /// New Task
     internal static let title = L10n.tr("Localizable", "newTask.title", fallback: "New Task")
+  }
+  internal enum TaskDetail {
+    /// About the task
+    internal static let title = L10n.tr("Localizable", "taskDetail.title", fallback: "About the task")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

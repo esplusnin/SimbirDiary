@@ -1,7 +1,7 @@
 import UIKit
 
 class ToDoViewController: UIViewController {
-
+    
     // MARK: - Dependencies:
     weak var coordinator: AppCoordinator?
     
@@ -11,9 +11,7 @@ class ToDoViewController: UIViewController {
     private let tableViewProvider: ToDoViewControllerTableViewProvider
     
     // MARK: - Constants and Variables:
-    private enum UILocalConstants {
-        static let navigationBarHeight: CGFloat = 120
-    }
+    private let navigationBarHeight: CGFloat = 120
     
     // MARK: - UI:
     private lazy var toDoTableView: UITableView = {
@@ -28,7 +26,7 @@ class ToDoViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var customNavigationBarView = CustomNavigationBarView()
+    private lazy var customNavigationBarView = CustomToDoListNavigationBarView()
     
     // MARK: - Lifecycle:
     init(coordinator: AppCoordinator, viewModel: ToDoViewViewModelProtocol) {
@@ -60,7 +58,7 @@ class ToDoViewController: UIViewController {
 }
 
 // MARK: - CustomNavigationBarViewDelegate:
-extension ToDoViewController: CustomNavigationBarViewDelegate {
+extension ToDoViewController: CustomToDoListNavigationBarViewDelegate {
     func presentNewTaskController() {
         coordinator?.presentNewTaskController(from: self)
     }
@@ -77,9 +75,7 @@ private extension ToDoViewController {
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        addEndEditingGesture()
         customNavigationBarView.delegate = self
-        
         [customNavigationBarView, toDoTableView].forEach(view.addNewSubview)
     }
 }
@@ -93,7 +89,7 @@ private extension ToDoViewController {
     
     func setupCustomNavigationBarViewConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBarView.heightAnchor.constraint(equalToConstant: UILocalConstants.navigationBarHeight),
+            customNavigationBarView.heightAnchor.constraint(equalToConstant: navigationBarHeight),
             customNavigationBarView.topAnchor.constraint(equalTo: view.topAnchor),
             customNavigationBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNavigationBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)

@@ -51,6 +51,7 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
        
         let timeBlocks = viewModel.tasksListObservable.wrappedValue
         let tasksAmount = timeBlocks[section].tasks.count
+        
         let firstPartText = timeBlocks[section].name
         let secondPartText = section == timeBlocks.count - 1 ? timeBlocks[0].name : timeBlocks[section + 1].name
         let headerText = firstPartText + " - " + secondPartText
@@ -70,4 +71,10 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate:
-extension ToDoViewControllerTableViewProvider: UITableViewDelegate {}
+extension ToDoViewControllerTableViewProvider: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = viewModel.tasksListObservable.wrappedValue[indexPath.section].tasks[indexPath.row]
+        coordinator?.seeDetailOf(task)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

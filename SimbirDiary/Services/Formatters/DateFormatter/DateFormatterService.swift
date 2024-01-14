@@ -4,12 +4,13 @@ final class DateFormatterService: DateFormatterProtocol {
     
     // MARK: - Classes:
     private let dateFormatter = DateFormatter()
+    private let hoursDateFormat = "H"
     
     // MARK: - Public Methods:
     func getHourValue(from unixValue: String) -> String {
         guard let unixValue = Double(unixValue) else { return "" }
         let date = Date(timeIntervalSince1970: Double(Int(unixValue)))
-        dateFormatter.dateFormat = "HH"
+        dateFormatter.dateFormat = hoursDateFormat
         let hourValue = dateFormatter.string(from: date)
         
         return hourValue

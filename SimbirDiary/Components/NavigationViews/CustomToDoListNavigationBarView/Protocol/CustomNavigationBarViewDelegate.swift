@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CustomNavigationBarViewDelegate: AnyObject {
+protocol CustomToDoListNavigationBarViewDelegate: AnyObject {
     func setupDate(from date: Date)
     func presentNewTaskController()
 }

@@ -1,9 +1,9 @@
 import UIKit
 
-final class CustomNavigationBarView: UIView {
+final class CustomToDoListNavigationBarView: UIView {
     
     // MARK: - Dependencies:
-    weak var delegate: CustomNavigationBarViewDelegate?
+    weak var delegate: CustomToDoListNavigationBarViewDelegate?
     
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
@@ -68,7 +68,7 @@ final class CustomNavigationBarView: UIView {
 }
 
 // MARK: - Setup Views:
-private extension CustomNavigationBarView {
+private extension CustomToDoListNavigationBarView {
      func setupViews() {
         backgroundColor = .white
         [datePicker, plusButton].forEach(addNewSubview)
@@ -76,7 +76,7 @@ private extension CustomNavigationBarView {
 }
 
 // MARK: - Setup Constraints:
-private extension CustomNavigationBarView {
+private extension CustomToDoListNavigationBarView {
     func setupConstraints() {
         setupDatePickerConstraints()
         setupPlusButtonConstraints()
@@ -100,7 +100,7 @@ private extension CustomNavigationBarView {
 }
 
 // MARK: - Setup Targets:
-private extension CustomNavigationBarView {
+private extension CustomToDoListNavigationBarView {
     func setupTargets() {
         datePicker.addTarget(self, action: #selector(setupDate), for: .valueChanged)
         plusButton.addTarget(self, action: #selector(presentNewTaskController), for: .touchUpInside)
