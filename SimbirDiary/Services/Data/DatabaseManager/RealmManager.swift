@@ -7,6 +7,7 @@ final class RealmManager: DatabaseManagerProtocol {
     weak var dataProvider: DataProviderProtocol?
     
     private var realmManager: Realm?
+    private var dateFormatter: DateFormatterProtocol?
     
     // MARK: - Constants and Variables:
     private var notificationToken: NotificationToken?
@@ -34,12 +35,14 @@ final class RealmManager: DatabaseManagerProtocol {
     // MARK: - Public Methods:
     func saveData(from task: Task) {
         guard let realmManager else { return }
+        dateFormatter = DateFormatterService()
         
         do {
             try realmManager.write {
                 let encoder = JSONEncoder()
                 let data = try encoder.encode(task)
-                let realmTask = RealmTask(ownID: task.id, data: data)
+                let realmDate = dateFormatter?.getDateValue(from: task.dateStart) ?? ""
+                let realmTask = RealmTask(ownID: task.id, date: realmDate, data: data)
                 realmManager.add(realmTask)
             }
         } catch let error {
@@ -47,10 +50,13 @@ final class RealmManager: DatabaseManagerProtocol {
         }
     }
     
-    func fetchData(completion: @escaping (Result<[Task], Error>) -> Void) {
+    func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
+        dateFormatter = DateFormatterService()
+        
+        let realmDate = dateFormatter?.getRealmDateFormat(from: date) ?? ""
         var tasks = [Task]()
-
-        if let objects = fetchRealmData() {
+        
+        if let objects = fetchRealmData(with: realmDate) {
             let decoder = JSONDecoder()
             
             objects.forEach {
@@ -108,9 +114,11 @@ final class RealmManager: DatabaseManagerProtocol {
         }
     }
     
-    private func fetchRealmData() -> Results<RealmTask>? {
+    private func fetchRealmData(with date: String) -> Results<RealmTask>? {
+        print("FETCH1", realmManager)
         guard let realmManager else { return nil }
-        tasks = realmManager.objects(RealmTask.self)
+        print("FETCH1")
+        tasks = realmManager.objects(RealmTask.self) .where { $0.startDate == date }
         return realmManager.objects(RealmTask.self)
     }
     

@@ -57,7 +57,9 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     }
     
     func fetchData() {
-        dataProvider.fetchData { [weak self] result in
+        guard let currentDate else { return }
+        
+        dataProvider.fetchData(with: currentDate) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let tasks):

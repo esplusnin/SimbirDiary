@@ -27,8 +27,8 @@ final class DataProvider: DataProviderProtocol {
         databaseManager.saveData(from: task)
     }
     
-    func fetchData(completion: @escaping (Result<[Task], Error>) -> Void) {
-        databaseManager.fetchData { result in
+    func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
+        databaseManager.fetchData(with: date) { result in
             switch result {
             case .success(let tasks):
                 completion(.success(tasks))

@@ -15,12 +15,25 @@ final class DateFormatterService: DateFormatterProtocol {
         return hourValue
     }
     
+    func getDateValue(from unixValue: String) -> String {
+        guard let unixValue = Double(unixValue) else { return "" }
+        let date = Date(timeIntervalSince1970: Double(Int(unixValue)))
+        let realmDate = getRealmDateFormat(from: date)
+        return realmDate
+    }
+    
     func getUnixValueString(from date: Date, and hours: Date) -> String {
         let datesUnixValue = convertDateToUnixValue(from: date)
         let timesUnixValue = convertTimeToUnixValue(from: hours)
         let totalUnixValue = datesUnixValue + timesUnixValue
         let dateUnixString = String(totalUnixValue)
         return dateUnixString
+    }
+    
+    func getRealmDateFormat(from date: Date) -> String {
+        dateFormatter.dateFormat = Resources.DateFormatter.realmDateFormat
+        let realmDate = dateFormatter.string(from: date)
+        return realmDate
     }
     
     // MARK: - Private Methods:

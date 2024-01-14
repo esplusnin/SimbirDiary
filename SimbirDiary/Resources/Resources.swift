@@ -43,5 +43,6 @@ enum Resources {
     enum DateFormatter {
         static let hoursDateFormat = "H"
         static let fullTimeFormat = "H:mm"
+        static let realmDateFormat = "yyyy-MM-dd"
     }
 }
