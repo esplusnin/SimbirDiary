@@ -30,7 +30,8 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func seeDetailOf(_ task: Task) {
-        let taskDetailViewController = TaskDetailViewController(coordinator: self, task: task)
+        let taskDetailViewModel = TaskDetailViewViewModel(dataProvider: dataProvider, task: task)
+        let taskDetailViewController = TaskDetailViewController(coordinator: self, viewModel: taskDetailViewModel)
         navigator.pushViewController(taskDetailViewController, animated: true)
     }
     

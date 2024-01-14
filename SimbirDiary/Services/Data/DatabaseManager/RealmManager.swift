@@ -10,6 +10,9 @@ final class RealmManager: DatabaseManagerProtocol {
     
     // MARK: - Constants and Variables:
     private var notificationToken: NotificationToken?
+    private var deletedTask: Task?
+    private var isInitiated = false
+
     private var tasks: Results<RealmTask>? {
         didSet {
             if isInitiated == false {
@@ -19,7 +22,6 @@ final class RealmManager: DatabaseManagerProtocol {
         }
     }
     
-    private var isInitiated = false
     
     // MARK: - Lifecycle:
     init() {
@@ -65,6 +67,19 @@ final class RealmManager: DatabaseManagerProtocol {
         }
     }
     
+    func delete(_ task: Task) {
+        do {
+            try realmManager?.write {
+                if let object = realmManager?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
+                    deletedTask = task
+                    realmManager?.delete(object)
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     func setupDataProvider(_ provider: DataProviderProtocol) {
         dataProvider = provider
     }
@@ -74,18 +89,22 @@ final class RealmManager: DatabaseManagerProtocol {
         notificationToken = tasks?.observe { [weak self] changes in
             guard let self else { return }
             switch changes {
-            case .update(let tasks, _, let insertion, let modification):
-                if !insertion.isEmpty {
-                    let index = insertion.first ?? 0
-                    print(index)
+            case .update(let tasks, let deletions, let insertions, _):
+                if !deletions.isEmpty {
+                    guard let deletedTask else { return }
+                    dataProvider?.setupUpdated(deletedTask)
+                    self.deletedTask = nil
+                }
+                
+                if !insertions.isEmpty {
+                    let index = insertions.first ?? 0
                     let newTask = tasks[index]
                     sentUpdation(from: newTask)
                 }
-                
             case .error(let error):
                 print(error.localizedDescription)
             default:
-                print("Database was modified")
+                break
             }
         }
     }

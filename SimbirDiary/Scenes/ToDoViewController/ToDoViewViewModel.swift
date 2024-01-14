@@ -51,7 +51,9 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         dataProvider.updatedTaskObservable.bind { [weak self] task in
             guard let self,
                   let task else { return }
-            self.distribute([task])
+            if self.dataProvider.isTaskDeleted == false {
+                self.distribute([task])
+            }
         }
     }
     

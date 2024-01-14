@@ -5,6 +5,9 @@ final class DataProvider: DataProviderProtocol {
     // MARK: - Dependencies:
     private let databaseManager: DatabaseManagerProtocol
     
+    // MARK: - Constants and Variables:
+    private(set) var isTaskDeleted = false
+    
     // MARK: - Observable Values:
     var updatedTaskObservable: Observable<Task?> {
         $updatedTask
@@ -19,6 +22,11 @@ final class DataProvider: DataProviderProtocol {
     }
     
     // MARK: - Publc Methods:
+    func addNew(task: Task) {
+        isTaskDeleted = false
+        databaseManager.saveData(from: task)
+    }
+    
     func fetchData(completion: @escaping (Result<[Task], Error>) -> Void) {
         databaseManager.fetchData { result in
             switch result {
@@ -30,11 +38,12 @@ final class DataProvider: DataProviderProtocol {
         }
     }
     
-    func addNew(task: Task) {
-        databaseManager.saveData(from: task)
-    }
-    
     func setupUpdated(_ task: Task) {
         updatedTask = task
+    }
+    
+    func delete(_ task: Task) {
+        isTaskDeleted = true
+        databaseManager.delete(task)
     }
 }

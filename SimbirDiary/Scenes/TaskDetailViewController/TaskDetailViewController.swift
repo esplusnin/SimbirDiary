@@ -5,8 +5,9 @@ final class TaskDetailViewController: UIViewController {
     // MARK: - Dependencies:
     weak var coordinator: AppCoordinator?
     
+    private let viewModel: TaskDetailViewViewModelProtocol
+    
     // MARK: - Constants and Variables:
-    private let task: Task
     
     private let topStackViewHeight: CGFloat = 40
     
@@ -21,13 +22,15 @@ final class TaskDetailViewController: UIViewController {
     private lazy var taskDetailView = TaskDetailView()
     
     // MARK: - Lifecycle:
-    init(coordinator: AppCoordinator, task: Task) {
+    init(coordinator: AppCoordinator, viewModel: TaskDetailViewViewModelProtocol) {
         self.coordinator = coordinator
-        self.task = task
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupViews()
         setupConstraints()
         setupTargets()
+        
+        let task = viewModel.task
         taskDetailView.setupDetailOf(task)
     }
     
@@ -39,7 +42,10 @@ final class TaskDetailViewController: UIViewController {
 // MARK: - CustomTaskNavigationViewDelegate:
 extension TaskDetailViewController: CustomTaskNavigationViewDelegate {
     func performTask(isDelete: Bool) {
-        
+        if isDelete {
+            viewModel.deleteTask()
+            dismiss()
+        }
     }
     
     func dismiss() {
