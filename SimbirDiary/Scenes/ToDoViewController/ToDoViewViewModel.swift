@@ -63,7 +63,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     func fetchData() {
         guard let currentDate else { return }
-        
         dataProvider.fetchData(with: currentDate) { [weak self] result in
             guard let self else { return }
             switch result {
@@ -85,7 +84,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         var newTaskList = tasksList
         
         dateFormatterService = DateFormatterService()
-
+        
         if dataProvider.isTaskDeleted {
             guard let task = tasks.first else { return }
             deleteRows(with: task , from: &newTaskList)
@@ -101,18 +100,23 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     }
     
     private func insertNew(_ task: Task, to list: inout [TimeBlock]) {
+        guard let currentDate,
+        let dateFormatterService else { return }
         let fullHourCode = getFullHourCode(from: task)
+        let isTheSameDate = dateFormatterService.isTheSamedDay(currentDate: currentDate, taskDate: task.dateStart)
         
-        for (index, timezone) in list.enumerated() where timezone.name == fullHourCode {
-            var newTasks = timezone.tasks
-            newTasks.append(task)
-            newTasks.sort()
-            list[index].tasks = newTasks
-        }
-        
-        if isUpdateEntireTableView == false {
-            guard let indexPath = defineIndexPath(for: task, with: fullHourCode, from: list) else { return }
-            indexPathToUpdate = indexPath
+        if isTheSameDate {
+            for (index, timezone) in list.enumerated() where timezone.name == fullHourCode {
+                var newTasks = timezone.tasks
+                newTasks.append(task)
+                newTasks.sort()
+                list[index].tasks = newTasks
+            }
+            
+            if isUpdateEntireTableView == false {
+                guard let indexPath = defineIndexPath(for: task, with: fullHourCode, from: list) else { return }
+                indexPathToUpdate = indexPath
+            }
         }
     }
     
@@ -129,7 +133,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
               let row = list[section].tasks.firstIndex(where: { $0.id == task.id })  else { return nil }
         return IndexPath(row: row, section: section)
     }
-
+    
     private func getFullHourCode(from task: Task) -> String {
         let hourValue = dateFormatterService?.getTimeValue(from: task.dateStart, isOnlyHours: true) ?? ""
         let hourFullCode = hourValue + Resources.TimeBlocks.hourCode

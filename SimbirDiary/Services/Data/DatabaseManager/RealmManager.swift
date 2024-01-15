@@ -118,6 +118,7 @@ final class RealmManager: DatabaseManagerProtocol {
         guard let realmManager else { return nil }
         let generalTasks = realmManager.objects(RealmTask.self)
         let currentTasks = generalTasks.where { $0.startDate == date }
+        tasks = generalTasks
         return currentTasks
     }
     

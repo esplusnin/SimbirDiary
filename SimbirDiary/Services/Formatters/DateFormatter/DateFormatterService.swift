@@ -36,6 +36,12 @@ final class DateFormatterService: DateFormatterProtocol {
         return realmDate
     }
     
+    func isTheSamedDay(currentDate: Date, taskDate: String) -> Bool {
+        let currentDateString = getRealmDateFormat(from: currentDate)
+        let taskDateString = getDateValue(from: taskDate)
+        return currentDateString == taskDateString
+    }
+    
     // MARK: - Private Methods:
     private func convertDateToUnixValue(from date: Date) -> Double {
         let hoursValue = convertTimeToUnixValue(from: date)

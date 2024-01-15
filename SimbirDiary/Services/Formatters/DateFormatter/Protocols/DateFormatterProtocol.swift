@@ -5,4 +5,5 @@ protocol DateFormatterProtocol: AnyObject {
     func getDateValue(from unixValue: String) -> String
     func getUnixValueString(from date: Date, and hours: Date) -> String
     func getRealmDateFormat(from date: Date) -> String
+    func isTheSamedDay(currentDate: Date, taskDate: String) -> Bool
 }
