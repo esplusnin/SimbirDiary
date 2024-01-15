@@ -18,7 +18,7 @@ class ToDoViewController: UIViewController {
         tableView.dataSource = tableViewProvider
         tableView.delegate = tableViewProvider
         tableView.showsVerticalScrollIndicator = false
-        tableView.separatorInset = .init(top: .zero, left: .zero, bottom: .zero, right: .zero)
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         return tableView
     }()

@@ -3,7 +3,6 @@ import UIKit
 final class TaskDetailView: UIView {
     
     // MARK: - Constants and Variables:
-    private let separatorViewWidth: CGFloat = 1
     private let stackViewSpacing: CGFloat = 10
     private let numberOfLineLimitation = 0
     
@@ -102,6 +101,6 @@ private extension TaskDetailView {
     }
     
     func setupSeparatorLineConstraints() {
-        separatorView.heightAnchor.constraint(equalToConstant: separatorViewWidth).isActive = true
+        separatorView.heightAnchor.constraint(equalToConstant: UIConstants.separatorViewHeight).isActive = true
     }
 }
