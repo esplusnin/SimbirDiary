@@ -115,11 +115,10 @@ final class RealmManager: DatabaseManagerProtocol {
     }
     
     private func fetchRealmData(with date: String) -> Results<RealmTask>? {
-        print("FETCH1", realmManager)
         guard let realmManager else { return nil }
-        print("FETCH1")
-        tasks = realmManager.objects(RealmTask.self) .where { $0.startDate == date }
-        return realmManager.objects(RealmTask.self)
+        let generalTasks = realmManager.objects(RealmTask.self)
+        let currentTasks = generalTasks.where { $0.startDate == date }
+        return currentTasks
     }
     
     private func sentUpdation(from object: RealmTask) {

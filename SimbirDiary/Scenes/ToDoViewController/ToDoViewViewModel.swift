@@ -8,21 +8,10 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Constants and Variables:
     private(set) var isUpdateEntireTableView = true
+    private(set) var currentDateDidChange = false
     private(set) var indexPathToUpdate: IndexPath?
     
-    private var currentDate: Date? {
-        didSet {
-            fetchData()
-        }
-    }
-    
-    // MARK: - Observable Values:
-    var tasksListObservable: Observable<[TimeBlock]> {
-        $tasksList
-    }
-    
-    @Observable
-    private(set) var tasksList = [
+    private let baseTasksList =  [
         TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.two, tasks: []), TimeBlock(name: Resources.TimeBlocks.three, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.four, tasks: []), TimeBlock(name: Resources.TimeBlocks.five, tasks: []),
@@ -36,6 +25,22 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         TimeBlock(name: Resources.TimeBlocks.twenty, tasks: []), TimeBlock(name: Resources.TimeBlocks.twentyOne, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.twentyTwo, tasks: []),TimeBlock(name: Resources.TimeBlocks.twentyThree, tasks: [])
     ]
+    
+    private var currentDate: Date? {
+        didSet {
+            setupBaseTaskList()
+            currentDateDidChange = true
+            fetchData()
+        }
+    }
+    
+    // MARK: - Observable Values:
+    var tasksListObservable: Observable<[TimeBlock]> {
+        $tasksList
+    }
+    
+    @Observable
+    private(set) var tasksList = [TimeBlock]()
     
     // MARK: - Lifecycle
     init(dataProvider: DataProviderProtocol) {
@@ -72,8 +77,13 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     }
     
     // MARK: - Private Methods:
+    private func setupBaseTaskList() {
+        tasksList = baseTasksList
+    }
+    
     private func distribute(_ tasks: [Task]) {
         var newTaskList = tasksList
+        
         dateFormatterService = DateFormatterService()
 
         if dataProvider.isTaskDeleted {
@@ -87,11 +97,12 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         
         dateFormatterService = nil
         tasksList = newTaskList
+        currentDateDidChange = false
     }
     
     private func insertNew(_ task: Task, to list: inout [TimeBlock]) {
         let fullHourCode = getFullHourCode(from: task)
-        
+        print(DateFormatterService().getDateValue(from: task.dateStart))
         for (index, timezone) in list.enumerated() where timezone.name == fullHourCode {
             var newTasks = timezone.tasks
             newTasks.append(task)
