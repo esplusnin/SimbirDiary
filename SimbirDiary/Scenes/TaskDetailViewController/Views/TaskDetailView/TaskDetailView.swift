@@ -4,12 +4,15 @@ final class TaskDetailView: UIView {
     
     // MARK: - Constants and Variables:
     private let separatorViewWidth: CGFloat = 1
+    private let stackViewSpacing: CGFloat = 10
+    private let numberOfLineLimitation = 0
     
     // MARK: - UI:
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
+        stackView.spacing = stackViewSpacing
         return stackView
     }()
     
@@ -20,16 +23,33 @@ final class TaskDetailView: UIView {
         return stackView
     }()
     
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = numberOfLineLimitation
+        label.font = .boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
         return view
     }()
     
-    private lazy var nameLabel = UILabel()
-    private lazy var timeLabel = UILabel()
-    private lazy var descriptionLabel = UILabel()
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = numberOfLineLimitation
+        return label
+    }()
     
+    private lazy var timeLabel: UILabel = {
+        let label = UILabel()
+        label.text = L10n.TaskDetail.startDate
+        return label
+    }()
+    
+    private lazy var timeValueLabel = UILabel()
+   
     // MARK: - Lifecycle:
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,8 +64,11 @@ final class TaskDetailView: UIView {
     // MARK: - Public Methods:
     func setupDetailOf(_ task: Task) {
         nameLabel.text = task.name
-        timeLabel.text = DateFormatterService().getTimeValue(from: task.dateStart, isOnlyHours: false)
+        timeValueLabel.text = DateFormatterService().getTimeValue(from: task.dateStart, isOnlyHours: false)
         descriptionLabel.text = task.description
+        
+        nameLabel.sizeToFit()
+        descriptionLabel.sizeToFit()
     }
 }
 
@@ -57,8 +80,8 @@ private extension TaskDetailView {
         
         addNewSubview(mainStackView)
         mainStackView.addArrangedSubview(topStackView)
-        [nameLabel, timeLabel].forEach(topStackView.addArrangedSubview)
-        [topStackView, separatorView, descriptionLabel].forEach(mainStackView.addArrangedSubview)
+        [timeLabel, timeValueLabel].forEach(topStackView.addArrangedSubview)
+        [nameLabel, topStackView, separatorView, descriptionLabel].forEach(mainStackView.addArrangedSubview)
     }
 }
 
@@ -71,9 +94,9 @@ private extension TaskDetailView {
     
     func setupStackViewConstraints() {
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: topAnchor),
+            mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.baseInset),
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
-            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.baseInset),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }

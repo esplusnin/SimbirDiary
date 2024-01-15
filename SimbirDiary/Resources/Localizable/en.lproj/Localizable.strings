@@ -14,3 +14,4 @@
 
 // MARK: - Task Detail Screen:
 "taskDetail.title" = "About the task";
+"taskDetail.startDate" = "Start date";

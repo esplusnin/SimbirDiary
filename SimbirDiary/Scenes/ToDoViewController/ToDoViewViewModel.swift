@@ -102,7 +102,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     private func insertNew(_ task: Task, to list: inout [TimeBlock]) {
         let fullHourCode = getFullHourCode(from: task)
-        print(DateFormatterService().getDateValue(from: task.dateStart))
+        
         for (index, timezone) in list.enumerated() where timezone.name == fullHourCode {
             var newTasks = timezone.tasks
             newTasks.append(task)

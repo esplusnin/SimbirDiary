@@ -8,9 +8,8 @@ final class TaskDetailViewController: UIViewController {
     private let viewModel: TaskDetailViewViewModelProtocol
     
     // MARK: - Constants and Variables:
-    
     private let topStackViewHeight: CGFloat = 40
-    
+        
     // MARK: - UI:
     private lazy var screenScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -28,7 +27,6 @@ final class TaskDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         setupViews()
         setupConstraints()
-        setupTargets()
         
         let task = viewModel.task
         taskDetailView.setupDetailOf(task)
@@ -57,6 +55,7 @@ extension TaskDetailViewController: CustomTaskNavigationViewDelegate {
 private extension TaskDetailViewController {
     func setupViews() {
         customNavigationBarView.delegate = self
+        
         view.backgroundColor = .white
         
         [customNavigationBarView, screenScrollView].forEach(view.addNewSubview)
@@ -74,7 +73,6 @@ private extension TaskDetailViewController {
 
     func setupCustomNavigationBarViewConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBarView.heightAnchor.constraint(equalToConstant: UIConstants.navigationViewHeight),
             customNavigationBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             customNavigationBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNavigationBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -91,18 +89,14 @@ private extension TaskDetailViewController {
     }
     
     func setupTaskDetailViewConstraints() {
+        let anchor = taskDetailView.bottomAnchor.constraint(equalTo: screenScrollView.bottomAnchor, constant: -20)
+        anchor.priority = .defaultLow
+        anchor.isActive = true
+         
         NSLayoutConstraint.activate([
-            taskDetailView.heightAnchor.constraint(equalToConstant: UIConstants.navigationBarHeight),
-            taskDetailView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor, constant: UIConstants.baseInset),
+            taskDetailView.topAnchor.constraint(equalTo: screenScrollView.topAnchor, constant: UIConstants.baseInset),
             taskDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.baseInset),
-            taskDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset),
+            taskDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset)
         ])
-    }
-}
-
-// MARK: - Setup Targets:
-private extension TaskDetailViewController {
-    func setupTargets() {
-        
     }
 }

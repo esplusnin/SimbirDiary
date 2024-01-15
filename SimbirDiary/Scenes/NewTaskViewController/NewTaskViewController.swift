@@ -17,6 +17,8 @@ final class NewTaskViewController: UIViewController {
         static let separatorInset: CGFloat = 20
     }
     
+    private var customNewTaskInputInfoViewHeightAnchor: NSLayoutConstraint?
+    
     // MARK: - UI:
     private lazy var newTaskTableView: UITableView = {
         let tableView = UITableView()
@@ -82,6 +84,10 @@ extension NewTaskViewController: CustomNewTaskInputInfoViewDelegate {
     func setupTaskInfo(isName: Bool, value: String) {
         viewModel.setupTaskInfo(isName: isName, value: value)
     }
+    
+    func adjustHeight(with value: CGFloat) {
+        customNewTaskInputInfoViewHeightAnchor?.constant += value
+    }
 }
 
 // MARK: - NewTaskTableViewDateCellDelegate:
@@ -125,8 +131,10 @@ private extension NewTaskViewController {
     }
     
     func setupCustomNewTaskInputInfoViewConstraints() {
+        customNewTaskInputInfoViewHeightAnchor = customNewTaskInputInfoView.heightAnchor.constraint(equalToConstant: LocalUIConstants.inputInfoViewHeight)
+        customNewTaskInputInfoViewHeightAnchor?.isActive = true
+    
         NSLayoutConstraint.activate([
-            customNewTaskInputInfoView.heightAnchor.constraint(equalToConstant: LocalUIConstants.inputInfoViewHeight),
             customNewTaskInputInfoView.topAnchor.constraint(equalTo: customNewTaskNavigationView.bottomAnchor, constant: UIConstants.baseInset),
             customNewTaskInputInfoView.leadingAnchor.constraint(equalTo: customNewTaskNavigationView.leadingAnchor, constant: UIConstants.baseInset),
             customNewTaskInputInfoView.trailingAnchor.constraint(equalTo: customNewTaskNavigationView.trailingAnchor, constant: -UIConstants.baseInset)

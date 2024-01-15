@@ -62,6 +62,7 @@ final class CustomNewTaskInputInfoView: UIView {
 
 // MARK: - UITextFieldDelegate:
 extension CustomNewTaskInputInfoView: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let superview else { return true}
         superview.endEditing(true)

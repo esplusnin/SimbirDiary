@@ -35,6 +35,8 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "newTask.title", fallback: "New Task")
   }
   internal enum TaskDetail {
+    /// Start date
+    internal static let startDate = L10n.tr("Localizable", "taskDetail.startDate", fallback: "Start date")
     /// About the task
     internal static let title = L10n.tr("Localizable", "taskDetail.title", fallback: "About the task")
   }
