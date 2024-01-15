@@ -12,7 +12,7 @@ final class NewTaskViewController: UIViewController {
     
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
-        static let inputInfoViewHeight: CGFloat = 120
+        static let inputInfoViewHeight: CGFloat = 151
         static let tableViewHeight: CGFloat = 120
         static let separatorInset: CGFloat = 20
     }
@@ -85,8 +85,12 @@ extension NewTaskViewController: CustomNewTaskInputInfoViewDelegate {
         viewModel.setupTaskInfo(isName: isName, value: value)
     }
     
-    func adjustHeight(with value: CGFloat) {
+    func controlSuperviewHeight(with value: CGFloat) {
         customNewTaskInputInfoViewHeightAnchor?.constant += value
+        
+        UIView.animate(withDuration: UIConstants.baseAnimationDuration) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 

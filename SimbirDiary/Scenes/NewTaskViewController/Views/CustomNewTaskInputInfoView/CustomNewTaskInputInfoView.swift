@@ -7,27 +7,24 @@ final class CustomNewTaskInputInfoView: UIView {
     
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
-        static let textFieldLeftViewWidth: CGFloat = 20
+        static let baseTextViewHeight: CGFloat = 35
         static let separatorViewCornerRadius: CGFloat = 20
         static let separatorViewWidth: CGFloat = 1
     }
+    
+    private var enterNameHeightConstraints: NSLayoutConstraint?
+    private var enterDescriptionHeightConstraints: NSLayoutConstraint?
         
     // MARK: - UI:
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        return stackView
-    }()
-    
-    private lazy var enterNameTextField: UITextField = {
-        let textField = UITextField()
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: LocalUIConstants.textFieldLeftViewWidth, height: 0))
-        textField.leftViewMode = .always
-        textField.placeholder = L10n.NewTask.name
-        textField.clearButtonMode = .whileEditing
-        textField.delegate = self
-        return textField
+    private lazy var enterNameTextView: UITextView = {
+        let textView = UITextView()
+        textView.layer.cornerRadius = UIConstants.baseCornerRadius
+        textView.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        textView.delegate = self
+        textView.font = .systemFont(ofSize: 16)
+        textView.text = L10n.NewTask.name
+        textView.textColor = UIColor.lightGray
+        return textView
     }()
     
     private lazy var separatorView: UIView = {
@@ -37,14 +34,15 @@ final class CustomNewTaskInputInfoView: UIView {
         return view
     }()
     
-    private lazy var enterDescriptionTextField: UITextField = {
-        let textField = UITextField()
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: LocalUIConstants.textFieldLeftViewWidth, height: 0))
-        textField.leftViewMode = .always
-        textField.placeholder = L10n.NewTask.description
-        textField.clearButtonMode = .whileEditing
-        textField.delegate = self
-        return textField
+    private lazy var enterDescriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.layer.cornerRadius = UIConstants.baseCornerRadius
+        textView.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        textView.delegate = self
+        textView.font = .systemFont(ofSize: 16)
+        textView.text = L10n.NewTask.description
+        textView.textColor = UIColor.lightGray
+        return textView
     }()
     
     // MARK: - Lifecycle:
@@ -52,27 +50,56 @@ final class CustomNewTaskInputInfoView: UIView {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
-        setupTargets()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-// MARK: - UITextFieldDelegate:
-extension CustomNewTaskInputInfoView: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let superview else { return true}
-        superview.endEditing(true)
-        return true
+    // MARK: - Private Methods:
+    private func controlHeightOf(_ textView: UITextView) {
+        let oldheight = textView.bounds.height
+        let newHeight = textView.sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
+        
+        let value = newHeight - oldheight
+        delegate?.controlSuperviewHeight(with: value)
+        
+        if textView == enterNameTextView {
+            enterNameHeightConstraints?.constant += value
+        } else {
+            enterDescriptionHeightConstraints?.constant += value
+        }
+        
+        UIView.animate(withDuration: UIConstants.baseAnimationDuration) {
+            self.layoutIfNeeded()
+        }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        let isName = textField == enterNameTextField
-        let text = isName ? enterNameTextField.text : enterDescriptionTextField.text
+    private func controlInputTextOf(_ textView: UITextView) {
+        let isName = textView == enterNameTextView
+        let text = isName ? enterNameTextView.text : enterDescriptionTextView.text
         delegate?.setupTaskInfo(isName: isName, value: text ?? "")
+    }
+}
+
+extension CustomNewTaskInputInfoView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == L10n.NewTask.name || textView.text == L10n.NewTask.description {
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        controlHeightOf(textView)
+        controlInputTextOf(textView)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if !textView.hasText {
+            textView.textColor = .lightGray
+            textView.text = textView == enterNameTextView ? L10n.NewTask.name : L10n.NewTask.description
+        }
     }
 }
 
@@ -82,35 +109,46 @@ private extension CustomNewTaskInputInfoView {
         backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
         layer.cornerRadius = UIConstants.baseCornerRadius
 
-        addNewSubview(stackView)
-        [enterNameTextField, separatorView, enterDescriptionTextField].forEach(stackView.addArrangedSubview)
+        [enterNameTextView, separatorView, enterDescriptionTextView].forEach(addNewSubview)
     }
 }
 
 // MARK: - Setup Constraints:
 private extension CustomNewTaskInputInfoView {
     func setupConstraints() {
-        setupStackViewConstraints()
+        setupEnterNameTextViewConstraints()
         setupSeparatorLineConstraints()
+        setupEnterDescriptionTextViewConstraints()
     }
     
-    func setupStackViewConstraints() {
+    func setupEnterNameTextViewConstraints() {
+        enterNameHeightConstraints = enterNameTextView.heightAnchor.constraint(equalToConstant: LocalUIConstants.baseTextViewHeight)
+        enterNameHeightConstraints?.isActive = true
+        
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
+            enterNameTextView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.baseInset),
+            enterNameTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
+            enterNameTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
     
     func setupSeparatorLineConstraints() {
-        separatorView.heightAnchor.constraint(equalToConstant: LocalUIConstants.separatorViewWidth).isActive = true
+        NSLayoutConstraint.activate([
+            separatorView.heightAnchor.constraint(equalToConstant: LocalUIConstants.separatorViewWidth),
+            separatorView.topAnchor.constraint(equalTo: enterNameTextView.bottomAnchor, constant: UIConstants.baseInset),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
+        ])
     }
-}
-
-// MARK: - Setup Targets:
-private extension CustomNewTaskInputInfoView {
-    func setupTargets() {
+    
+    func setupEnterDescriptionTextViewConstraints() {
+        enterDescriptionHeightConstraints = enterDescriptionTextView.heightAnchor.constraint(equalToConstant: LocalUIConstants.baseTextViewHeight)
+        enterDescriptionHeightConstraints?.isActive = true
         
+        NSLayoutConstraint.activate([
+            enterDescriptionTextView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: UIConstants.baseInset),
+            enterDescriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
+            enterDescriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
+        ])
     }
 }
