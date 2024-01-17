@@ -31,7 +31,7 @@ final class TaskDetailView: UIView {
     
     private lazy var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .regularBackgroundLightGray
         return view
     }()
     
@@ -80,7 +80,7 @@ final class TaskDetailView: UIView {
 // MARK: - Setup Views:
 private extension TaskDetailView {
     func setupViews() {
-        backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        backgroundColor = .regularBackgroundGray
         layer.cornerRadius = UIConstants.baseCornerRadius
         
         addNewSubview(mainStackView)

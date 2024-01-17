@@ -21,9 +21,10 @@ final class CustomToDoListNavigationBarView: UIView {
     // MARK: - UI:
     private var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
+        datePicker.layer.cornerRadius = UIConstants.baseCornerRadius
         datePicker.datePickerMode = .date
         datePicker.locale = .current
-        datePicker.layer.cornerRadius = UIConstants.baseCornerRadius
+        datePicker.tintColor = .regularBackgroundLightGray
         return datePicker
     }()
     
@@ -52,7 +53,7 @@ final class CustomToDoListNavigationBarView: UIView {
     private func setupShadow() {
         layer.shadowOpacity = LocalUIConstants.navBarShadowOpacity
         layer.shadowRadius = LocalUIConstants.navBarShadowRadius
-        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowColor = UIColor.regularBackgroundGray?.cgColor
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
     
@@ -70,7 +71,7 @@ final class CustomToDoListNavigationBarView: UIView {
 // MARK: - Setup Views:
 private extension CustomToDoListNavigationBarView {
      func setupViews() {
-        backgroundColor = .white
+        backgroundColor = .regularWhite
         [datePicker, plusButton].forEach(addNewSubview)
     }
 }

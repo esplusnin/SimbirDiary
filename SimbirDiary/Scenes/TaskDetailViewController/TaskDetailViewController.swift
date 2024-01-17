@@ -56,7 +56,7 @@ private extension TaskDetailViewController {
     func setupViews() {
         customNavigationBarView.delegate = self
         
-        view.backgroundColor = .white
+        view.backgroundColor = .regularWhite
         
         [customNavigationBarView, screenScrollView].forEach(view.addNewSubview)
         screenScrollView.addNewSubview(taskDetailView)

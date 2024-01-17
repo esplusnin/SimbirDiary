@@ -49,7 +49,7 @@ final class CustomTaskNavigationView: UIStackView {
     // MARK: - Public Methods:
     func controlDoneButtonState(isAvailable: Bool) {
         actionButton.isEnabled = isAvailable
-        actionButton.titleLabel?.textColor = isAvailable ? .blue : .gray
+        actionButton.titleLabel?.textColor = isAvailable ? .regularBlue : .regularBackgroundGray
     }
     
     // MARK: - Private Methods:
@@ -60,7 +60,7 @@ final class CustomTaskNavigationView: UIStackView {
         case true :
             title.text = L10n.TaskDetail.title
             actionButton.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
-            actionButton.setTitleColor(.red, for: .normal)
+            actionButton.setTitleColor(.regularRed, for: .normal)
             actionButton.setTitle(L10n.General.delete, for: .normal)
             
         case false:

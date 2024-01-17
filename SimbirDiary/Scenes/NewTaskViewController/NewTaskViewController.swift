@@ -112,7 +112,7 @@ private extension NewTaskViewController {
         customNewTaskInputInfoView.delegate = self
         tableViewDataProvider.cellDelegate = self
         
-        view.backgroundColor = .white
+        view.backgroundColor = .regularWhite
         [customNewTaskNavigationView, customNewTaskInputInfoView, newTaskTableView].forEach(view.addNewSubview)
     }
 }

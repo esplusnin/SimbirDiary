@@ -19,31 +19,31 @@ final class CustomNewTaskInputInfoView: UIView {
     private lazy var enterNameTextView: UITextView = {
         let textView = UITextView()
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
-        textView.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        textView.backgroundColor = .regularBackgroundLightGray
         textView.delegate = self
         textView.isScrollEnabled = false
         textView.font = .regularMediumFont
         textView.text = L10n.NewTask.name
-        textView.textColor = .lightGray
+        textView.textColor = .regularBackgroundLightGray
         return textView
     }()
     
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = LocalUIConstants.separatorViewCornerRadius
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .regularBackgroundLightGray
         return view
     }()
     
     private lazy var enterDescriptionTextView: UITextView = {
         let textView = UITextView()
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
-        textView.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        textView.backgroundColor = .regularBackgroundLightGray
         textView.delegate = self
         textView.isScrollEnabled = false
         textView.font = .regularMediumFont
         textView.text = L10n.NewTask.description
-        textView.textColor = UIColor.lightGray
+        textView.textColor = .regularBackgroundLightGray
         return textView
     }()
     
@@ -88,7 +88,7 @@ extension CustomNewTaskInputInfoView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == L10n.NewTask.name || textView.text == L10n.NewTask.description {
             textView.text = ""
-            textView.textColor = .black
+            textView.textColor = .regularBlack
         }
     }
     
@@ -99,7 +99,7 @@ extension CustomNewTaskInputInfoView: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if !textView.hasText {
-            textView.textColor = .lightGray
+            textView.textColor = .regularBackgroundLightGray
             textView.text = textView == enterNameTextView ? L10n.NewTask.name : L10n.NewTask.description
         }
     }
@@ -108,7 +108,7 @@ extension CustomNewTaskInputInfoView: UITextViewDelegate {
 // MARK: - Setup Views:
 private extension CustomNewTaskInputInfoView {
     func setupViews() {
-        backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        backgroundColor = .regularBackgroundLightGray
         layer.cornerRadius = UIConstants.baseCornerRadius
 
         [enterNameTextView, separatorView, enterDescriptionTextView].forEach(addNewSubview)

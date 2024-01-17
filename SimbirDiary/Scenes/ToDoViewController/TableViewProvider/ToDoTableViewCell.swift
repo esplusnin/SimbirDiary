@@ -20,7 +20,7 @@ final class ToDoTableViewCell: UITableViewCell {
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = UIConstants.baseCornerRadius
-        view.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
+        view.backgroundColor = .regularBackgroundGray
         return view
     }()
     
