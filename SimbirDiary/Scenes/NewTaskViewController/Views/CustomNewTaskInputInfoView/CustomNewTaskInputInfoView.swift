@@ -21,7 +21,6 @@ final class CustomNewTaskInputInfoView: UIView {
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
         textView.backgroundColor = .regularBackgroundLightGray
         textView.delegate = self
-        textView.isScrollEnabled = false
         textView.font = .regularMediumFont
         textView.text = L10n.NewTask.name
         textView.textColor = .regularBackgroundLightGray
@@ -40,7 +39,6 @@ final class CustomNewTaskInputInfoView: UIView {
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
         textView.backgroundColor = .regularBackgroundLightGray
         textView.delegate = self
-        textView.isScrollEnabled = false
         textView.font = .regularMediumFont
         textView.text = L10n.NewTask.description
         textView.textColor = .regularBackgroundLightGray
@@ -72,8 +70,10 @@ final class CustomNewTaskInputInfoView: UIView {
             enterDescriptionHeightConstraints?.constant += value
         }
         
-        UIView.animate(withDuration: UIConstants.baseAnimationDuration) {
-            self.layoutIfNeeded()
+        if value > 0 {
+            UIView.animate(withDuration: UIConstants.baseAnimationDuration) {
+                self.layoutIfNeeded()
+            }
         }
     }
     
