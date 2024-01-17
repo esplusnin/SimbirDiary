@@ -6,6 +6,6 @@ target 'SimbirDiary' do
   use_frameworks!
 
   # Pods for SimbirDiary
-  pod 'RealmSwift', '~>10'
+  pod 'RealmSwift', '10.45.3'
 
 end

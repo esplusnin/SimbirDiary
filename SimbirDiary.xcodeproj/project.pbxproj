@@ -53,7 +53,7 @@
 		7EBC023E2B4EDFA1004DCBE1 /* CustomNewTaskInputInfoViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC023D2B4EDFA1004DCBE1 /* CustomNewTaskInputInfoViewDelegate.swift */; };
 		7ED9A6F82B4D5B93009D47CD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */; };
 		7ED9A6FB2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */; };
-		7ED9A6FD2B4D5DED009D47CD /* RealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */; };
+		7ED9A6FD2B4D5DED009D47CD /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FC2B4D5DED009D47CD /* TaskObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +107,7 @@
 		7EBC023D2B4EDFA1004DCBE1 /* CustomNewTaskInputInfoViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewTaskInputInfoViewDelegate.swift; sourceTree = "<group>"; };
 		7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerProtocol.swift; sourceTree = "<group>"; };
-		7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTask.swift; sourceTree = "<group>"; };
+		7ED9A6FC2B4D5DED009D47CD /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
 		9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.debug.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +179,7 @@
 			children = (
 				7E8335332B4D291D008E4C44 /* Observable.swift */,
 				7E83352A2B4D1F4B008E4C44 /* Task.swift */,
-				7ED9A6FC2B4D5DED009D47CD /* RealmTask.swift */,
+				7ED9A6FC2B4D5DED009D47CD /* TaskObject.swift */,
 				7E8335352B4D2C88008E4C44 /* TimeBlock.swift */,
 			);
 			path = Models;
@@ -716,7 +716,7 @@
 				7E8335342B4D291D008E4C44 /* Observable.swift in Sources */,
 				7E83353E2B4D4015008E4C44 /* DataProvider.swift in Sources */,
 				7E4FDA9B2B579A2F00582FA0 /* ToDoListStumbView.swift in Sources */,
-				7ED9A6FD2B4D5DED009D47CD /* RealmTask.swift in Sources */,
+				7ED9A6FD2B4D5DED009D47CD /* TaskObject.swift in Sources */,
 				7E37CEBC2B484C5500700075 /* Resources.swift in Sources */,
 				7EBC023E2B4EDFA1004DCBE1 /* CustomNewTaskInputInfoViewDelegate.swift in Sources */,
 				7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */,

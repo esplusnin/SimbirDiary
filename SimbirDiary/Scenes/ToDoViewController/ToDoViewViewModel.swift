@@ -61,6 +61,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     func fetchData() {
         guard let currentDate else { return }
+        
         dataProvider.fetchData(with: currentDate) { [weak self] result in
             guard let self else { return }
             switch result {
@@ -98,7 +99,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         guard let currentDate,
         let dateFormatterService else { return }
         let fullHourCode = getFullHourCode(from: task)
-        let isTheSameDate = dateFormatterService.isTheSamedDay(currentDate: currentDate, taskDate: task.dateStart)
+        let isTheSameDate = dateFormatterService.isTheSamedDay(currentDate: currentDate, taskDate: task.startDate)
         
         if isTheSameDate {
             if let index = list.firstIndex(where: { $0.name == fullHourCode }) {
@@ -132,7 +133,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     }
     
     private func getFullHourCode(from task: Task) -> String {
-        let hourValue = dateFormatterService?.getTimeValue(from: task.dateStart, isOnlyHours: true) ?? ""
+        let hourValue = dateFormatterService?.getTimeValue(from: task.startDate, isOnlyHours: true) ?? ""
         let hourFullCode = hourValue + Resources.TimeBlocks.hourCode
         return hourFullCode
     }

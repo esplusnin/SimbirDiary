@@ -60,7 +60,7 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
          
         let datesUnixString = dateFormatterService.getUnixValueString(from: date ?? Date(), and: time ?? Date())
         dataProvider.addNew(task: Task(id: UUID(),
-                                       dateStart: datesUnixString,
+                                       startDate: datesUnixString,
                                        name: name,
                                        description: description))
     }

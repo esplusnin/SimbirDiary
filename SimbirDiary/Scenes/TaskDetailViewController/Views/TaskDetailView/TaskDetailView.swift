@@ -69,7 +69,7 @@ final class TaskDetailView: UIView {
     // MARK: - Public Methods:
     func setupDetailOf(_ task: Task) {
         nameLabel.text = task.name
-        timeValueLabel.text = DateFormatterService().getTimeValue(from: task.dateStart, isOnlyHours: false)
+        timeValueLabel.text = DateFormatterService().getTimeValue(from: task.startDate, isOnlyHours: false)
         descriptionLabel.text = task.description
         
         nameLabel.sizeToFit()

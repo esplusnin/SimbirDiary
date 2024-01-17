@@ -51,8 +51,10 @@ class ToDoViewController: UIViewController {
     private func bind() {
         viewModel.tasksListObservable.bind { [weak self] _ in
             guard let self else { return }
-            self.toDoTableView.reloadData()
-            self.controlStumbView()
+            DispatchQueue.main.async {
+                self.toDoTableView.reloadData()
+                self.controlStumbView()
+            }
         }
     }
     

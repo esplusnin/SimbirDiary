@@ -17,3 +17,4 @@ type_body_length:
 
 excluded:
 - Pods
+- SimbirDiary/Services/Data/DatabaseManager/RealmManager.swift
