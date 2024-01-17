@@ -16,11 +16,10 @@ extension Task: Comparable {
 extension Task {
     init(object: TaskObject, with dateFormatter: DateFormatterProtocol) {
         let decoder = JSONDecoder()
-        let realmDate = dateFormatter.getDateValue(from: object.startDate)
         let task = try? decoder.decode(Task.self, from: object.data)
-        
+
         id = object.id
-        startDate = realmDate
+        startDate = task?.startDate ?? ""
         name = task?.name ?? ""
         description = task?.description ?? ""
     }

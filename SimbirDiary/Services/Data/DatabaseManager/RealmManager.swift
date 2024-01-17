@@ -9,6 +9,7 @@ final class RealmManager: DatabaseManagerProtocol {
     private var dateFormatter: DateFormatterProtocol?
     
     // MARK: - Constants and Variables:
+    private let realm: Realm?
     private var notificationToken: NotificationToken?
     
     private var deletedTask: Task?
@@ -24,21 +25,21 @@ final class RealmManager: DatabaseManagerProtocol {
     }
     
     // MARK: - Lifecycle:
+    init() {
+        realm = try? Realm(configuration: .defaultConfiguration)
+    }
+    
     deinit {
         notificationToken?.invalidate()
     }
     
     // MARK: - Public Methods:
-    func saveData(from task: Task) {
-        let realmManager = try! Realm()
-                
-        do {
-            try realmManager.write {
-                let realmTask = TaskObject(from: task)
-                realmManager.add(realmTask)
-            }
-        } catch let error {
-            print(error.localizedDescription)
+    func saveData(from task: Task) throws {
+        guard let realm else { return }
+        
+        realm.writeAsync {
+            let realmTask = TaskObject(from: task)
+            realm.add(realmTask)
         }
     }
     
@@ -47,7 +48,7 @@ final class RealmManager: DatabaseManagerProtocol {
         
         let realmDate = dateFormatter?.getRealmDateFormat(from: date) ?? ""
         var tasks = [Task]()
-        
+
         if let objects = self.fetchRealmData(with: realmDate) {
             objects.forEach {
                 let task = Task(object: $0, with: self.dateFormatter ?? DateFormatterService())
@@ -59,13 +60,13 @@ final class RealmManager: DatabaseManagerProtocol {
     }
     
     func delete(_ task: Task) {
-        let realmManager = try! Realm()
+        guard let realm else { return }
         
         do {
-            try realmManager.write {
-                if let object = realmManager.object(ofType: TaskObject.self, forPrimaryKey: task.id) {
+            try realm.write {
+                if let object = realm.object(ofType: TaskObject.self, forPrimaryKey: task.id) {
                     deletedTask = task
-                    realmManager.delete(object)
+                    realm.delete(object)
                 }
             }
         } catch let error {
@@ -103,22 +104,15 @@ final class RealmManager: DatabaseManagerProtocol {
     }
     
     private func fetchRealmData(with date: String) -> Results<TaskObject>? {
-        let realmManager = try! Realm()
-        
-        let generalTasks = realmManager.objects(TaskObject.self)
+        guard let realm else { return nil}
+        let generalTasks = realm.objects(TaskObject.self)
         let currentTasks = generalTasks.where { $0.startDate == date }
         tasks = generalTasks
         return currentTasks
     }
     
     private func sentUpdation(from object: TaskObject) {
-        let decoder = JSONDecoder()
-        
-        do {
-            let task = try decoder.decode(Task.self, from: object.data)
-            dataProvider?.setupUpdated(task)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+        let task = Task(object: object, with: DateFormatterService())
+        dataProvider?.setupUpdated(task)
     }
 }

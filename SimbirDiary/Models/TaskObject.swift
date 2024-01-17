@@ -18,12 +18,13 @@ class TaskObject: Object {
 extension TaskObject {
     convenience init(from task: Task) {
         self.init()
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatterService()
         let encoder = JSONEncoder()
         let data = try? encoder.encode(task)
+        let date = dateFormatter.getDateValue(from: task.startDate)
         
         self.id = task.id
-        self.startDate = task.startDate
+        self.startDate = date
         self.data = data ?? Data()
     }
 }

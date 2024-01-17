@@ -44,6 +44,7 @@ final class ToDoTableViewCell: UITableViewCell {
 // MARK: - Setup Views:
 extension ToDoTableViewCell {
     private func setupViews() {
+        selectionStyle = .none
         [nameLabel, separatorView].forEach(contentView.addNewSubview)
     }
 }

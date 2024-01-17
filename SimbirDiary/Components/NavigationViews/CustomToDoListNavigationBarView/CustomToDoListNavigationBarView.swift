@@ -24,7 +24,6 @@ final class CustomToDoListNavigationBarView: UIView {
         datePicker.layer.cornerRadius = UIConstants.baseCornerRadius
         datePicker.datePickerMode = .date
         datePicker.locale = .current
-        datePicker.tintColor = .regularBackgroundLightGray
         return datePicker
     }()
     

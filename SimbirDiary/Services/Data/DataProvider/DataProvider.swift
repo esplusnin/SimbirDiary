@@ -24,7 +24,7 @@ final class DataProvider: DataProviderProtocol {
     // MARK: - Publc Methods:
     func addNew(task: Task) {
         isTaskDeleted = false
-        databaseManager.saveData(from: task)
+        try? databaseManager.saveData(from: task)
     }
     
     func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {

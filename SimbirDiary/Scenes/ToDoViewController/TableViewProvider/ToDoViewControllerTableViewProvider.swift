@@ -41,7 +41,7 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
         let task = tasks[indexPath.row]
     
         cell.setupCell(task)
-        
+    
         return cell
     }
     
