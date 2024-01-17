@@ -59,7 +59,8 @@ final class ToDoListStumbView: UIView {
 // MARK: - Setup Views:
 private extension ToDoListStumbView {
     func setupViews() {
-        [stumbTitleLabel, stumbMessageLabel, stumbButton].forEach(addNewSubview)
+        addNewSubview(stumbStackView)
+        [stumbTitleLabel, stumbMessageLabel, stumbButton].forEach(stumbStackView.addArrangedSubview)
     }
 }
 
@@ -72,10 +73,8 @@ private extension ToDoListStumbView {
     func setupStumbStackViewConstraints() {
         NSLayoutConstraint.activate([
             stumbStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stumbStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            stumbStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -UIConstants.baseInset)
         ])
-        
-        stumbStackView.sizeToFit()
     }
 }
 

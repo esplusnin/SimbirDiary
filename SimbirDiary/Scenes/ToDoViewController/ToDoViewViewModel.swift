@@ -7,9 +7,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     private var dateFormatterService: DateFormatterProtocol?
     
     // MARK: - Constants and Variables:
-    private(set) var isUpdateEntireTableView = true
     private(set) var currentDateDidChange = false
-    private(set) var indexPathToUpdate: IndexPath?
     
     private let baseTasksList =  [
         TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []),
@@ -28,7 +26,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     private var currentDate: Date? {
         didSet {
-            setupBaseTaskList()
+            tasksList = []
             currentDateDidChange = true
             fetchData()
         }
@@ -68,7 +66,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
             switch result {
             case .success(let tasks):
                 self.distribute(tasks)
-                self.isUpdateEntireTableView = false
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -76,10 +73,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     }
     
     // MARK: - Private Methods:
-    private func setupBaseTaskList() {
-        tasksList = baseTasksList
-    }
-    
     private func distribute(_ tasks: [Task]) {
         var newTaskList = tasksList
         
@@ -94,6 +87,8 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
             }
         }
         
+        newTaskList.sort()
+        
         dateFormatterService = nil
         tasksList = newTaskList
         currentDateDidChange = false
@@ -106,16 +101,14 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         let isTheSameDate = dateFormatterService.isTheSamedDay(currentDate: currentDate, taskDate: task.dateStart)
         
         if isTheSameDate {
-            for (index, timezone) in list.enumerated() where timezone.name == fullHourCode {
-                var newTasks = timezone.tasks
+            if let index = list.firstIndex(where: { $0.name == fullHourCode }) {
+                var newTasks = list[index].tasks
                 newTasks.append(task)
-                newTasks.sort()
                 list[index].tasks = newTasks
-            }
-            
-            if isUpdateEntireTableView == false {
-                guard let indexPath = defineIndexPath(for: task, with: fullHourCode, from: list) else { return }
-                indexPathToUpdate = indexPath
+            } else {
+                guard var newTasks = baseTasksList.first(where: { $0.name == fullHourCode }) else { return }
+                newTasks.tasks.append(task)
+                list.append(newTasks)
             }
         }
     }
@@ -123,11 +116,15 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     private func deleteRows(with task: Task, from list: inout [TimeBlock]) {
         let fullHourCode = getFullHourCode(from: task)
         if let indexPath = defineIndexPath(for: task, with: fullHourCode, from: tasksList) {
-            indexPathToUpdate = indexPath
             list[indexPath.section].tasks.remove(at: indexPath.row)
+            
+            if list[indexPath.section].tasks.isEmpty {
+                list.remove(at: indexPath.section)
+            }
         }
     }
     
+    // MARK: - Helpers:
     private func defineIndexPath(for task: Task, with code: String, from list: [TimeBlock]) -> IndexPath? {
         guard let section = list.firstIndex(where: { $0.name == code }),
               let row = list[section].tasks.firstIndex(where: { $0.id == task.id })  else { return nil }

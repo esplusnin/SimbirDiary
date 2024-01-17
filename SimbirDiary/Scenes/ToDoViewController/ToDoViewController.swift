@@ -44,6 +44,7 @@ class ToDoViewController: UIViewController {
         setupViews()
         setupConstraints()
         bind()
+        controlStumbView()
     }
     
     // MARK: - Private Methods:
@@ -51,18 +52,19 @@ class ToDoViewController: UIViewController {
         viewModel.tasksListObservable.bind { [weak self] _ in
             guard let self else { return }
             self.toDoTableView.reloadData()
+            self.controlStumbView()
         }
     }
     
     private func controlStumbView() {
-        if viewModel.tasksListObservable.wrappedValue.isEmpty {
+        if viewModel.tasksListObservable.wrappedValue.isEmpty && toDoListStumbView == nil {
             toDoListStumbView = ToDoListStumbView { [weak self] in
                 guard let self else { return }
                 self.coordinator?.presentNewTaskController(from: self)
             }
             
             setupToDoListStumbView()
-        } else {
+        } else if !viewModel.tasksListObservable.wrappedValue.isEmpty {
             toDoTableView.isHidden = false
             toDoListStumbView?.removeFromSuperview()
             toDoListStumbView = nil
@@ -123,6 +125,7 @@ private extension ToDoViewController {
     func setupToDoListStumbView() {
         guard let toDoListStumbView else { return }
         toDoTableView.isHidden = true
+        view.addNewSubview(toDoListStumbView)
         
         NSLayoutConstraint.activate([
             toDoListStumbView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor),
