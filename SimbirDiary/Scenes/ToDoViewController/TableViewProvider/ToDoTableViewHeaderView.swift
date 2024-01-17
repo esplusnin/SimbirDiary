@@ -4,18 +4,18 @@ final class ToDoTableViewHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
-        static let headerLabelFontSize: CGFloat = 20
         static let cornerRadius: CGFloat = 15
     }
     // MARK: - UI
     private lazy var headerNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: LocalUIConstants.headerLabelFontSize)
+        label.font = .largeTitleFont
         return label
     }()
     
     private lazy var tasksAmountLabel: UILabel = {
         let label = UILabel()
+        label.font = .regularMediumFont
         return label
     }()
     

@@ -6,7 +6,7 @@
 "general.time" = "Время";
 
 // MARK: - ToDo list Screen:
-"toDoList.stumb.title" = "Упс";
+"toDoList.stumb.title" = "Упс...";
 "toDoList.stumb.message" = "Кажется, еще ничего нет";
 "toDoList.stumb.buttonTitle" = "Добавить новую задачу";
 
@@ -19,4 +19,4 @@
 
 // MARK: - Task Detail Screen:
 "taskDetail.title" = "О задаче";
-"taskDetail.startDate" = "Время начала";
+"taskDetail.startDate" = "Время начала:";

@@ -25,7 +25,7 @@ final class TaskDetailView: UIView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = numberOfLineLimitation
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = .largeTitleFont
         return label
     }()
     
@@ -37,17 +37,23 @@ final class TaskDetailView: UIView {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        label.font = .regularMediumFont
         label.numberOfLines = numberOfLineLimitation
         return label
     }()
     
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
+        label.font = .regularMediumBoldFont
         label.text = L10n.TaskDetail.startDate
         return label
     }()
     
-    private lazy var timeValueLabel = UILabel()
+    private lazy var timeValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = .regularMediumFont
+        return label
+    }()
    
     // MARK: - Lifecycle:
     override init(frame: CGRect) {

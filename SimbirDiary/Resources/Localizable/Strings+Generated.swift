@@ -35,8 +35,8 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "newTask.title", fallback: "New Task")
   }
   internal enum TaskDetail {
-    /// Start date
-    internal static let startDate = L10n.tr("Localizable", "taskDetail.startDate", fallback: "Start date")
+    /// Start date:
+    internal static let startDate = L10n.tr("Localizable", "taskDetail.startDate", fallback: "Start date:")
     /// About the task
     internal static let title = L10n.tr("Localizable", "taskDetail.title", fallback: "About the task")
   }
@@ -46,8 +46,8 @@ internal enum L10n {
       internal static let buttonTitle = L10n.tr("Localizable", "toDoList.stumb.buttonTitle", fallback: "Add new task")
       /// It seems there are nothing
       internal static let message = L10n.tr("Localizable", "toDoList.stumb.message", fallback: "It seems there are nothing")
-      /// Ooops
-      internal static let title = L10n.tr("Localizable", "toDoList.stumb.title", fallback: "Ooops")
+      /// Ooops...
+      internal static let title = L10n.tr("Localizable", "toDoList.stumb.title", fallback: "Ooops...")
     }
   }
 }

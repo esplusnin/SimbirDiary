@@ -16,6 +16,7 @@ final class NewTaskTableViewDateCell: UITableViewCell {
     // MARK: - UI
     private lazy var titleLabeL: UILabel = {
         let label = UILabel()
+        label.font = .regularMediumFont
         return label
     }()
     

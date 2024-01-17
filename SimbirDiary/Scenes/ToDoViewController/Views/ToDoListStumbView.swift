@@ -16,6 +16,7 @@ final class ToDoListStumbView: UIView {
        let label = UILabel()
         label.text = L10n.ToDoList.Stumb.title
         label.textAlignment = .center
+        label.font = .regularMediumFont
         return label
     }()
     
@@ -23,12 +24,14 @@ final class ToDoListStumbView: UIView {
        let label = UILabel()
         label.text = L10n.ToDoList.Stumb.message
         label.textAlignment = .center
+        label.font = .regularMediumFont
         return label
     }()
     
     private lazy var stumbButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(L10n.ToDoList.Stumb.buttonTitle, for: .normal)
+        button.titleLabel?.font = .regularMediumHeavyFont
         return button
     }()
     

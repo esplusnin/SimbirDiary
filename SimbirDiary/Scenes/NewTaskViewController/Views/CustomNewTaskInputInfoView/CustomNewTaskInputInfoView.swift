@@ -21,9 +21,10 @@ final class CustomNewTaskInputInfoView: UIView {
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
         textView.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
         textView.delegate = self
-        textView.font = .systemFont(ofSize: 16)
+        textView.isScrollEnabled = false
+        textView.font = .regularMediumFont
         textView.text = L10n.NewTask.name
-        textView.textColor = UIColor.lightGray
+        textView.textColor = .lightGray
         return textView
     }()
     
@@ -39,7 +40,8 @@ final class CustomNewTaskInputInfoView: UIView {
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
         textView.backgroundColor = .lightGray.withAlphaComponent(UIConstants.baseAlphaComponent)
         textView.delegate = self
-        textView.font = .systemFont(ofSize: 16)
+        textView.isScrollEnabled = false
+        textView.font = .regularMediumFont
         textView.text = L10n.NewTask.description
         textView.textColor = UIColor.lightGray
         return textView

@@ -6,7 +6,7 @@
 "general.time" = "Time";
 
 // MARK: - ToDo list Screen:
-"toDoList.stumb.title" = "Ooops";
+"toDoList.stumb.title" = "Ooops...";
 "toDoList.stumb.message" = "It seems there are nothing";
 "toDoList.stumb.buttonTitle" = "Add new task";
 
@@ -19,4 +19,4 @@
 
 // MARK: - Task Detail Screen:
 "taskDetail.title" = "About the task";
-"taskDetail.startDate" = "Start date";
+"taskDetail.startDate" = "Start date:";

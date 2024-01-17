@@ -12,20 +12,20 @@ final class CustomTaskNavigationView: UIStackView {
     private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(L10n.General.cancel, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.titleLabel?.font = .regularMediumFont
         return button
     }()
     
     private lazy var title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = .mediumTitleFont
         return label
     }()
     
     private lazy var actionButton: UIButton = {
         let button = UIButton(type: .system)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = .regularMediumBoldFont
         return button
     }()
     
