@@ -24,6 +24,7 @@ class ToDoViewController: UIViewController {
     }()
     
     private lazy var customNavigationBarView = CustomToDoListNavigationBarView()
+    private var toDoListStumbView: ToDoListStumbView?
     
     // MARK: - Lifecycle:
     init(coordinator: AppCoordinator, viewModel: ToDoViewViewModelProtocol) {
@@ -50,6 +51,21 @@ class ToDoViewController: UIViewController {
         viewModel.tasksListObservable.bind { [weak self] _ in
             guard let self else { return }
             self.toDoTableView.reloadData()
+        }
+    }
+    
+    private func controlStumbView() {
+        if viewModel.tasksListObservable.wrappedValue.isEmpty {
+            toDoListStumbView = ToDoListStumbView { [weak self] in
+                guard let self else { return }
+                self.coordinator?.presentNewTaskController(from: self)
+            }
+            
+            setupToDoListStumbView()
+        } else {
+            toDoTableView.isHidden = false
+            toDoListStumbView?.removeFromSuperview()
+            toDoListStumbView = nil
         }
     }
 }
@@ -101,6 +117,18 @@ private extension ToDoViewController {
             toDoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.baseInset),
             toDoTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             toDoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset)
+        ])
+    }
+    
+    func setupToDoListStumbView() {
+        guard let toDoListStumbView else { return }
+        toDoTableView.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            toDoListStumbView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor),
+            toDoListStumbView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            toDoListStumbView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            toDoListStumbView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }

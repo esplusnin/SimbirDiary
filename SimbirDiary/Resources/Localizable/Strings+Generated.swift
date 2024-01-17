@@ -40,6 +40,16 @@ internal enum L10n {
     /// About the task
     internal static let title = L10n.tr("Localizable", "taskDetail.title", fallback: "About the task")
   }
+  internal enum ToDoList {
+    internal enum Stumb {
+      /// Add new task
+      internal static let buttonTitle = L10n.tr("Localizable", "toDoList.stumb.buttonTitle", fallback: "Add new task")
+      /// It seems there are nothing
+      internal static let message = L10n.tr("Localizable", "toDoList.stumb.message", fallback: "It seems there are nothing")
+      /// Ooops
+      internal static let title = L10n.tr("Localizable", "toDoList.stumb.title", fallback: "Ooops")
+    }
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

@@ -5,6 +5,11 @@
 "general.date" = "Date";
 "general.time" = "Time";
 
+// MARK: - ToDo list Screen:
+"toDoList.stumb.title" = "Ooops";
+"toDoList.stumb.message" = "It seems there are nothing";
+"toDoList.stumb.buttonTitle" = "Add new task";
+
 // MARK: - New Task Screen:
 "newTask.title" = "New Task";
 "newTask.name" = "Name";

@@ -15,6 +15,7 @@
 		7E37CED02B4C3E1B00700075 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CECF2B4C3E1B00700075 /* ToDoTableViewCell.swift */; };
 		7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CED12B4C44BF00700075 /* UIConstants.swift */; };
 		7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */; };
+		7E4FDA9B2B579A2F00582FA0 /* ToDoListStumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */; };
 		7E83352B2B4D1F4B008E4C44 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352A2B4D1F4B008E4C44 /* Task.swift */; };
 		7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */; };
 		7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */; };
@@ -63,6 +64,7 @@
 		7E37CECF2B4C3E1B00700075 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		7E37CED12B4C44BF00700075 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewHeaderView.swift; sourceTree = "<group>"; };
+		7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListStumbView.swift; sourceTree = "<group>"; };
 		7E83352A2B4D1F4B008E4C44 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModel.swift; sourceTree = "<group>"; };
 		7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				7E8335302B4D2090008E4C44 /* Protocols */,
+				7E4FDA992B579A1200582FA0 /* Views */,
 				7E37CECC2B4C3C9A00700075 /* TableViewProvider */,
 				7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */,
 				7EA203962B47FE3200A9F2A3 /* ToDoViewController.swift */,
@@ -155,6 +158,14 @@
 				7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */,
 			);
 			path = TableViewProvider;
+			sourceTree = "<group>";
+		};
+		7E4FDA992B579A1200582FA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7E8335292B4D1F40008E4C44 /* Models */ = {
@@ -696,6 +707,7 @@
 				7E37CECE2B4C3CB900700075 /* ToDoViewControllerTableViewProvider.swift in Sources */,
 				7E8335342B4D291D008E4C44 /* Observable.swift in Sources */,
 				7E83353E2B4D4015008E4C44 /* DataProvider.swift in Sources */,
+				7E4FDA9B2B579A2F00582FA0 /* ToDoListStumbView.swift in Sources */,
 				7ED9A6FD2B4D5DED009D47CD /* RealmTask.swift in Sources */,
 				7E37CEBC2B484C5500700075 /* Resources.swift in Sources */,
 				7EBC023E2B4EDFA1004DCBE1 /* CustomNewTaskInputInfoViewDelegate.swift in Sources */,
