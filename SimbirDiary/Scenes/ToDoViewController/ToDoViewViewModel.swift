@@ -9,7 +9,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     // MARK: - Constants and Variables:
     private(set) var currentDateDidChange = false
     
-    private let baseTasksList =  [
+    private(set) var baseTasksList =  [
         TimeBlock(name: Resources.TimeBlocks.zero, tasks: []), TimeBlock(name: Resources.TimeBlocks.one, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.two, tasks: []), TimeBlock(name: Resources.TimeBlocks.three, tasks: []),
         TimeBlock(name: Resources.TimeBlocks.four, tasks: []), TimeBlock(name: Resources.TimeBlocks.five, tasks: []),

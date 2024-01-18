@@ -51,10 +51,13 @@ extension ToDoViewControllerTableViewProvider: UITableViewDataSource {
        
         let timeBlocks = viewModel.tasksListObservable.wrappedValue
         let tasksAmount = timeBlocks[section].tasks.count
+        let baseTaskList = viewModel.baseTasksList
         
         let firstPartText = timeBlocks[section].name
-        let secondPartText = section == timeBlocks.count - 1 ? timeBlocks[0].name : timeBlocks[section + 1].name
+        let indexTimeBlockName = baseTaskList.firstIndex { $0.name == firstPartText} ?? 0
+        let secondPartText = indexTimeBlockName == baseTaskList.count - 1 ? baseTaskList[0].name : baseTaskList[indexTimeBlockName + 1].name
         let headerText = firstPartText + " - " + secondPartText
+        
         headerView.setupHeaderLabel(text: headerText, tasksAmount: tasksAmount)
         
         return headerView
