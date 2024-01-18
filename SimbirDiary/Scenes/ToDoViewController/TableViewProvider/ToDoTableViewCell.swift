@@ -7,12 +7,19 @@ final class ToDoTableViewCell: UITableViewCell {
         didSet {
             guard let task else { return }
             nameLabel.text = task.name
+            timeValueLabel.text = task.calendarDate
         }
     }
     
     // MARK: - UI:
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.font = .regularMediumFont
+        return label
+    }()
+    
+    private lazy var timeValueLabel: UILabel = {
+       let label = UILabel()
         label.font = .regularMediumFont
         return label
     }()
@@ -45,7 +52,7 @@ final class ToDoTableViewCell: UITableViewCell {
 extension ToDoTableViewCell {
     private func setupViews() {
         selectionStyle = .none
-        [nameLabel, separatorView].forEach(contentView.addNewSubview)
+        [nameLabel, separatorView, timeValueLabel].forEach(contentView.addNewSubview)
     }
 }
 
@@ -54,13 +61,14 @@ private extension ToDoTableViewCell {
     func setupConstraints() {
         setupNameLabelConstraints()
         setupSeparatorViewConstraints()
+        setupTimeValueLabelConstraints()
     }
     
     func setupNameLabelConstraints() {
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
+            nameLabel.trailingAnchor.constraint(equalTo: timeValueLabel.leadingAnchor, constant: -UIConstants.baseInset)
         ])
     }
     
@@ -70,6 +78,13 @@ private extension ToDoTableViewCell {
             separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    func setupTimeValueLabelConstraints() {
+        NSLayoutConstraint.activate([
+            timeValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            timeValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
 }

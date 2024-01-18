@@ -61,6 +61,7 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
         let datesUnixString = dateFormatterService.getUnixValueString(from: date ?? Date(), and: time ?? Date())
         dataProvider.addNew(task: Task(id: UUID(),
                                        startDate: datesUnixString,
+                                       calendarDate: nil,
                                        name: name,
                                        description: description))
     }

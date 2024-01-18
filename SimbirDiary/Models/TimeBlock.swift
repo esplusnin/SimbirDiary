@@ -3,14 +3,34 @@ import Foundation
 struct TimeBlock: Comparable {
     let name: String
     var tasks: [Task]
-    
-    static func < (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
-        guard let firstELement = lhs.name.first,
-              let secondElement = rhs.name.first else { return false }
-        
-        guard let firstIntElement = Int(String(firstELement)),
-              let secondIntElement = Int(String(secondElement)) else { return false }
+}
 
-        return firstIntElement < secondIntElement
+// MARK: - Comparable Extension:
+extension TimeBlock {
+    static func < (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
+        let shortNameDigits = 4
+        
+        var lhsName = lhs.name
+        var rhsName = rhs.name
+        
+        if lhsName.count != rhsName.count {
+            return lhsName.count < rhsName.count
+        }
+        
+        if lhsName.count == shortNameDigits {
+            guard let lhsFirstCharacter = lhsName.first,
+                  let rhsFirstCharacter = rhsName.first,
+                  let lhsFirstDigit = Int(String(lhsFirstCharacter)),
+                  let rhsFirstDigit = Int(String(rhsFirstCharacter)) else { return false }
+
+            return lhsFirstDigit < rhsFirstDigit
+        }
+        
+        guard let lhsSecondCharacter = lhsName.dropFirst().first,
+              let rhsSecondCharacter = rhsName.dropFirst().first,
+              let lhsSecondDigit = Int(String(lhsSecondCharacter)),
+              let rhsSecondDigit = Int(String(rhsSecondCharacter)) else { return false }
+        
+        return lhsSecondDigit < rhsSecondDigit
     }
 }

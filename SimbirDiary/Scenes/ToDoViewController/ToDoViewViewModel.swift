@@ -105,6 +105,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
             if let index = list.firstIndex(where: { $0.name == fullHourCode }) {
                 var newTasks = list[index].tasks
                 newTasks.append(task)
+                newTasks.sort()
                 list[index].tasks = newTasks
             } else {
                 guard var newTasks = baseTasksList.first(where: { $0.name == fullHourCode }) else { return }
