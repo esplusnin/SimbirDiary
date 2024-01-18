@@ -35,10 +35,13 @@ final class RealmManager: DatabaseManagerProtocol {
     
     // MARK: - Public Methods:
     func saveData(from task: Task) throws {
-        guard let realm else { return }
+        dateFormatter = DateFormatterService()
+        
+        guard let realm,
+              let dateFormatter else { return }
         
         realm.writeAsync {
-            let realmTask = TaskObject(from: task)
+            let realmTask = TaskObject(from: task, with: dateFormatter)
             realm.add(realmTask)
         }
     }
@@ -57,6 +60,8 @@ final class RealmManager: DatabaseManagerProtocol {
             
             completion(.success(tasks))
         }
+        
+        dateFormatter = nil
     }
     
     func delete(_ task: Task) {
@@ -112,7 +117,10 @@ final class RealmManager: DatabaseManagerProtocol {
     }
     
     private func sentUpdation(from object: TaskObject) {
-        let task = Task(object: object, with: DateFormatterService())
+        guard let dateFormatter else { return }
+        let task = Task(object: object, with: dateFormatter)
+        
         dataProvider?.setupUpdated(task)
+        self.dateFormatter = nil
     }
 }

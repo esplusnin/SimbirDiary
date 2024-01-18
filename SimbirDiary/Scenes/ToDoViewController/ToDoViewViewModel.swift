@@ -76,7 +76,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     // MARK: - Private Methods:
     private func distribute(_ tasks: [Task]) {
         var newTaskList = tasksList
-        
         dateFormatterService = DateFormatterService()
         
         if dataProvider.isTaskDeleted {

@@ -10,8 +10,8 @@ extension TimeBlock {
     static func < (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
         let shortNameDigits = 4
         
-        var lhsName = lhs.name
-        var rhsName = rhs.name
+        let lhsName = lhs.name
+        let rhsName = rhs.name
         
         if lhsName.count != rhsName.count {
             return lhsName.count < rhsName.count

@@ -5,14 +5,6 @@ final class DateFormatterService: DateFormatterProtocol {
     // MARK: - Classes:
     private let dateFormatter = DateFormatter()
     
-    init() {
-        print("DATE INIT")
-    }
-    
-    deinit {
-        print("DEINIT")
-    }
-    
     // MARK: - Public Methods:
     func getTimeValue(from unixValue: String, isOnlyHours: Bool) -> String {
         guard let unixValue = Double(unixValue) else { return "" }

@@ -16,9 +16,8 @@ class TaskObject: Object {
 
 // MARK: - Transfering Model:
 extension TaskObject {
-    convenience init(from task: Task) {
+    convenience init(from task: Task, with dateFormatter: DateFormatterProtocol) {
         self.init()
-        let dateFormatter = DateFormatterService()
         let encoder = JSONEncoder()
         let data = try? encoder.encode(task)
         let date = dateFormatter.getDateValue(from: task.startDate)

@@ -4,7 +4,6 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
     
     // MARK: - Dependencies:
     private let dataProvider: DataProviderProtocol
-    private var dateFormatterService: DateFormatterService?
     
     // MARK: - Constants and Variables:
     private var name: String? {
@@ -52,13 +51,10 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
     }
     
     func addNewTask() {
-        dateFormatterService = DateFormatterService()
-        
-        guard let dateFormatterService,
-              let name = name,
+        guard let name = name,
               let description = description else { return }
-         
-        let datesUnixString = dateFormatterService.getUnixValueString(from: date ?? Date(), and: time ?? Date())
+
+        let datesUnixString = DateFormatterService().getUnixValueString(from: date ?? Date(), and: time ?? Date())
         dataProvider.addNew(task: Task(id: UUID(),
                                        startDate: datesUnixString,
                                        calendarDate: nil,
