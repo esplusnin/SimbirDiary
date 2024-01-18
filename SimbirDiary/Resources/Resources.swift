@@ -1,6 +1,10 @@
 import UIKit
 
 enum Resources {
+    enum UserDefaults {
+        static let isFirstEntry = "isFirstEntry"
+    }
+    
     enum Symbols {
         static let plus = "+"
         static let active = "✅"

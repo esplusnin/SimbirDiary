@@ -18,6 +18,7 @@
 		7E4FDA9B2B579A2F00582FA0 /* ToDoListStumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */; };
 		7E4FDA9D2B57C28900582FA0 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9C2B57C28900582FA0 /* UIFont + Extension.swift */; };
 		7E4FDA9F2B57CBD900582FA0 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9E2B57CBD900582FA0 /* UIColor + Extension.swift */; };
+		7E5DCA602B597FD9007F996B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA5F2B597FD9007F996B /* UserDefaultsService.swift */; };
 		7E83352B2B4D1F4B008E4C44 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352A2B4D1F4B008E4C44 /* Task.swift */; };
 		7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */; };
 		7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */; };
@@ -69,6 +70,7 @@
 		7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListStumbView.swift; sourceTree = "<group>"; };
 		7E4FDA9C2B57C28900582FA0 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		7E4FDA9E2B57CBD900582FA0 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		7E5DCA5F2B597FD9007F996B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		7E83352A2B4D1F4B008E4C44 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModel.swift; sourceTree = "<group>"; };
 		7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7E5DCA5E2B597FA5007F996B /* UserDefaultsService */ = {
+			isa = PBXGroup;
+			children = (
+				7E5DCA5F2B597FD9007F996B /* UserDefaultsService.swift */,
+			);
+			path = UserDefaultsService;
+			sourceTree = "<group>";
+		};
 		7E8335292B4D1F40008E4C44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +242,7 @@
 			children = (
 				7ED9A6F62B4D5B7B009D47CD /* DatabaseManager */,
 				7E8335432B4D4062008E4C44 /* DataProvider */,
+				7E5DCA5E2B597FA5007F996B /* UserDefaultsService */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -692,6 +703,7 @@
 				7EB77D602B512C4F001B0F2D /* CoordinatorProtocol.swift in Sources */,
 				7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */,
 				7E8335422B4D4045008E4C44 /* DataProviderProtocol.swift in Sources */,
+				7E5DCA602B597FD9007F996B /* UserDefaultsService.swift in Sources */,
 				7E4FDA9D2B57C28900582FA0 /* UIFont + Extension.swift in Sources */,
 				7EBC022F2B4EBE59004DCBE1 /* NewTaskTableViewDateCell.swift in Sources */,
 				7EBC02192B4E5DD7004DCBE1 /* DateFormatterService.swift in Sources */,
