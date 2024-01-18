@@ -49,7 +49,6 @@ final class CustomTaskNavigationView: UIStackView {
     // MARK: - Public Methods:
     func controlDoneButtonState(isAvailable: Bool) {
         actionButton.isEnabled = isAvailable
-        actionButton.titleLabel?.textColor = isAvailable ? .regularBlue : .regularBackgroundGray
     }
     
     // MARK: - Private Methods:

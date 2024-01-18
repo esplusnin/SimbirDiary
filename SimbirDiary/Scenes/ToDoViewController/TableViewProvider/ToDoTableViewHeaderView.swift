@@ -41,7 +41,7 @@ final class ToDoTableViewHeaderView: UITableViewHeaderFooterView {
 extension ToDoTableViewHeaderView {
     private func setupViews() {
         contentView.layer.cornerRadius = LocalUIConstants.cornerRadius
-        contentView.backgroundColor = .regularBackgroundGray
+        contentView.backgroundColor = .regularBackgroundWhite
         
         [headerNameLabel, tasksAmountLabel].forEach(addNewSubview)
     }

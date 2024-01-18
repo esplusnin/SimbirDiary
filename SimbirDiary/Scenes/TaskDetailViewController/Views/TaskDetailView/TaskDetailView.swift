@@ -80,7 +80,7 @@ final class TaskDetailView: UIView {
 // MARK: - Setup Views:
 private extension TaskDetailView {
     func setupViews() {
-        backgroundColor = .regularBackgroundGray
+        backgroundColor = .regularBackgroundWhite
         layer.cornerRadius = UIConstants.baseCornerRadius
         
         addNewSubview(mainStackView)

@@ -58,7 +58,7 @@ final class NewTaskTableViewDateCell: UITableViewCell {
 // MARK: - Setup Views:
 private extension NewTaskTableViewDateCell {
     func setupViews() {
-        backgroundColor = .regularBackgroundGray
+        backgroundColor = .regularBackgroundWhite
 
         [titleLabeL, datePicker].forEach(contentView.addNewSubview)
     }

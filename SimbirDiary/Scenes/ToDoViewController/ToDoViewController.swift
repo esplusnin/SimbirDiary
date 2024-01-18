@@ -89,7 +89,7 @@ extension ToDoViewController: CustomToDoListNavigationBarViewDelegate {
 // MARK: - Setup Views:
 private extension ToDoViewController {
     func setupViews() {
-        view.backgroundColor = .regularWhite
+        view.backgroundColor = .regularBackgroundLightGray
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         customNavigationBarView.delegate = self

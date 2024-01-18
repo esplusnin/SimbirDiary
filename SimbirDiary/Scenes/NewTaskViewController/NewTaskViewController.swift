@@ -4,7 +4,7 @@ final class NewTaskViewController: UIViewController {
     
     // MARK: - Dependencies:
     weak var coordinator: AppCoordinator?
-
+    
     private let viewModel: NewTaskViewViewModelProtocol
     
     // MARK: - Classes:
@@ -56,10 +56,8 @@ final class NewTaskViewController: UIViewController {
     func bind() {
         viewModel.isReadyToAddNewTaskObservable.bind { [weak self] result in
             guard let self else { return }
-            if result == true {
-                DispatchQueue.main.async {
-                    self.customNewTaskNavigationView.controlDoneButtonState(isAvailable: true)
-                }
+            DispatchQueue.main.async {
+                self.customNewTaskNavigationView.controlDoneButtonState(isAvailable: result)
             }
         }
     }
@@ -112,7 +110,7 @@ private extension NewTaskViewController {
         customNewTaskInputInfoView.delegate = self
         tableViewDataProvider.cellDelegate = self
         
-        view.backgroundColor = .regularWhite
+        view.backgroundColor = .regularBackgroundLightGray
         [customNewTaskNavigationView, customNewTaskInputInfoView, newTaskTableView].forEach(view.addNewSubview)
     }
 }

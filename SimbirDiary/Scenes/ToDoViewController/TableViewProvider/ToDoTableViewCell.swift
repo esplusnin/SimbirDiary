@@ -27,7 +27,7 @@ final class ToDoTableViewCell: UITableViewCell {
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = UIConstants.baseCornerRadius
-        view.backgroundColor = .regularBackgroundGray
+        view.backgroundColor = .regularGray
         return view
     }()
     
@@ -52,6 +52,7 @@ final class ToDoTableViewCell: UITableViewCell {
 extension ToDoTableViewCell {
     private func setupViews() {
         selectionStyle = .none
+        backgroundColor = .clear
         [nameLabel, separatorView, timeValueLabel].forEach(contentView.addNewSubview)
     }
 }

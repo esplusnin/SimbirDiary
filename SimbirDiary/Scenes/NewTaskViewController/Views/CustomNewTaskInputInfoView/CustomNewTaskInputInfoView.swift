@@ -19,11 +19,11 @@ final class CustomNewTaskInputInfoView: UIView {
     private lazy var enterNameTextView: UITextView = {
         let textView = UITextView()
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
-        textView.backgroundColor = .regularBackgroundLightGray
         textView.delegate = self
+        textView.backgroundColor = .regularBackgroundGray
         textView.font = .regularMediumFont
         textView.text = L10n.NewTask.name
-        textView.textColor = .regularBackgroundLightGray
+        textView.textColor = .regularGray
         return textView
     }()
     
@@ -37,11 +37,11 @@ final class CustomNewTaskInputInfoView: UIView {
     private lazy var enterDescriptionTextView: UITextView = {
         let textView = UITextView()
         textView.layer.cornerRadius = UIConstants.baseCornerRadius
-        textView.backgroundColor = .regularBackgroundLightGray
+        textView.backgroundColor = .regularBackgroundGray
         textView.delegate = self
         textView.font = .regularMediumFont
         textView.text = L10n.NewTask.description
-        textView.textColor = .regularBackgroundLightGray
+        textView.textColor = .regularGray
         return textView
     }()
     
@@ -99,7 +99,7 @@ extension CustomNewTaskInputInfoView: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if !textView.hasText {
-            textView.textColor = .regularBackgroundLightGray
+            textView.textColor = .regularGray
             textView.text = textView == enterNameTextView ? L10n.NewTask.name : L10n.NewTask.description
         }
     }
@@ -108,7 +108,7 @@ extension CustomNewTaskInputInfoView: UITextViewDelegate {
 // MARK: - Setup Views:
 private extension CustomNewTaskInputInfoView {
     func setupViews() {
-        backgroundColor = .regularBackgroundLightGray
+        backgroundColor = .regularBackgroundWhite
         layer.cornerRadius = UIConstants.baseCornerRadius
 
         [enterNameTextView, separatorView, enterDescriptionTextView].forEach(addNewSubview)

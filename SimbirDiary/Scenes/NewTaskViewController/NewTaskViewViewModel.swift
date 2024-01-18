@@ -64,8 +64,8 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
     
     // MARK: - Private Methods:
     private func checkIsReadyToAddNewTask() {
-        if name != nil,
-           description != nil {
+        if name != nil &&  name != "",
+           description != nil && description != "" {
             isReadyToAddNewTask = true
         } else {
             isReadyToAddNewTask = false

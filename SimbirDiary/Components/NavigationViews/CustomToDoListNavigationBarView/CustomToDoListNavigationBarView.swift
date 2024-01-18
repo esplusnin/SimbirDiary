@@ -52,7 +52,7 @@ final class CustomToDoListNavigationBarView: UIView {
     private func setupShadow() {
         layer.shadowOpacity = LocalUIConstants.navBarShadowOpacity
         layer.shadowRadius = LocalUIConstants.navBarShadowRadius
-        layer.shadowColor = UIColor.regularBackgroundGray?.cgColor
+        layer.shadowColor = UIColor.regularGray?.cgColor
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
     
@@ -70,7 +70,7 @@ final class CustomToDoListNavigationBarView: UIView {
 // MARK: - Setup Views:
 private extension CustomToDoListNavigationBarView {
      func setupViews() {
-        backgroundColor = .regularWhite
+        backgroundColor = .regularBackgroundLightGray
         [datePicker, plusButton].forEach(addNewSubview)
     }
 }
