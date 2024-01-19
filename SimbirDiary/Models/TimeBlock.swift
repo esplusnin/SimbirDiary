@@ -9,7 +9,6 @@ struct TimeBlock: Comparable {
 extension TimeBlock {
     static func < (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
         let shortNameDigits = 4
-        
         let lhsName = lhs.name
         let rhsName = rhs.name
         
@@ -22,15 +21,17 @@ extension TimeBlock {
                   let rhsFirstCharacter = rhsName.first,
                   let lhsFirstDigit = Int(String(lhsFirstCharacter)),
                   let rhsFirstDigit = Int(String(rhsFirstCharacter)) else { return false }
-
+            
             return lhsFirstDigit < rhsFirstDigit
         }
         
-        guard let lhsSecondCharacter = lhsName.dropFirst().first,
+        guard let lhsFirstCharacter = lhsName.first,
+              let lhsSecondCHaracter = lhsName.dropFirst().first,
+              let rhsFirstCharacter = rhsName.first,
               let rhsSecondCharacter = rhsName.dropFirst().first,
-              let lhsSecondDigit = Int(String(lhsSecondCharacter)),
-              let rhsSecondDigit = Int(String(rhsSecondCharacter)) else { return false }
+              let lhsSum = Int(String(lhsFirstCharacter) + String(lhsSecondCHaracter)),
+              let rhsSum = Int(String(rhsFirstCharacter) + String(rhsSecondCharacter))  else { return false }
         
-        return lhsSecondDigit < rhsSecondDigit
+        return lhsSum < rhsSum
     }
 }
