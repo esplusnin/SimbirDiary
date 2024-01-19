@@ -130,5 +130,38 @@ final class SimbirDiaryTests: XCTestCase {
     // MARK: - TaskDetailViewController:
     func testTaskDetailViewControllerView() {
         // Given:
+        let viewModel = TaskDetailViewViewModelStumb(dataProvider: dataProvider, task: Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: ""))
+        let viewController = TaskDetailViewController(coordinator: coordinator, viewModel: viewModel)
+        
+        // When:
+        _ = viewController.view
+        
+        // Then:
+        XCTAssertTrue(viewController.isViewLoaded)
+    }
+    
+    func testTaskTaskDetailViewControllerFuncPerformTask() {
+        // Given:
+        let viewModel = TaskDetailViewViewModelStumb(dataProvider: dataProvider, task: Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: ""))
+        let viewController = TaskDetailViewController(coordinator: coordinator, viewModel: viewModel)
+        
+        // When:
+        viewController.performTask(isDelete: true)
+        
+        // Then:
+        XCTAssertTrue(viewModel.isTaskDeleted)
+    }
+    
+    // MARK: - TaskDetailViewViewModel:
+    func testTaskDetailViewViewModelFuncDelete() {
+        // Given:
+        let viewModel = TaskDetailViewViewModel(dataProvider: dataProvider, task: Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: ""))
+        
+        // When:
+        dataProvider.addNew(task: Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: ""))
+        viewModel.deleteTask()
+        
+        // Then:
+        XCTAssertTrue(dataProvider.isTaskDeleted)
     }
 }

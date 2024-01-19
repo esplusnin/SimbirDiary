@@ -42,6 +42,6 @@ final class DataProviderStumb: DataProviderProtocol {
     }
     
     func delete(_ task: Task) {
-        
+        isTaskDeleted.toggle()
     }
 }

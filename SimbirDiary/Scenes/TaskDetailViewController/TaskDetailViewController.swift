@@ -3,7 +3,7 @@ import UIKit
 final class TaskDetailViewController: UIViewController {
     
     // MARK: - Dependencies:
-    weak var coordinator: AppCoordinator?
+    weak var coordinator: CoordinatorProtocol?
     
     private let viewModel: TaskDetailViewViewModelProtocol
     
@@ -21,7 +21,7 @@ final class TaskDetailViewController: UIViewController {
     private lazy var taskDetailView = TaskDetailView()
     
     // MARK: - Lifecycle:
-    init(coordinator: AppCoordinator, viewModel: TaskDetailViewViewModelProtocol) {
+    init(coordinator: CoordinatorProtocol, viewModel: TaskDetailViewViewModelProtocol) {
         self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
