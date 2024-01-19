@@ -3,7 +3,7 @@ import UIKit
 final class NewTaskViewController: UIViewController {
     
     // MARK: - Dependencies:
-    weak var coordinator: AppCoordinator?
+    weak var coordinator: CoordinatorProtocol?
     
     private let viewModel: NewTaskViewViewModelProtocol
     
@@ -34,7 +34,7 @@ final class NewTaskViewController: UIViewController {
     private lazy var customNewTaskInputInfoView = CustomNewTaskInputInfoView()
     
     // MARK: - Lifecycle:
-    init(coordinator: AppCoordinator, viewModel: NewTaskViewViewModelProtocol) {
+    init(coordinator: CoordinatorProtocol, viewModel: NewTaskViewViewModelProtocol) {
         self.coordinator = coordinator
         self.viewModel = viewModel
         self.tableViewDataProvider = NewTaskTableViewDataProvider()

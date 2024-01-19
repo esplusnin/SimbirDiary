@@ -5,11 +5,12 @@ final class DataProviderStumb: DataProviderProtocol {
     
     // MARK: - Constants and Variables:
     var isTaskDeleted = false
+    var addedTask: Task?
     
     private var testTask: Task
     
     // MARK: - Observable Values:
-    var updatedTaskObservable: Observable<SimbirDiary.Task?> {
+    var updatedTaskObservable: Observable<Task?> {
         $updatedTask
     }
     
@@ -28,19 +29,19 @@ final class DataProviderStumb: DataProviderProtocol {
     }
     
     // MARK: - Public Methods:
-    func addNew(task: SimbirDiary.Task) {
-        
+    func addNew(task: Task) {
+        addedTask = task
     }
     
-    func fetchData(with date: Date, completion: @escaping (Result<[SimbirDiary.Task], Error>) -> Void) {
+    func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
         completion(.success([testTask]))
     }
     
-    func setupUpdated(_ task: SimbirDiary.Task) {
+    func setupUpdated(_ task: Task) {
         updatedTask = testTask
     }
     
-    func delete(_ task: SimbirDiary.Task) {
+    func delete(_ task: Task) {
         
     }
 }

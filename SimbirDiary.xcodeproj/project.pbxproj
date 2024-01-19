@@ -16,6 +16,7 @@
 		7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CED12B4C44BF00700075 /* UIConstants.swift */; };
 		7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */; };
 		7E3C39772B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C39762B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift */; };
+		7E3C39792B5ABDA600A263E3 /* TaskDetailViewViewModelStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C39782B5ABDA600A263E3 /* TaskDetailViewViewModelStumb.swift */; };
 		7E4FDA9B2B579A2F00582FA0 /* ToDoListStumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */; };
 		7E4FDA9D2B57C28900582FA0 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9C2B57C28900582FA0 /* UIFont + Extension.swift */; };
 		7E4FDA9F2B57CBD900582FA0 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9E2B57CBD900582FA0 /* UIColor + Extension.swift */; };
@@ -84,6 +85,7 @@
 		7E37CED12B4C44BF00700075 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewHeaderView.swift; sourceTree = "<group>"; };
 		7E3C39762B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewViewModelStumb.swift; sourceTree = "<group>"; };
+		7E3C39782B5ABDA600A263E3 /* TaskDetailViewViewModelStumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewViewModelStumb.swift; sourceTree = "<group>"; };
 		7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListStumbView.swift; sourceTree = "<group>"; };
 		7E4FDA9C2B57C28900582FA0 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		7E4FDA9E2B57CBD900582FA0 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		7E5DCAAA2B5A803C007F996B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				7E3C39782B5ABDA600A263E3 /* TaskDetailViewViewModelStumb.swift */,
 				7E5DCAAB2B5A803C007F996B /* ToDoViewViewModelStumb.swift */,
 				7E3C39762B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift */,
 			);
@@ -810,6 +813,7 @@
 				7E5DCAB22B5A803C007F996B /* DatabaseManagerStumb.swift in Sources */,
 				7E5DCAB12B5A803C007F996B /* ToDoViewViewModelStumb.swift in Sources */,
 				7E3C39772B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift in Sources */,
+				7E3C39792B5ABDA600A263E3 /* TaskDetailViewViewModelStumb.swift in Sources */,
 				7E5DCAA02B5A8017007F996B /* SimbirDiaryTests.swift in Sources */,
 				7E5DCAB02B5A803C007F996B /* MainCoordinatorStumb.swift in Sources */,
 			);

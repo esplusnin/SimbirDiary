@@ -83,4 +83,52 @@ final class SimbirDiaryTests: XCTestCase {
         // Then:
         XCTAssertTrue(viewController.isViewLoaded)
     }
+    
+    func testNewTaskViewControllerFuncPerformTask() {
+        // Given:
+        let viewModel = NewTaskViewViewModelStumb(dataProvider: dataProvider)
+        let viewController = NewTaskViewController(coordinator: coordinator, viewModel: viewModel)
+        
+        // When:
+        viewController.performTask(isDelete: false)
+        
+        // Then:
+        XCTAssertTrue(viewModel.isNewTaskAdded)
+    }
+    
+    // MARK: - NewTaskViewViewModel:
+    func testNewTaskViewViewModelisReadyToAddNewTask() {
+        // Given:
+        let viewModel = NewTaskViewViewModel(dataProvider: dataProvider)
+        let viewController = NewTaskViewController(coordinator: coordinator, viewModel: viewModel)
+        
+        // When:
+        viewModel.setupTaskDate(from: .date, with: Date())
+        viewModel.setupTaskDate(from: .time, with: Date())
+        viewModel.setupTaskInfo(isName: true, value: "testName")
+        viewModel.setupTaskInfo(isName: false, value: "testDescription")
+        
+        // Then:
+        XCTAssertTrue(viewModel.isReadyToAddNewTaskObservable.wrappedValue)
+    }
+    
+    func testNewAskViewViewModelFuncAddNewTask() {
+        // Given:
+        let viewModel = NewTaskViewViewModel(dataProvider: dataProvider)
+
+        // When:
+        viewModel.setupTaskDate(from: .date, with: Date())
+        viewModel.setupTaskDate(from: .time, with: Date())
+        viewModel.setupTaskInfo(isName: true, value: "testName")
+        viewModel.setupTaskInfo(isName: false, value: "testDescription")
+        viewModel.addNewTask()
+        
+        // Then:
+        XCTAssertNotNil(dataProvider.addedTask)
+    }
+    
+    // MARK: - TaskDetailViewController:
+    func testTaskDetailViewControllerView() {
+        // Given:
+    }
 }
