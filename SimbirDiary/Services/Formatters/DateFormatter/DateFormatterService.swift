@@ -42,6 +42,12 @@ final class DateFormatterService: DateFormatterProtocol {
         return currentDateString == taskDateString
     }
     
+    func getDemonstrationUnixValue(with hour: Double) -> String {
+        let dateUnixValue = convertDateToUnixValue(from: Date())
+        let hoursUnixValue = 60 * 60 * hour
+        return String(dateUnixValue + hoursUnixValue)
+    }
+    
     // MARK: - Private Methods:
     private func convertDateToUnixValue(from date: Date) -> Double {
         let hoursValue = convertTimeToUnixValue(from: date)

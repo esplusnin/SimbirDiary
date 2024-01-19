@@ -2,7 +2,7 @@ import UIKit
 
 enum Resources {
     enum UserDefaults {
-        static let isFirstEntry = "isFirstEntry"
+        static let wasEnteredBefore = "isFirstEntry"
     }
     
     enum Symbols {

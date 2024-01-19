@@ -6,17 +6,17 @@ final class UserDefaultsService {
     let userDefaults = UserDefaults.standard
     
     // MARK: - Constants and Variables:
-    private(set) var isFirstEntry: Bool {
+    private(set) var wasEnteredBefore: Bool {
         get {
-            userDefaults.bool(forKey: Resources.UserDefaults.isFirstEntry)
+            userDefaults.bool(forKey: Resources.UserDefaults.wasEnteredBefore)
         }
         set {
-            userDefaults.setValue(newValue, forKey: Resources.UserDefaults.isFirstEntry)
+            userDefaults.setValue(newValue, forKey: Resources.UserDefaults.wasEnteredBefore)
         }
     }
     
     // MARK: - Public Methods:
     func entry() {
-        isFirstEntry.toggle()
+        wasEnteredBefore.toggle()
     }
 }

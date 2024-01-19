@@ -6,7 +6,7 @@ final class RealmManager: DatabaseManagerProtocol {
     // MARK: - Dependencies:
     weak var dataProvider: DataProviderProtocol?
     
-    private var dateFormatter: DateFormatterProtocol?
+    private var dateFormatterService: DateFormatterProtocol?
     
     // MARK: - Constants and Variables:
     private let realm: Realm?
@@ -35,33 +35,33 @@ final class RealmManager: DatabaseManagerProtocol {
     
     // MARK: - Public Methods:
     func saveData(from task: Task) throws {
-        dateFormatter = DateFormatterService()
+        dateFormatterService = DateFormatterService()
         
         guard let realm,
-              let dateFormatter else { return }
+              let dateFormatterService else { return }
         
         realm.writeAsync {
-            let realmTask = TaskObject(from: task, with: dateFormatter)
+            let realmTask = TaskObject(from: task, with: dateFormatterService)
             realm.add(realmTask)
         }
     }
     
     func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
-        dateFormatter = DateFormatterService()
+        dateFormatterService = DateFormatterService()
         
-        let realmDate = dateFormatter?.getRealmDateFormat(from: date) ?? ""
+        let realmDate = dateFormatterService?.getRealmDateFormat(from: date) ?? ""
         var tasks = [Task]()
 
         if let objects = self.fetchRealmData(with: realmDate) {
             objects.forEach {
-                let task = Task(object: $0, with: self.dateFormatter ?? DateFormatterService())
+                let task = Task(object: $0, with: self.dateFormatterService ?? DateFormatterService())
                 tasks.append(task)
             }
             
             completion(.success(tasks))
         }
         
-        dateFormatter = nil
+        dateFormatterService = nil
     }
     
     func delete(_ task: Task) {
@@ -117,10 +117,58 @@ final class RealmManager: DatabaseManagerProtocol {
     }
     
     private func sentUpdation(from object: TaskObject) {
-        guard let dateFormatter else { return }
-        let task = Task(object: object, with: dateFormatter)
+        guard let dateFormatterService else { return }
+        let task = Task(object: object, with: dateFormatterService)
         
         dataProvider?.setupUpdated(task)
-        self.dateFormatter = nil
+        self.dateFormatterService = nil
+    }
+}
+
+// MARK: - Demonstration setup:
+extension RealmManager {
+    func setupDemonstrationTask() {
+        guard let realm else { return }
+        dateFormatterService = DateFormatterService()
+
+        func addStart(_ tasks: [TaskObject]) {
+            try? realm.write {
+                realm.add(tasks)
+            }
+        }
+        
+        guard let dateFormatterService else { return }
+        var realmTasksArray: [TaskObject] = []
+        
+        let firstTaskStartDate = dateFormatterService.getDemonstrationUnixValue(with: 9)
+        let firstTask = Task(id: UUID(), startDate: firstTaskStartDate, calendarDate: nil, name: L10n.Demonstration.FirstTask.title,
+                             description: L10n.Demonstration.FirstTask.message)
+        
+        let secondTaskStartDate = dateFormatterService.getDemonstrationUnixValue(with: 9)
+        let secondTask = Task(id: UUID(), startDate: secondTaskStartDate, calendarDate: nil, name: L10n.Demonstration.SecondTask.title,
+                              description: L10n.Demonstration.SecondTask.message)
+        
+        let thirdTaskStartDate = dateFormatterService.getDemonstrationUnixValue(with: 11)
+        let thirdTask = Task(id: UUID(), startDate: thirdTaskStartDate, calendarDate: nil, name: L10n.Demonstration.ThirdTask.title,
+                             description: L10n.Demonstration.ThirdTask.message)
+        
+        let fourthTaskStartDate = dateFormatterService.getDemonstrationUnixValue(with: 15)
+        let fourthTask = Task(id: UUID(), startDate: fourthTaskStartDate, calendarDate: nil, name: L10n.Demonstration.FourthTask.title,
+                              description: L10n.Demonstration.FourthTask.message)
+        
+        let fifthTaskStartDate = dateFormatterService.getDemonstrationUnixValue(with: 19)
+        let fifthTask = Task(id: UUID(), startDate: fifthTaskStartDate, calendarDate: nil, name: L10n.Demonstration.FifthTask.title,
+                             description: L10n.Demonstration.FifthTask.message)
+        
+        let sixTaskStartDate = dateFormatterService.getDemonstrationUnixValue(with: 21)
+        let sixTask = Task(id: UUID(), startDate: sixTaskStartDate, calendarDate: nil, name: L10n.Demonstration.SixTask.title,
+                           description: L10n.Demonstration.SixTask.message)
+        
+        [firstTask, secondTask, thirdTask, fourthTask, fifthTask, sixTask].forEach {
+            realmTasksArray.append(TaskObject(from: $0, with: dateFormatterService))
+        }
+        
+        addStart(realmTasksArray)
+        self.dateFormatterService = nil
     }
 }

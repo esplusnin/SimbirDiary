@@ -11,6 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = UINavigationController()
         let databaseManager = RealmManager()
+        startSetting(databaseManager)
+        
         let dataProvider = DataProvider(databaseManager: databaseManager)
         coordinator = AppCoordinator(databaseManager: databaseManager,
                                      dataProvider: dataProvider,
@@ -21,5 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    // MARK: - Starts database settings:
+    func startSetting(_ database: DatabaseManagerProtocol) {
+        let userDefaultsService = UserDefaultsService()
+        if !userDefaultsService.wasEnteredBefore {
+            database.setupDemonstrationTask()
+            userDefaultsService.entry()
+        }
     }
 }

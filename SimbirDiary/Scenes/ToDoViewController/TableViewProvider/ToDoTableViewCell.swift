@@ -68,9 +68,12 @@ private extension ToDoTableViewCell {
     func setupNameLabelConstraints() {
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset),
-            nameLabel.trailingAnchor.constraint(equalTo: timeValueLabel.leadingAnchor, constant: -UIConstants.baseInset)
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.baseInset)
         ])
+        
+        let trailingNameLabelConstraints = nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: timeValueLabel.leadingAnchor, constant: -UIConstants.baseInset)
+        trailingNameLabelConstraints.priority = .defaultLow
+        trailingNameLabelConstraints.isActive = true
     }
     
     func setupSeparatorViewConstraints() {
@@ -83,9 +86,10 @@ private extension ToDoTableViewCell {
     }
     
     func setupTimeValueLabelConstraints() {
-        NSLayoutConstraint.activate([
-            timeValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            timeValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
-        ])
+        timeValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+        let trailingConstraints = timeValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
+        trailingConstraints.priority = .defaultHigh
+        trailingConstraints.isActive = true
     }
 }
