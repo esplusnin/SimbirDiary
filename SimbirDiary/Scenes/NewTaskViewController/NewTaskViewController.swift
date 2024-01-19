@@ -52,8 +52,8 @@ final class NewTaskViewController: UIViewController {
         bind()
     }
     
-    // MARK: - Public Methods:
-    func bind() {
+    // MARK: - Private Methods:
+    private func bind() {
         viewModel.isReadyToAddNewTaskObservable.bind { [weak self] result in
             guard let self else { return }
             DispatchQueue.main.async {
@@ -151,9 +151,4 @@ private extension NewTaskViewController {
             newTaskTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.baseInset)
         ])
     }
-}
-
-// MARK: - Setup Targets:
-private extension NewTaskViewController {
-    
 }

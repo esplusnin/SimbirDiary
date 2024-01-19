@@ -5,6 +5,10 @@ final class DateFormatterService: DateFormatterProtocol {
     // MARK: - Classes:
     private let dateFormatter = DateFormatter()
     
+    // MARK: - Constants and Variables:
+    private let minutesPerHour: Double = 60
+    private let secondsPerMinute: Double = 60
+    
     // MARK: - Public Methods:
     func getTimeValue(from unixValue: String, isOnlyHours: Bool) -> String {
         guard let unixValue = Double(unixValue) else { return "" }
@@ -44,7 +48,7 @@ final class DateFormatterService: DateFormatterProtocol {
     
     func getDemonstrationUnixValue(with hour: Double) -> String {
         let dateUnixValue = convertDateToUnixValue(from: Date())
-        let hoursUnixValue = 60 * 60 * hour
+        let hoursUnixValue = minutesPerHour * secondsPerMinute * hour
         return String(dateUnixValue + hoursUnixValue)
     }
     
@@ -56,12 +60,9 @@ final class DateFormatterService: DateFormatterProtocol {
     }
     
     private func convertTimeToUnixValue(from date: Date) -> Double {
-        let minutesPerHour = 60
-        let secondsPerMinute = 60
-        
         let hours = Calendar.current.component(.hour, from: date)
         let minutes = Calendar.current.component(.minute, from: date)
-        let totalUnixValue = Double(((hours * minutesPerHour) * secondsPerMinute) + (minutes * secondsPerMinute))
+        let totalUnixValue = ((Double(hours) * minutesPerHour) * secondsPerMinute) + (Double(minutes) * secondsPerMinute)
         return totalUnixValue
     }
 }

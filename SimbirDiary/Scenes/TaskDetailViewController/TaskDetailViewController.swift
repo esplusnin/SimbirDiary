@@ -89,7 +89,7 @@ private extension TaskDetailViewController {
     }
     
     func setupTaskDetailViewConstraints() {
-        let anchor = taskDetailView.bottomAnchor.constraint(equalTo: screenScrollView.bottomAnchor, constant: -20)
+        let anchor = taskDetailView.bottomAnchor.constraint(equalTo: screenScrollView.bottomAnchor, constant: -UIConstants.baseInset)
         anchor.priority = .defaultLow
         anchor.isActive = true
          

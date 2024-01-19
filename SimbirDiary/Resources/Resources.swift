@@ -7,7 +7,6 @@ enum Resources {
     
     enum Symbols {
         static let plus = "+"
-        static let active = "✅"
     }
     
     enum Identifiers {

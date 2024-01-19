@@ -47,6 +47,11 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     }
     
     // MARK: - Public Methods:
+    func setupDate(from date: Date) {
+        currentDate = date
+    }
+    
+    // MARK: - Private Methods:
     func bind() {
         dataProvider.updatedTaskObservable.bind { [weak self] task in
             guard let self,
@@ -55,11 +60,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         }
     }
     
-    func setupDate(from date: Date) {
-        currentDate = date
-    }
-    
-    func fetchData() {
+    private func fetchData() {
         guard let currentDate else { return }
         
         dataProvider.fetchData(with: currentDate) { [weak self] result in
@@ -73,7 +74,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         }
     }
     
-    // MARK: - Private Methods:
     private func distribute(_ tasks: [Task]) {
         var newTaskList = tasksList
         dateFormatterService = DateFormatterService()
@@ -88,9 +88,9 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         }
         
         newTaskList.sort()
-        
-        dateFormatterService = nil
         tasksList = newTaskList
+
+        dateFormatterService = nil
         currentDateDidChange = false
     }
     

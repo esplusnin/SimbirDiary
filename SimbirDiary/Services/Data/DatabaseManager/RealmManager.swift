@@ -49,19 +49,20 @@ final class RealmManager: DatabaseManagerProtocol {
     func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
         dateFormatterService = DateFormatterService()
         
-        let realmDate = dateFormatterService?.getRealmDateFormat(from: date) ?? ""
+        guard let dateFormatterService else { return }
+        let realmDate = dateFormatterService.getRealmDateFormat(from: date)
         var tasks = [Task]()
 
         if let objects = self.fetchRealmData(with: realmDate) {
             objects.forEach {
-                let task = Task(object: $0, with: self.dateFormatterService ?? DateFormatterService())
+                let task = Task(object: $0, with: dateFormatterService)
                 tasks.append(task)
             }
             
             completion(.success(tasks))
         }
         
-        dateFormatterService = nil
+        self.dateFormatterService = nil
     }
     
     func delete(_ task: Task) {
@@ -87,6 +88,7 @@ final class RealmManager: DatabaseManagerProtocol {
     private func addObserver() {
         notificationToken = tasks?.observe { [weak self] changes in
             guard let self else { return }
+            
             switch changes {
             case .update(let tasks, let deletions, let insertions, _):
                 if !deletions.isEmpty {

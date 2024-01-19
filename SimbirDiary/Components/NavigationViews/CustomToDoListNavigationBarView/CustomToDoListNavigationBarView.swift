@@ -7,10 +7,8 @@ final class CustomToDoListNavigationBarView: UIView {
     
     // MARK: - Constants and Variables:
     private enum LocalUIConstants {
-        static let buttonSide: CGFloat = 40
         static let pickerHeigth: CGFloat = 40
         static let pickerWidth: CGFloat = 100
-        static let separatorWidth: CGFloat = 2
         
         static let plusButtonFont: CGFloat = 40
         

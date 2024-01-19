@@ -11,6 +11,7 @@ final class NewTaskTableViewDataProvider: NSObject {
     
 }
 
+// MARK: - UITableViewDataSource:
 extension NewTaskTableViewDataProvider: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         countOfCells
@@ -32,4 +33,5 @@ extension NewTaskTableViewDataProvider: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate:
 extension NewTaskTableViewDataProvider: UITableViewDelegate {}

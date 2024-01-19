@@ -126,6 +126,7 @@ private extension ToDoViewController {
     
     func setupToDoListStumbView() {
         guard let toDoListStumbView else { return }
+        
         toDoTableView.isHidden = true
         view.addNewSubview(toDoListStumbView)
         
