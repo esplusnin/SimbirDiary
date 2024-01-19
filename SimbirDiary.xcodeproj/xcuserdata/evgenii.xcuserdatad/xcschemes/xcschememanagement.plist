@@ -7,11 +7,21 @@
 		<key>SimbirDiary.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>0</integer>
+		</dict>
+		<key>SimbirDiaryUnitTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>7E5DCA7F2B5A76FB007F996B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7EA2038E2B47FE3200A9F2A3</key>
 		<dict>
 			<key>primary</key>

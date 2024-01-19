@@ -3,7 +3,7 @@ import UIKit
 final class ToDoViewControllerTableViewProvider: NSObject {
     
     // MARK: - Dependencies:
-    weak var coordinator: AppCoordinator?
+    weak var coordinator: CoordinatorProtocol?
     weak var cellDelegate: ToDoViewController?
     
     private let viewModel: ToDoViewViewModelProtocol
@@ -16,7 +16,7 @@ final class ToDoViewControllerTableViewProvider: NSObject {
     }
     
     // MARK: - Lifecycle:
-    init(coordinator: AppCoordinator, viewModel: ToDoViewViewModelProtocol) {
+    init(coordinator: CoordinatorProtocol, viewModel: ToDoViewViewModelProtocol) {
         self.coordinator = coordinator
         self.viewModel = viewModel
     }
