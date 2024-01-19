@@ -6,6 +6,7 @@ final class SimbirDiaryTests: XCTestCase {
     // MARK: - Classes:
     let coordinator = MainCoordinatorStumb()
     let dataProvider = DataProviderStumb()
+    var dateFormatter: DateFormatterProtocol?
     
     // MARK: - ToDoViewController:
     func testToDoViewControllerView() {
@@ -164,4 +165,84 @@ final class SimbirDiaryTests: XCTestCase {
         // Then:
         XCTAssertTrue(dataProvider.isTaskDeleted)
     }
+    
+    // MARK: - DataProvider:
+    func testDataProviderFuncAddNew() {
+        // Given:
+        let databaseManager = DatabaseManagerStumb()
+        let dataProvider = DataProvider(databaseManager: databaseManager)
+        
+        // When:
+        dataProvider.addNew(task: Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: ""))
+        
+        // Then:
+        XCTAssertTrue(databaseManager.isTaskAdded)
+    }
+    
+    func testDataProviderFuncFetchData() {
+        // Given:
+        let databaseManager = DatabaseManagerStumb()
+        let dataProvider = DataProvider(databaseManager: databaseManager)
+        
+        // When:
+        var task: Task?
+        dataProvider.fetchData(with: Date()) { result in
+            switch result {
+            case .success(let tasks):
+                task = tasks.first
+            default:
+                break
+            }
+        }
+        
+        // Then:
+        XCTAssertNotNil(task)
+        
+    }
+    
+    func testDataProviderFuncSetupUpdated() {
+        // Given:
+        let databaseManager = DatabaseManagerStumb()
+        let dataProvider = DataProvider(databaseManager: databaseManager)
+        
+        // When:
+        databaseManager.setupDataProvider(dataProvider)
+       
+        // Then:
+        XCTAssertEqual(dataProvider.updatedTaskObservable.wrappedValue?.name, "testName")
+    }
+    
+    // MARK: - DataFormatters:
+    func testDataFormatterFuncGetFullTimeValue() {
+        // Given:
+        dateFormatter = DateFormatterService()
+        
+        // When:
+        let timeValue = dateFormatter?.getTimeValue(from: "1705662137", isOnlyHours: true)
+        
+        XCTAssertEqual(timeValue, "15")
+    }
+    
+    func testDataFormatterFuncGetHourValue() {
+        // Given:
+        dateFormatter = DateFormatterService()
+        
+        // When:
+        let timeValue = dateFormatter?.getTimeValue(from: "1705662137", isOnlyHours: false)
+        
+        // Then:
+        XCTAssertEqual(timeValue, "15:02")
+    }
+    
+    func testDataFormatterFuncGetDateValue() {
+        // Given:
+        dateFormatter = DateFormatterService()
+        
+        // When:
+        let dateString = dateFormatter?.getDateValue(from: "1705676537")
+        
+        // Then:
+        XCTAssertEqual(dateString, "2024-01-19")
+    }
+   
 }
