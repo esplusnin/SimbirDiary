@@ -86,7 +86,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
                 insertNew(task, to: &newTaskList)
             }
         }
-        
         newTaskList.sort()
         tasksList = newTaskList
 
@@ -99,13 +98,14 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         let dateFormatterService else { return }
         let fullHourCode = getFullHourCode(from: task)
         let isTheSameDate = dateFormatterService.isTheSamedDay(currentDate: currentDate, taskDate: task.startDate)
-        
+
         if isTheSameDate {
             if let index = list.firstIndex(where: { $0.name == fullHourCode }) {
                 var newTasks = list[index].tasks
                 newTasks.append(task)
                 newTasks.sort()
                 list[index].tasks = newTasks
+                
             } else {
                 guard var newTasks = baseTasksList.first(where: { $0.name == fullHourCode }) else { return }
                 newTasks.tasks.append(task)
@@ -127,6 +127,8 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Helpers:
     private func defineIndexPath(for task: Task, with code: String, from list: [TimeBlock]) -> IndexPath? {
+        print(tasksList[0].name, code)
+        print(task.id, tasksList[0].tasks.first?.id)
         guard let section = list.firstIndex(where: { $0.name == code }),
               let row = list[section].tasks.firstIndex(where: { $0.id == task.id })  else { return nil }
         return IndexPath(row: row, section: section)

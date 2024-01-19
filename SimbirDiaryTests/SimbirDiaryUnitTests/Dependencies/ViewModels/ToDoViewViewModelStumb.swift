@@ -9,6 +9,7 @@ final class ToDoViewViewModelStumb: ToDoViewViewModelProtocol {
     // MARK: - Constants and Variables:
     var currentDateDidChange = false
     
+    var currentDate: Date?
     private(set) var baseTasksList: [TimeBlock] = []
     
     // MARK: - Observable VAlues:
@@ -26,6 +27,14 @@ final class ToDoViewViewModelStumb: ToDoViewViewModelProtocol {
     
     // MARK: - Public Methods:
     func setupDate(from date: Date) {
-        
+        currentDate = Date()
+    }
+    
+    func setupNewElementInTaskList() {
+        tasksList.append(TimeBlock(name: "TestName", tasks: [Task(id: UUID(),
+                                                                  startDate: "testStartDate",
+                                                                  calendarDate: "testCalendarDate",
+                                                                  name: "testName",
+                                                                  description: "testDescription")]))
     }
 }

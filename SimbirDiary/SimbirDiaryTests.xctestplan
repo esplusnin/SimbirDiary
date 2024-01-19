@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "371BA0B2-8ACC-4129-8905-6D1820605321",
+      "id" : "5FBA61D9-5FB2-4725-BA08-D2C598024411",
       "name" : "Test Scheme Action",
       "options" : {
 
@@ -9,15 +9,15 @@
     }
   ],
   "defaultOptions" : {
-
+    "codeCoverage" : false
   },
   "testTargets" : [
     {
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:SimbirDiary.xcodeproj",
-        "identifier" : "7E5DCA7F2B5A76FB007F996B",
-        "name" : "SimbirDiaryUnitTests"
+        "identifier" : "7E5DCA9C2B5A8017007F996B",
+        "name" : "SimbirDiaryTests"
       }
     }
   ],

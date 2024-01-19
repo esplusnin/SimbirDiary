@@ -26,20 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:SimbirDiaryUnitTests"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
             skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E5DCA642B5A69E9007F996B"
+               BlueprintIdentifier = "7E5DCA9C2B5A8017007F996B"
                BuildableName = "SimbirDiaryTests.xctest"
                BlueprintName = "SimbirDiaryTests"
                ReferencedContainer = "container:SimbirDiary.xcodeproj">
@@ -53,6 +48,17 @@
                BlueprintIdentifier = "7E5DCA7F2B5A76FB007F996B"
                BuildableName = "SimbirDiaryUnitTests.xctest"
                BlueprintName = "SimbirDiaryUnitTests"
+               ReferencedContainer = "container:SimbirDiary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E5DCA9C2B5A8017007F996B"
+               BuildableName = "SimbirDiaryTests.xctest"
+               BlueprintName = "SimbirDiaryTests"
                ReferencedContainer = "container:SimbirDiary.xcodeproj">
             </BuildableReference>
          </TestableReference>

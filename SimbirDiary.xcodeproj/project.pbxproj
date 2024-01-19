@@ -15,16 +15,16 @@
 		7E37CED02B4C3E1B00700075 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CECF2B4C3E1B00700075 /* ToDoTableViewCell.swift */; };
 		7E37CED22B4C44BF00700075 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CED12B4C44BF00700075 /* UIConstants.swift */; };
 		7E37CED42B4C4DD600700075 /* ToDoTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */; };
+		7E3C39772B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C39762B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift */; };
 		7E4FDA9B2B579A2F00582FA0 /* ToDoListStumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */; };
 		7E4FDA9D2B57C28900582FA0 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9C2B57C28900582FA0 /* UIFont + Extension.swift */; };
 		7E4FDA9F2B57CBD900582FA0 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4FDA9E2B57CBD900582FA0 /* UIColor + Extension.swift */; };
 		7E5DCA602B597FD9007F996B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA5F2B597FD9007F996B /* UserDefaultsService.swift */; };
-		7E5DCA832B5A76FB007F996B /* SimbirDiaryUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA822B5A76FB007F996B /* SimbirDiaryUnitTests.swift */; };
-		7E5DCA912B5A772E007F996B /* MainCoordinatorStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA8B2B5A772E007F996B /* MainCoordinatorStumb.swift */; };
-		7E5DCA922B5A772E007F996B /* ToDoViewViewModelStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA8D2B5A772E007F996B /* ToDoViewViewModelStumb.swift */; };
-		7E5DCA932B5A772E007F996B /* DatabaseManagerStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA8F2B5A772E007F996B /* DatabaseManagerStumb.swift */; };
-		7E5DCA942B5A772E007F996B /* DataProviderStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA902B5A772E007F996B /* DataProviderStumb.swift */; };
-		7E5DCA982B5A7936007F996B /* SimbirDiaryUnitTests.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 7E5DCA972B5A7936007F996B /* SimbirDiaryUnitTests.xctestplan */; };
+		7E5DCAA02B5A8017007F996B /* SimbirDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCA9F2B5A8017007F996B /* SimbirDiaryTests.swift */; };
+		7E5DCAB02B5A803C007F996B /* MainCoordinatorStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCAA92B5A803C007F996B /* MainCoordinatorStumb.swift */; };
+		7E5DCAB12B5A803C007F996B /* ToDoViewViewModelStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCAAB2B5A803C007F996B /* ToDoViewViewModelStumb.swift */; };
+		7E5DCAB22B5A803C007F996B /* DatabaseManagerStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCAAD2B5A803C007F996B /* DatabaseManagerStumb.swift */; };
+		7E5DCAB32B5A803C007F996B /* DataProviderStumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCAAE2B5A803C007F996B /* DataProviderStumb.swift */; };
 		7E83352B2B4D1F4B008E4C44 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352A2B4D1F4B008E4C44 /* Task.swift */; };
 		7E83352F2B4D207A008E4C44 /* ToDoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */; };
 		7E8335322B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */; };
@@ -64,7 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7E5DCA842B5A76FB007F996B /* PBXContainerItemProxy */ = {
+		7E5DCAA12B5A8017007F996B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7EA203872B47FE3200A9F2A3 /* Project object */;
 			proxyType = 1;
@@ -83,17 +83,17 @@
 		7E37CECF2B4C3E1B00700075 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		7E37CED12B4C44BF00700075 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		7E37CED32B4C4DD600700075 /* ToDoTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewHeaderView.swift; sourceTree = "<group>"; };
+		7E3C39762B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewViewModelStumb.swift; sourceTree = "<group>"; };
 		7E4FDA9A2B579A2F00582FA0 /* ToDoListStumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListStumbView.swift; sourceTree = "<group>"; };
 		7E4FDA9C2B57C28900582FA0 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		7E4FDA9E2B57CBD900582FA0 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		7E5DCA5F2B597FD9007F996B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
-		7E5DCA802B5A76FB007F996B /* SimbirDiaryUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimbirDiaryUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E5DCA822B5A76FB007F996B /* SimbirDiaryUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbirDiaryUnitTests.swift; sourceTree = "<group>"; };
-		7E5DCA8B2B5A772E007F996B /* MainCoordinatorStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinatorStumb.swift; sourceTree = "<group>"; };
-		7E5DCA8D2B5A772E007F996B /* ToDoViewViewModelStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModelStumb.swift; sourceTree = "<group>"; };
-		7E5DCA8F2B5A772E007F996B /* DatabaseManagerStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManagerStumb.swift; sourceTree = "<group>"; };
-		7E5DCA902B5A772E007F996B /* DataProviderStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderStumb.swift; sourceTree = "<group>"; };
-		7E5DCA972B5A7936007F996B /* SimbirDiaryUnitTests.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SimbirDiaryUnitTests.xctestplan; path = SimbirDiary/SimbirDiaryUnitTests.xctestplan; sourceTree = "<group>"; };
+		7E5DCA9D2B5A8017007F996B /* SimbirDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimbirDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E5DCA9F2B5A8017007F996B /* SimbirDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbirDiaryTests.swift; sourceTree = "<group>"; };
+		7E5DCAA92B5A803C007F996B /* MainCoordinatorStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinatorStumb.swift; sourceTree = "<group>"; };
+		7E5DCAAB2B5A803C007F996B /* ToDoViewViewModelStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModelStumb.swift; sourceTree = "<group>"; };
+		7E5DCAAD2B5A803C007F996B /* DatabaseManagerStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManagerStumb.swift; sourceTree = "<group>"; };
+		7E5DCAAE2B5A803C007F996B /* DataProviderStumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderStumb.swift; sourceTree = "<group>"; };
 		7E83352A2B4D1F4B008E4C44 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		7E83352E2B4D207A008E4C44 /* ToDoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModel.swift; sourceTree = "<group>"; };
 		7E8335312B4D2095008E4C44 /* ToDoViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7E5DCA7D2B5A76FB007F996B /* Frameworks */ = {
+		7E5DCA9A2B5A8017007F996B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,46 +214,55 @@
 			path = UserDefaultsService;
 			sourceTree = "<group>";
 		};
-		7E5DCA812B5A76FB007F996B /* SimbirDiaryUnitTests */ = {
+		7E5DCA9E2B5A8017007F996B /* SimbirDiaryTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E5DCA892B5A772E007F996B /* Dependencies */,
-				7E5DCA822B5A76FB007F996B /* SimbirDiaryUnitTests.swift */,
+				7E5DCAA62B5A803C007F996B /* SimbirDiaryUnitTests */,
+				7E5DCA9F2B5A8017007F996B /* SimbirDiaryTests.swift */,
+			);
+			path = SimbirDiaryTests;
+			sourceTree = "<group>";
+		};
+		7E5DCAA62B5A803C007F996B /* SimbirDiaryUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E5DCAA72B5A803C007F996B /* Dependencies */,
 			);
 			path = SimbirDiaryUnitTests;
 			sourceTree = "<group>";
 		};
-		7E5DCA892B5A772E007F996B /* Dependencies */ = {
+		7E5DCAA72B5A803C007F996B /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				7E5DCA8A2B5A772E007F996B /* Coordinators */,
-				7E5DCA8C2B5A772E007F996B /* ViewModels */,
-				7E5DCA8E2B5A772E007F996B /* Services */,
+				7E5DCAA82B5A803C007F996B /* Coordinators */,
+				7E5DCAAA2B5A803C007F996B /* ViewModels */,
+				7E5DCAAC2B5A803C007F996B /* Services */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
-		7E5DCA8A2B5A772E007F996B /* Coordinators */ = {
+		7E5DCAA82B5A803C007F996B /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				7E5DCA8B2B5A772E007F996B /* MainCoordinatorStumb.swift */,
+				7E5DCAA92B5A803C007F996B /* MainCoordinatorStumb.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		7E5DCA8C2B5A772E007F996B /* ViewModels */ = {
+		7E5DCAAA2B5A803C007F996B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7E5DCA8D2B5A772E007F996B /* ToDoViewViewModelStumb.swift */,
+				7E5DCAAB2B5A803C007F996B /* ToDoViewViewModelStumb.swift */,
+				7E3C39762B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		7E5DCA8E2B5A772E007F996B /* Services */ = {
+		7E5DCAAC2B5A803C007F996B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				7E5DCA8F2B5A772E007F996B /* DatabaseManagerStumb.swift */,
-				7E5DCA902B5A772E007F996B /* DataProviderStumb.swift */,
+				7E5DCAAD2B5A803C007F996B /* DatabaseManagerStumb.swift */,
+				7E5DCAAE2B5A803C007F996B /* DataProviderStumb.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -385,9 +394,8 @@
 		7EA203862B47FE3200A9F2A3 = {
 			isa = PBXGroup;
 			children = (
-				7E5DCA972B5A7936007F996B /* SimbirDiaryUnitTests.xctestplan */,
 				7EA203912B47FE3200A9F2A3 /* SimbirDiary */,
-				7E5DCA812B5A76FB007F996B /* SimbirDiaryUnitTests */,
+				7E5DCA9E2B5A8017007F996B /* SimbirDiaryTests */,
 				7EA203902B47FE3200A9F2A3 /* Products */,
 				D706192B8098D65B89029043 /* Pods */,
 				839FA001163B0C916AFE875D /* Frameworks */,
@@ -398,7 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA2038F2B47FE3200A9F2A3 /* SimbirDiary.app */,
-				7E5DCA802B5A76FB007F996B /* SimbirDiaryUnitTests.xctest */,
+				7E5DCA9D2B5A8017007F996B /* SimbirDiaryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -615,22 +623,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7E5DCA7F2B5A76FB007F996B /* SimbirDiaryUnitTests */ = {
+		7E5DCA9C2B5A8017007F996B /* SimbirDiaryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E5DCA862B5A76FB007F996B /* Build configuration list for PBXNativeTarget "SimbirDiaryUnitTests" */;
+			buildConfigurationList = 7E5DCAA32B5A8017007F996B /* Build configuration list for PBXNativeTarget "SimbirDiaryTests" */;
 			buildPhases = (
-				7E5DCA7C2B5A76FB007F996B /* Sources */,
-				7E5DCA7D2B5A76FB007F996B /* Frameworks */,
-				7E5DCA7E2B5A76FB007F996B /* Resources */,
+				7E5DCA992B5A8017007F996B /* Sources */,
+				7E5DCA9A2B5A8017007F996B /* Frameworks */,
+				7E5DCA9B2B5A8017007F996B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7E5DCA852B5A76FB007F996B /* PBXTargetDependency */,
+				7E5DCAA22B5A8017007F996B /* PBXTargetDependency */,
 			);
-			name = SimbirDiaryUnitTests;
-			productName = SimbirDiaryUnitTests;
-			productReference = 7E5DCA802B5A76FB007F996B /* SimbirDiaryUnitTests.xctest */;
+			name = SimbirDiaryTests;
+			productName = SimbirDiaryTests;
+			productReference = 7E5DCA9D2B5A8017007F996B /* SimbirDiaryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		7EA2038E2B47FE3200A9F2A3 /* SimbirDiary */ = {
@@ -664,7 +672,7 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					7E5DCA7F2B5A76FB007F996B = {
+					7E5DCA9C2B5A8017007F996B = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = 7EA2038E2B47FE3200A9F2A3;
 					};
@@ -688,17 +696,16 @@
 			projectRoot = "";
 			targets = (
 				7EA2038E2B47FE3200A9F2A3 /* SimbirDiary */,
-				7E5DCA7F2B5A76FB007F996B /* SimbirDiaryUnitTests */,
+				7E5DCA9C2B5A8017007F996B /* SimbirDiaryTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7E5DCA7E2B5A76FB007F996B /* Resources */ = {
+		7E5DCA9B2B5A8017007F996B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E5DCA982B5A7936007F996B /* SimbirDiaryUnitTests.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,15 +802,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7E5DCA7C2B5A76FB007F996B /* Sources */ = {
+		7E5DCA992B5A8017007F996B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E5DCA942B5A772E007F996B /* DataProviderStumb.swift in Sources */,
-				7E5DCA932B5A772E007F996B /* DatabaseManagerStumb.swift in Sources */,
-				7E5DCA922B5A772E007F996B /* ToDoViewViewModelStumb.swift in Sources */,
-				7E5DCA832B5A76FB007F996B /* SimbirDiaryUnitTests.swift in Sources */,
-				7E5DCA912B5A772E007F996B /* MainCoordinatorStumb.swift in Sources */,
+				7E5DCAB32B5A803C007F996B /* DataProviderStumb.swift in Sources */,
+				7E5DCAB22B5A803C007F996B /* DatabaseManagerStumb.swift in Sources */,
+				7E5DCAB12B5A803C007F996B /* ToDoViewViewModelStumb.swift in Sources */,
+				7E3C39772B5A94BF00A263E3 /* NewTaskViewViewModelStumb.swift in Sources */,
+				7E5DCAA02B5A8017007F996B /* SimbirDiaryTests.swift in Sources */,
+				7E5DCAB02B5A803C007F996B /* MainCoordinatorStumb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,10 +869,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7E5DCA852B5A76FB007F996B /* PBXTargetDependency */ = {
+		7E5DCAA22B5A8017007F996B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7EA2038E2B47FE3200A9F2A3 /* SimbirDiary */;
-			targetProxy = 7E5DCA842B5A76FB007F996B /* PBXContainerItemProxy */;
+			targetProxy = 7E5DCAA12B5A8017007F996B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -889,7 +897,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7E5DCA872B5A76FB007F996B /* Debug */ = {
+		7E5DCAA42B5A8017007F996B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -900,7 +908,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.esplusnin.SimbirDiaryUnitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.esplusnin.SimbirDiaryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -913,7 +921,7 @@
 			};
 			name = Debug;
 		};
-		7E5DCA882B5A76FB007F996B /* Release */ = {
+		7E5DCAA52B5A8017007F996B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -924,7 +932,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.esplusnin.SimbirDiaryUnitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.esplusnin.SimbirDiaryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1125,11 +1133,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7E5DCA862B5A76FB007F996B /* Build configuration list for PBXNativeTarget "SimbirDiaryUnitTests" */ = {
+		7E5DCAA32B5A8017007F996B /* Build configuration list for PBXNativeTarget "SimbirDiaryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7E5DCA872B5A76FB007F996B /* Debug */,
-				7E5DCA882B5A76FB007F996B /* Release */,
+				7E5DCAA42B5A8017007F996B /* Debug */,
+				7E5DCAA52B5A8017007F996B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

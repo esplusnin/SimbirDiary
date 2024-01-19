@@ -9,7 +9,7 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>SimbirDiaryUnitTests.xcscheme_^#shared#^_</key>
+		<key>SimbirDiaryTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
@@ -18,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>7E5DCA7F2B5A76FB007F996B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E5DCA9C2B5A8017007F996B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
