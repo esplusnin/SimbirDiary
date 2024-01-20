@@ -1,4 +1,5 @@
 import XCTest
+import RealmSwift
 @testable import SimbirDiary
 
 final class SimbirDiaryTests: XCTestCase {
@@ -7,6 +8,19 @@ final class SimbirDiaryTests: XCTestCase {
     let coordinator = MainCoordinatorStumb()
     let dataProvider = DataProviderStumb()
     var dateFormatter: DateFormatterProtocol?
+    var realm: Realm!
+    
+    // MARK: - Overrides Methods:
+    override func setUp() {
+        super.setUp()
+        realm = try? Realm(configuration: .init(inMemoryIdentifier: "TestRealm"))
+    }
+    
+    override func tearDown() {
+        try? realm.write {
+            realm.deleteAll()
+        }
+    }
     
     // MARK: - ToDoViewController:
     func testToDoViewControllerView() {
@@ -244,5 +258,73 @@ final class SimbirDiaryTests: XCTestCase {
         // Then:
         XCTAssertEqual(dateString, "2024-01-19")
     }
-   
+    
+    // MARK: - Database Manager:
+    func testDatabaseManagerFuncSaveData() {
+        // Given:
+        let id = UUID()
+        let realmObject = TaskObject(ownID: id, date: "testDate", data: Data())
+        
+        // When:
+        try? realm.write {
+            realm.add(realmObject)
+        }
+        
+        // Then:
+        XCTAssertNotNil(realm.object(ofType: TaskObject.self, forPrimaryKey: id))
+    }
+    
+    func testDatabaseManagerFuncFetchData() {
+        // Given:
+        let id = UUID()
+        let realmObject = TaskObject(ownID: id, date: "testDate", data: Data())
+        
+        // When:
+        try? realm.write {
+            realm.add(realmObject)
+        }
+        let objects = realm.objects(TaskObject.self)
+        
+        // Then:
+        XCTAssertTrue(!objects.isEmpty)
+    }
+    
+    func testDatabaseManagerFuncRead() {
+        // Given:
+        let id = UUID()
+        let realmObject = TaskObject(ownID: id, date: "testDate", data: Data())
+        
+        // When:
+        try? realm.write {
+            realm.add(realmObject)
+        }
+        
+        var taskObject = realm.objects(TaskObject.self).first
+        try? realm.write {
+            taskObject?.startDate = "newTestDate"
+        }
+        
+        // Then:
+        XCTAssertEqual(taskObject?.startDate, "newTestDate")
+    }
+    
+    func testDatabaseManagerFuncDelete() {
+        // Given:
+        let id = UUID()
+        let realmObject = TaskObject(ownID: id, date: "testDate", data: Data())
+        
+        // When:
+        try? realm.write {
+            realm.add(realmObject)
+        }
+        
+        if let object = realm.object(ofType: TaskObject.self, forPrimaryKey: id) {
+            try? realm.write {
+                realm.delete(object)
+            }
+            
+            // Then:
+            XCTAssertNil(realm.object(ofType: TaskObject.self, forPrimaryKey: id))
+        }
+    }
 }
