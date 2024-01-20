@@ -219,18 +219,10 @@
 		7E5DCA9E2B5A8017007F996B /* SimbirDiaryTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E5DCAA62B5A803C007F996B /* SimbirDiaryUnitTests */,
+				7E5DCAA72B5A803C007F996B /* Dependencies */,
 				7E5DCA9F2B5A8017007F996B /* SimbirDiaryTests.swift */,
 			);
 			path = SimbirDiaryTests;
-			sourceTree = "<group>";
-		};
-		7E5DCAA62B5A803C007F996B /* SimbirDiaryUnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				7E5DCAA72B5A803C007F996B /* Dependencies */,
-			);
-			path = SimbirDiaryUnitTests;
 			sourceTree = "<group>";
 		};
 		7E5DCAA72B5A803C007F996B /* Dependencies */ = {
@@ -1096,6 +1088,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1128,6 +1121,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

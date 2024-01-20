@@ -24,7 +24,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         TimeBlock(name: Resources.TimeBlocks.twentyTwo, tasks: []),TimeBlock(name: Resources.TimeBlocks.twentyThree, tasks: [])
     ]
     
-    private var currentDate: Date? {
+    private(set) var currentDate: Date? {
         didSet {
             tasksList = []
             currentDateDidChange = true
@@ -127,8 +127,6 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Helpers:
     private func defineIndexPath(for task: Task, with code: String, from list: [TimeBlock]) -> IndexPath? {
-        print(tasksList[0].name, code)
-        print(task.id, tasksList[0].tasks.first?.id)
         guard let section = list.firstIndex(where: { $0.name == code }),
               let row = list[section].tasks.firstIndex(where: { $0.id == task.id })  else { return nil }
         return IndexPath(row: row, section: section)

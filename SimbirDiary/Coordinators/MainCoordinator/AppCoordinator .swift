@@ -23,8 +23,8 @@ final class AppCoordinator: CoordinatorProtocol {
         navigator.pushViewController(toDoViewController, animated: true)
     }
     
-    func presentNewTaskController(from controller: UIViewController) {
-        let newTaskViewModel = NewTaskViewViewModel(dataProvider: dataProvider)
+    func presentNewTaskController(from controller: UIViewController, with date: Date) {
+        let newTaskViewModel = NewTaskViewViewModel(dataProvider: dataProvider, defaultDate: date)
         let newTaskViewController = NewTaskViewController(coordinator: self, viewModel: newTaskViewModel)
         controller.present(newTaskViewController, animated: true)
     }

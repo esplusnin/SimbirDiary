@@ -62,7 +62,8 @@ class ToDoViewController: UIViewController {
         if viewModel.tasksListObservable.wrappedValue.isEmpty && toDoListStumbView == nil {
             toDoListStumbView = ToDoListStumbView { [weak self] in
                 guard let self else { return }
-                self.coordinator?.presentNewTaskController(from: self)
+                let selectedDate = viewModel.currentDate ?? Date()
+                self.coordinator?.presentNewTaskController(from: self, with: selectedDate)
             }
             
             setupToDoListStumbView()
@@ -77,7 +78,8 @@ class ToDoViewController: UIViewController {
 // MARK: - CustomNavigationBarViewDelegate:
 extension ToDoViewController: CustomToDoListNavigationBarViewDelegate {
     func presentNewTaskController() {
-        coordinator?.presentNewTaskController(from: self)
+        let selectedDate = viewModel.currentDate ?? Date()
+        coordinator?.presentNewTaskController(from: self, with: selectedDate)
     }
     
     func setupDate(from date: Date) {

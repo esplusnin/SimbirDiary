@@ -11,7 +11,7 @@ final class NewTaskTableViewDateCell: UITableViewCell {
     weak var delegate: NewTaskTableViewDateCellDelegate?
     
     // MARK: - Constants and Variables:
-    private var cellType: NewTaskCellType?
+    private(set) var cellType: NewTaskCellType?
     
     // MARK: - UI
     private lazy var titleLabeL: UILabel = {
@@ -46,6 +46,10 @@ final class NewTaskTableViewDateCell: UITableViewCell {
             titleLabeL.text = L10n.NewTask.selectTime
             datePicker.datePickerMode = .time
         }
+    }
+    
+    func setupDefault(_ date: Date) {
+        datePicker.date = date
     }
     
     // MARK: - Objc Methods:

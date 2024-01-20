@@ -37,7 +37,7 @@ final class NewTaskViewController: UIViewController {
     init(coordinator: CoordinatorProtocol, viewModel: NewTaskViewViewModelProtocol) {
         self.coordinator = coordinator
         self.viewModel = viewModel
-        self.tableViewDataProvider = NewTaskTableViewDataProvider()
+        self.tableViewDataProvider = NewTaskTableViewDataProvider(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -20,6 +20,7 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
     
     private var date: Date?
     private var time: Date?
+    private(set) var defaultDate: Date
 
     // MARK: - Observable Values:
     var isReadyToAddNewTaskObservable: Observable<Bool> {
@@ -29,7 +30,8 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
     @Observable private var isReadyToAddNewTask = false
     
     // MARK: - Lifecycle:
-    init(dataProvider: DataProviderProtocol) {
+    init(dataProvider: DataProviderProtocol, defaultDate: Date) {
+        self.defaultDate = defaultDate
         self.dataProvider = dataProvider
     }
     
@@ -54,7 +56,7 @@ final class NewTaskViewViewModel: NewTaskViewViewModelProtocol {
         guard let name = name,
               let description = description else { return }
 
-        let datesUnixString = DateFormatterService().getUnixValueString(from: date ?? Date(), and: time ?? Date())
+        let datesUnixString = DateFormatterService().getUnixValueString(from: date ?? defaultDate, and: time ?? defaultDate)
         dataProvider.addNew(task: Task(id: UUID(),
                                        startDate: datesUnixString,
                                        calendarDate: nil,
