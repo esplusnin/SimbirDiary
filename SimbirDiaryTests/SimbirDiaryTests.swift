@@ -89,7 +89,7 @@ final class SimbirDiaryTests: XCTestCase {
     // MARK: - NewTaskViewController:
     func testNewTaskViewController() {
         // Given:
-        let viewModel = NewTaskViewViewModelStumb(dataProvider: dataProvider)
+        let viewModel = NewTaskViewViewModelStumb(dataProvider: dataProvider, defaultDate: Date())
         let viewController = NewTaskViewController(coordinator: coordinator, viewModel: viewModel)
         
         // When:
@@ -101,7 +101,7 @@ final class SimbirDiaryTests: XCTestCase {
     
     func testNewTaskViewControllerFuncPerformTask() {
         // Given:
-        let viewModel = NewTaskViewViewModelStumb(dataProvider: dataProvider)
+        let viewModel = NewTaskViewViewModelStumb(dataProvider: dataProvider, defaultDate: Date())
         let viewController = NewTaskViewController(coordinator: coordinator, viewModel: viewModel)
         
         // When:
@@ -114,8 +114,7 @@ final class SimbirDiaryTests: XCTestCase {
     // MARK: - NewTaskViewViewModel:
     func testNewTaskViewViewModelisReadyToAddNewTask() {
         // Given:
-        let viewModel = NewTaskViewViewModel(dataProvider: dataProvider)
-        let viewController = NewTaskViewController(coordinator: coordinator, viewModel: viewModel)
+        let viewModel = NewTaskViewViewModel(dataProvider: dataProvider, defaultDate: Date())
         
         // When:
         viewModel.setupTaskDate(from: .date, with: Date())
@@ -129,8 +128,8 @@ final class SimbirDiaryTests: XCTestCase {
     
     func testNewAskViewViewModelFuncAddNewTask() {
         // Given:
-        let viewModel = NewTaskViewViewModel(dataProvider: dataProvider)
-
+        let viewModel = NewTaskViewViewModel(dataProvider: dataProvider, defaultDate: Date())
+        
         // When:
         viewModel.setupTaskDate(from: .date, with: Date())
         viewModel.setupTaskDate(from: .time, with: Date())
@@ -299,7 +298,7 @@ final class SimbirDiaryTests: XCTestCase {
             realm.add(realmObject)
         }
         
-        var taskObject = realm.objects(TaskObject.self).first
+        let taskObject = realm.objects(TaskObject.self).first
         try? realm.write {
             taskObject?.startDate = "newTestDate"
         }

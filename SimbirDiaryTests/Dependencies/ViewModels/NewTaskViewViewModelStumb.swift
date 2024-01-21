@@ -6,10 +6,13 @@ final class NewTaskViewViewModelStumb: NewTaskViewViewModelProtocol {
     // MARK: - Dependencies:
     private var dataProvider: DataProviderProtocol
     
+    // MARK: - COonstants and Variables:
+    var defaultDate: Date
+
     // MARK: - Observable Values:
     var isNewTaskAdded = false
     
-    var isReadyToAddNewTaskObservable: SimbirDiary.Observable<Bool> {
+    var isReadyToAddNewTaskObservable: Observable<Bool> {
         $isReadyToAddNewTask
     }
     
@@ -17,12 +20,13 @@ final class NewTaskViewViewModelStumb: NewTaskViewViewModelProtocol {
     private(set) var isReadyToAddNewTask = false
     
     // MARK: - Lifecycle:
-    init(dataProvider: DataProviderProtocol) {
+    init(dataProvider: DataProviderProtocol, defaultDate: Date) {
         self.dataProvider = dataProvider
+        self.defaultDate = defaultDate
     }
     
     // MARK: - Public Methods:
-    func setupTaskDate(from type: SimbirDiary.NewTaskCellType, with value: Date) {
+    func setupTaskDate(from type: NewTaskCellType, with value: Date) {
         
     }
     

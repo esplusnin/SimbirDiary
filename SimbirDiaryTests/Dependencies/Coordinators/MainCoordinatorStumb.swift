@@ -11,7 +11,7 @@ final class MainCoordinatorStumb: CoordinatorProtocol {
         
     }
     
-    func presentNewTaskController(from controller: UIViewController) {
+    func presentNewTaskController(from controller: UIViewController, with date: Date) {
         
     }
     
