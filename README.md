@@ -20,7 +20,7 @@
 - Target iOS 12.0+
 - Зависимости: 
   Pods:
-  - Realm Database
+  - Realm
 
 ### :telescope: Стек технологий:
 + Swift
