@@ -11,6 +11,8 @@ final class ToDoTableViewCell: UITableViewCell {
         }
     }
     
+    private let timeValueLabelWidth: CGFloat = 50
+    
     // MARK: - UI:
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
@@ -72,7 +74,7 @@ private extension ToDoTableViewCell {
         ])
         
         let trailingNameLabelConstraints = nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: timeValueLabel.leadingAnchor, constant: -UIConstants.baseInset)
-        trailingNameLabelConstraints.priority = .defaultLow
+        trailingNameLabelConstraints.priority = .defaultHigh
         trailingNameLabelConstraints.isActive = true
     }
     
@@ -87,7 +89,8 @@ private extension ToDoTableViewCell {
     
     func setupTimeValueLabelConstraints() {
         timeValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-
+        timeValueLabel.widthAnchor.constraint(equalToConstant: timeValueLabelWidth).isActive = true
+        
         let trailingConstraints = timeValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.baseInset)
         trailingConstraints.priority = .defaultHigh
         trailingConstraints.isActive = true
