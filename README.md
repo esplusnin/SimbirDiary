@@ -23,6 +23,7 @@
   - Realm Database
 
 ### :telescope: Стек технологий:
++ Swift
 + UIKit 
 + MVVM
 + Coordinator
