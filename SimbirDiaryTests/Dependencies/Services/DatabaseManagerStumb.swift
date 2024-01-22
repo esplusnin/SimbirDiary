@@ -34,6 +34,6 @@ final class DatabaseManagerStumb: DatabaseManagerProtocol {
     // MARK: - Private Methods:
     private func sentUpdation() {
         let task = Task(id: UUID(), startDate: "", calendarDate: "", name: "testName", description: "")
-        dataProvider?.setupUpdated(task)
+        dataProvider?.setupUpdated([task])
     }
 }

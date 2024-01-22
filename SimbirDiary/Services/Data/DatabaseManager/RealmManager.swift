@@ -11,7 +11,7 @@ final class RealmManager: DatabaseManagerProtocol {
     // MARK: - Constants and Variables:
     private var realm: Realm?
     private var notificationToken: NotificationToken?
-    private let backgroundQueue = DispatchQueue(label: "BackgroundQueue", qos: .background)
+    private let backgroundQueue = DispatchQueue(label: Resources.Identifiers.realmBackgroundQueue, qos: .background)
     
     private var deletedTask: Task?
     private var isInitiated = false

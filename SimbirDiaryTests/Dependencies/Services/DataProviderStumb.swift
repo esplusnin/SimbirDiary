@@ -7,25 +7,25 @@ final class DataProviderStumb: DataProviderProtocol {
     var isTaskDeleted = false
     var addedTask: Task?
     
-    private var testTask: Task
+    private var testTask: [Task]
     
     // MARK: - Observable Values:
-    var updatedTaskObservable: Observable<Task?> {
+    var updatedTasksObservable: Observable<[Task]?> {
         $updatedTask
     }
     
     @SimbirDiary.Observable
-    private var updatedTask: Task?
+    private var updatedTask: [Task]?
     
     // MARK: - Lifecycle:
     init() {
         let unixDate = DateFormatterService().getUnixValueString(from: Date(), and: Date())
         
-        testTask = Task(id: UUID(uuidString: "TEST") ?? UUID(),
+        testTask = [Task(id: UUID(uuidString: "TEST") ?? UUID(),
                     startDate: unixDate,
                     calendarDate: "testCalendarDate",
                     name: "testName",
-                    description: "testDescription")
+                    description: "testDescription")]
     }
     
     // MARK: - Public Methods:
@@ -34,10 +34,10 @@ final class DataProviderStumb: DataProviderProtocol {
     }
     
     func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
-        completion(.success([testTask]))
+        completion(.success(testTask))
     }
     
-    func setupUpdated(_ task: Task) {
+    func setupUpdated(_ tasks: [Task]) {
         updatedTask = testTask
     }
     

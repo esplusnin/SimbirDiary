@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		285AE6515D6A1416720F3FC7 /* Pods_SimbirDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */; };
 		7E37CEBA2B48484200700075 /* CustomToDoListNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEB92B48484200700075 /* CustomToDoListNavigationBarView.swift */; };
 		7E37CEBC2B484C5500700075 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEBB2B484C5500700075 /* Resources.swift */; };
 		7E37CEC02B484D7400700075 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E37CEBF2B484D7400700075 /* UIView + Extension.swift */; };
@@ -62,6 +61,7 @@
 		7ED9A6F82B4D5B93009D47CD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */; };
 		7ED9A6FB2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */; };
 		7ED9A6FD2B4D5DED009D47CD /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED9A6FC2B4D5DED009D47CD /* TaskObject.swift */; };
+		9181F1F96271A1FA2E07C9E8 /* Pods_SimbirDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C90BEE233188921063E4E6C /* Pods_SimbirDiary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimbirDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.release.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.release.xcconfig"; sourceTree = "<group>"; };
+		3C90BEE233188921063E4E6C /* Pods_SimbirDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimbirDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B12AB69FA40959495E2094C /* Pods-SimbirDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.debug.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		7E37CEB92B48484200700075 /* CustomToDoListNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToDoListNavigationBarView.swift; sourceTree = "<group>"; };
 		7E37CEBB2B484C5500700075 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		7E37CEBF2B484D7400700075 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		7ED9A6F72B4D5B93009D47CD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7ED9A6FA2B4D5BF6009D47CD /* DatabaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerProtocol.swift; sourceTree = "<group>"; };
 		7ED9A6FC2B4D5DED009D47CD /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
-		9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.debug.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		E63350FBBF31F411EC7C6FAA /* Pods-SimbirDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimbirDiary.release.xcconfig"; path = "Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,13 +150,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				285AE6515D6A1416720F3FC7 /* Pods_SimbirDiary.framework in Frameworks */,
+				9181F1F96271A1FA2E07C9E8 /* Pods_SimbirDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41A631DF6C53001C7A671FB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C90BEE233188921063E4E6C /* Pods_SimbirDiary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E37CEB42B4847A600700075 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,7 +401,7 @@
 				7E5DCA9E2B5A8017007F996B /* SimbirDiaryTests */,
 				7EA203902B47FE3200A9F2A3 /* Products */,
 				D706192B8098D65B89029043 /* Pods */,
-				839FA001163B0C916AFE875D /* Frameworks */,
+				41A631DF6C53001C7A671FB4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -598,19 +606,11 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		839FA001163B0C916AFE875D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				08B82A976A7670643702EE30 /* Pods_SimbirDiary.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		D706192B8098D65B89029043 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */,
-				46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */,
+				5B12AB69FA40959495E2094C /* Pods-SimbirDiary.debug.xcconfig */,
+				E63350FBBF31F411EC7C6FAA /* Pods-SimbirDiary.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -640,13 +640,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA203A32B47FE3300A9F2A3 /* Build configuration list for PBXNativeTarget "SimbirDiary" */;
 			buildPhases = (
-				4FDBC7D627DC92D2BCE089B6 /* [CP] Check Pods Manifest.lock */,
+				202B1EFBF0EC9798455B72FB /* [CP] Check Pods Manifest.lock */,
 				7EA203B32B480B3C00A9F2A3 /* Swiftlint */,
 				7EA203B22B48099900A9F2A3 /* SwiftGen */,
 				7EA2038B2B47FE3200A9F2A3 /* Sources */,
 				7EA2038C2B47FE3200A9F2A3 /* Frameworks */,
 				7EA2038D2B47FE3200A9F2A3 /* Resources */,
-				0092D2D732074E7B5735404C /* [CP] Embed Pods Frameworks */,
+				2BA59E8D8D0B82982AE7CD95 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -717,24 +717,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0092D2D732074E7B5735404C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4FDBC7D627DC92D2BCE089B6 /* [CP] Check Pods Manifest.lock */ = {
+		202B1EFBF0EC9798455B72FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -754,6 +737,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BA59E8D8D0B82982AE7CD95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimbirDiary/Pods-SimbirDiary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7EA203B22B48099900A9F2A3 /* SwiftGen */ = {
@@ -1064,7 +1064,7 @@
 		};
 		7EA203A42B47FE3300A9F2A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C7E95BA7D73E8EF0D8D8DAB /* Pods-SimbirDiary.debug.xcconfig */;
+			baseConfigurationReference = 5B12AB69FA40959495E2094C /* Pods-SimbirDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1097,7 +1097,7 @@
 		};
 		7EA203A52B47FE3300A9F2A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46B1F0A69AA679332E164862 /* Pods-SimbirDiary.release.xcconfig */;
+			baseConfigurationReference = E63350FBBF31F411EC7C6FAA /* Pods-SimbirDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

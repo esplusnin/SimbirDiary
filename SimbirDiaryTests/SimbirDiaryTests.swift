@@ -80,7 +80,7 @@ final class SimbirDiaryTests: XCTestCase {
         // When:
         viewController.setupDate(from: Date())
         dataProvider.isTaskDeleted = true
-        dataProvider.setupUpdated(Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: ""))
+        dataProvider.setupUpdated([Task(id: UUID(), startDate: "", calendarDate: "", name: "", description: "")])
         
         // Then:
         XCTAssertEqual(viewModel.tasksList.count, 0)
@@ -220,9 +220,10 @@ final class SimbirDiaryTests: XCTestCase {
         
         // When:
         databaseManager.setupDataProvider(dataProvider)
+        guard let name = dataProvider.updatedTasksObservable.wrappedValue?.first?.name else { return }
        
         // Then:
-        XCTAssertEqual(dataProvider.updatedTaskObservable.wrappedValue?.name, "testName")
+        XCTAssertEqual(name, "testName")
     }
     
     // MARK: - DataFormatters:

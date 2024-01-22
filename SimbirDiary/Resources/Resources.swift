@@ -13,6 +13,8 @@ enum Resources {
         static let toDoTableViewCell = "ToDoTableViewCell"
         static let toDoTableViewHeaderView = "ToDoTableViewHeaderView"
         static let newTaskTableViewDateCell = "NewTaskTableViewDateCell"
+        
+        static let realmBackgroundQueue = "RealmBackgroundQueue"
     }
     
     enum TimeBlocks {

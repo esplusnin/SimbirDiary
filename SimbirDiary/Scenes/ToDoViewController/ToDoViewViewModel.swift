@@ -124,7 +124,7 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
         }
     }
     
-    // MARK: - Helpers:
+    // MARK: - Private Methods:
     private func defineIndexPath(for task: Task, with code: String, from list: [TimeBlock]) -> IndexPath? {
         guard let section = list.firstIndex(where: { $0.name == code }),
               let row = list[section].tasks.firstIndex(where: { $0.id == task.id })  else { return nil }
