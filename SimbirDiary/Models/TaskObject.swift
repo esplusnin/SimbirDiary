@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 
-class TaskObject: Object {
+final class TaskObject: Object {
     @Persisted(primaryKey: true) var id = UUID()
     @Persisted var startDate: String
     @Persisted var data: Data

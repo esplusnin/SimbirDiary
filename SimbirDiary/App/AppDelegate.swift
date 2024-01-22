@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaultsService = UserDefaultsService()
         if !userDefaultsService.wasEnteredBefore {
             database.setupDemonstrationTask()
-            userDefaultsService.entry()
         }
     }
 }

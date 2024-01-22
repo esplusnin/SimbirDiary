@@ -52,8 +52,7 @@ class ToDoViewController: UIViewController {
         viewModel.tasksListObservable.bind { [weak self] _ in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.toDoTableView.reloadData()
-                self.controlStumbView()
+                self.updateTableView()
             }
         }
     }
@@ -71,6 +70,14 @@ class ToDoViewController: UIViewController {
             toDoTableView.isHidden = false
             toDoListStumbView?.removeFromSuperview()
             toDoListStumbView = nil
+        }
+    }
+    
+    private func updateTableView() {
+        toDoTableView.reloadData()
+        controlStumbView()
+        UIView.animate(withDuration: UIConstants.baseAnimationDuration) {
+            self.toDoTableView.layoutIfNeeded()
         }
     }
 }

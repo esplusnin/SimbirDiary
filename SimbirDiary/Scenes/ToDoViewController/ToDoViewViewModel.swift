@@ -53,16 +53,15 @@ final class ToDoViewViewModel: ToDoViewViewModelProtocol {
     
     // MARK: - Private Methods:
     func bind() {
-        dataProvider.updatedTaskObservable.bind { [weak self] task in
+        dataProvider.updatedTasksObservable.bind { [weak self] tasks in
             guard let self,
-                  let task else { return }
-            self.distribute([task])
+                  let tasks else { return }
+            self.distribute(tasks)
         }
     }
     
     private func fetchData() {
         guard let currentDate else { return }
-        
         dataProvider.fetchData(with: currentDate) { [weak self] result in
             guard let self else { return }
             switch result {

@@ -9,11 +9,11 @@ final class DataProvider: DataProviderProtocol {
     private(set) var isTaskDeleted = false
     
     // MARK: - Observable Values:
-    var updatedTaskObservable: Observable<Task?> {
-        $updatedTask
+    var updatedTasksObservable: Observable<[Task]?> {
+        $updatedTasks
     }
     
-    @Observable private var updatedTask: Task?
+    @Observable private var updatedTasks: [Task]?
     
     // MARK: - Lifecycle:
     init(databaseManager: DatabaseManagerProtocol) {
@@ -28,9 +28,12 @@ final class DataProvider: DataProviderProtocol {
     }
     
     func fetchData(with date: Date, completion: @escaping (Result<[Task], Error>) -> Void) {
-        databaseManager.fetchData(with: date) { result in
+        databaseManager.fetchData(with: date) { [weak self] result in
+            guard let self else { return }
+            
             switch result {
             case .success(let tasks):
+                self.isTaskDeleted = false
                 completion(.success(tasks))
             case .failure(let error):
                 completion(.failure(error))
@@ -38,8 +41,8 @@ final class DataProvider: DataProviderProtocol {
         }
     }
     
-    func setupUpdated(_ task: Task) {
-        updatedTask = task
+    func setupUpdated(_ tasks: [Task]) {
+        updatedTasks = tasks
     }
     
     func delete(_ task: Task) {

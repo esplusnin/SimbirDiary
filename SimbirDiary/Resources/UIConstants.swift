@@ -8,5 +8,5 @@ enum UIConstants {
     static let navigationBarHeight: CGFloat = 120
     static let separatorViewHeight: CGFloat = 1
     
-    static let baseAnimationDuration: CGFloat = 0.5
+    static let baseAnimationDuration: CGFloat = 0.3
 }
